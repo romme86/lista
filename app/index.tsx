@@ -6,7 +6,7 @@ import bundle from './app.bundle.mjs'
 import RPC from 'bare-rpc'
 import b4a from 'b4a'
 import { Ionicons } from '@expo/vector-icons';
-import {RPC_MESSAGE, RPC_RESET, RPC_UPDATE, RPC_DELETE, RPC_ADD, RPC_GET_KEY, SYNC_LIST, RPC_JOIN_KEY} from '../rpc-commands.mjs'
+import {RPC_MESSAGE, RPC_RESET, RPC_UPDATE, RPC_DELETE, RPC_ADD, RPC_GET_KEY, RPC_ADD_FROM_BACKEND, RPC_UPDATE_FROM_BACKEND, RPC_DELETE_FROM_BACKEND, RPC_JOIN_KEY, SYNC_LIST} from '../rpc-commands.mjs'
 import InertialElasticList from './components/intertial_scroll'
 
 type ListEntry = {
@@ -16,7 +16,17 @@ type ListEntry = {
 }
 
 export default function App() {
-    const [dataList, setDataList] = useState<ListEntry[]>([])
+    const [dataList, setDataList] = useState<ListEntry[]>([
+            { text: 'Tap to mark as done', isDone: false, timeOfCompletion: 0 },
+            { text: 'Double tap to add new', isDone: false, timeOfCompletion: 0 },
+            { text: 'Slide left to delete', isDone: false, timeOfCompletion: 0 },
+            { text: 'Mozzarella', isDone: false, timeOfCompletion: 0 },
+            { text: 'Tomato Sauce', isDone: false, timeOfCompletion: 0 },
+            { text: 'Flour', isDone: false, timeOfCompletion: 0 },
+            { text: 'Yeast', isDone: false, timeOfCompletion: 0 },
+            { text: 'Salt', isDone: false, timeOfCompletion: 0 },
+            { text: 'Basil', isDone: false, timeOfCompletion: 0 }
+    ])
 
     useEffect(() => {
         if (!isWorkletStarted) {
@@ -41,7 +51,6 @@ export default function App() {
         const worklet_start = worklet.start('/app.bundle', bundle, [String(documentDirectory)])
         console.log('worklet_start', worklet_start)
         const {IPC} = worklet
-
         rpcRef.current = new RPC(IPC, (reqFromBackend) => {
             if (reqFromBackend.command === RPC_MESSAGE) {
                 console.log('RPC MESSAGE req', reqFromBackend)
@@ -57,45 +66,49 @@ export default function App() {
                 } else {
                     console.log('data from bare is null, empty or undefined')
                 }
-
-                // const req = rpcRef.current.request(RPC_MESSAGE)
-                // req.send(JSON.stringify({ id: 1,  }))
             }
-            if (reqFromBackend.command === SYNC_LIST) {
-                console.log('RPC SYNC_LIST req')
-                if (reqFromBackend.data) {
-                    console.log('data from bare', b4a.toString(reqFromBackend.data))
-                    const data = b4a.toString(reqFromBackend.data)
-                    const parsedSyncedList: ListEntry[] = JSON.parse(data)
-                    setDataList(() => parsedSyncedList)
-                } else {
-                    console.log('data from bare is null, empty or undefined')
-                }
-            }
-
             if (reqFromBackend.command === RPC_RESET) {
                 console.log('RPC RESET')
-
                 setDataList(() => [])
-                const req = rpcRef.current.request(RPC_RESET)
-                req.send(JSON.stringify({ id: 1,  }))
             }
-            if (reqFromBackend.command === RPC_UPDATE) {
-                console.log('RPC_UPDATE')
-                if (reqFromBackend.data) {
+            if (reqFromBackend.command === SYNC_LIST) {
+                console.log('SYNC_LIST')
+                if(reqFromBackend.data) {
                     console.log('data from bare', b4a.toString(reqFromBackend.data))
-                } else {
-                    console.log('data from bare is null, empty or undefined')
+                    const listToSync = JSON.parse(b4a.toString(reqFromBackend.data))
+                    setDataList(() => listToSync)
                 }
 
-                // const req = rpcRef.current.request(RPC_UPDATE)
-                // req.send(JSON.stringify({ id: 1,  }))
             }
-            if (reqFromBackend.command === RPC_DELETE) {
-                console.log('RPC_DELETE')
+            if (reqFromBackend.command === RPC_DELETE_FROM_BACKEND) {
+                console.log('RPC_DELETE_FROM_BACKEND')
+                if(reqFromBackend.data) {
+                    console.log('data from bare', b4a.toString(reqFromBackend.data))
+                    const itemToDelete = JSON.parse(b4a.toString(reqFromBackend.data))
+                    setDataList((prevList) => prevList.filter((item) => item.text !== itemToDelete.text))
+                }
 
-                const req = rpcRef.current.request(RPC_DELETE)
-                req.send(JSON.stringify({ id: 1,  }))
+            }
+            if (reqFromBackend.command === RPC_UPDATE_FROM_BACKEND) {
+                console.log('RPC_UPDATE_FROM_BACKEND')
+                if(reqFromBackend.data) {
+                    console.log('data from bare', b4a.toString(reqFromBackend.data))
+                    const itemToUpdate = JSON.parse(b4a.toString(reqFromBackend.data))
+                    setDataList((prevList) => {
+                        const newList = prevList.map((item) =>
+                            item.text === itemToUpdate.text ? { ...item, isDone: itemToUpdate.isDone, timeOfCompletion: itemToUpdate.timeOfCompletion } : item
+                        )
+                        return newList
+                    })
+                }
+            }
+            if (reqFromBackend.command === RPC_ADD_FROM_BACKEND) {
+                console.log('RPC_ADD_FROM_BACKEND')
+                if(reqFromBackend.data) {
+                    console.log('data from bare', b4a.toString(reqFromBackend.data))
+                    const itemToAdd = JSON.parse(b4a.toString(reqFromBackend.data))
+                    setDataList((prevList) => [itemToAdd, ...prevList])
+                }
             }
             if (reqFromBackend.command === RPC_GET_KEY) {
                 console.log('RPC_GET_KEY', )
@@ -111,7 +124,6 @@ export default function App() {
         setIsWorkletStarted(true)
     }
 
-
     const handleToggleDone = (index: number) => {
         setDataList((prevList) => {
             const newList = [...prevList]
@@ -121,12 +133,7 @@ export default function App() {
                 isDone: !item.isDone,
                 timeOfCompletion: !item.isDone ? Date.now() : 0
             }
-
-            // Remove item from current position
             newList.splice(index, 1)
-
-            // Add to top if reactivating (isDone becomes false)
-            // Add to bottom if marking as done (isDone becomes true)
             if (updatedItem.isDone) {
                 newList.push(updatedItem) // Add to bottom
             } else {
@@ -135,15 +142,15 @@ export default function App() {
             console.log("sending RPC request update")
             const req = rpcRef.current.request(RPC_UPDATE)
             req.send(JSON.stringify({ id: item.isDone,  }))
-
             return newList
         })
     }
 
     const handleDelete = (index: number) => {
+        const deletedItem = dataList[index];
         setDataList((prevList) => prevList.filter((_, i) => i !== index))
         const req = rpcRef.current.request(RPC_DELETE)
-        req.send(JSON.stringify({ id: 1,  }))
+        req.send(JSON.stringify({ item: deletedItem,  }))
     }
 
     const handleInsert = (index: number, text: string) => {
