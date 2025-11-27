@@ -63,7 +63,7 @@ let addedStaticPeers = false
 let rpc = null
 
 
-// Generate unique ID
+// Generate unique ID (used only for addItem)
 function generateId () {
     return randomBytes(16).toString('hex')
 }
@@ -136,7 +136,6 @@ async function setupHandshakeChannel (conn) {
             // Fast-path: hypercore protocol frames and other binary garbage
             // are not going to start with '{', so just ignore them.
             if (line[0] !== '{') {
-                // comment out noisy logging:
                 // console.warn('non-JSON frame on handshake channel (ignored)')
                 continue
             }
@@ -155,15 +154,13 @@ async function setupHandshakeChannel (conn) {
 }
 
 
-function setupChatSwarm () {
+function setupChatSwarm (chatTopic) {
     if (!autobase) {
         console.error('setupChatSwarm called before Autobase is initialized')
         return
     }
-
-    chatTopic = autobase.key
     chatSwarm = new Hyperswarm()
-
+    console.error("setting up chat swarm with topic:", chatTopic.toString('hex'))
     chatSwarm.on('connection', (conn, info) => {
         console.error('Handshake connection (chat swarm) with peer', info?.peer)
         setupHandshakeChannel(conn)
@@ -178,8 +175,9 @@ async function initAutobase (newBaseKey) {
     // Detach listeners from previous base
     if (autobase) {
         autobase.removeAllListeners('append')
+        autobase = null
     }
-
+    console.error("initializing a new autobase with key:", newBaseKey ? newBaseKey.toString('hex') : 'null (new base)')
     baseKey = newBaseKey || null
     autobase = new Autobase(store, baseKey, { apply, open, valueEncoding: 'json' })
 
@@ -234,8 +232,8 @@ async function initAutobase (newBaseKey) {
 
     // Listen for new data from any input
     autobase.on('append', async () => {
-        console.error('New data appended, rebuilding view...')
-        /// TODO the list shall be updated?
+        console.error('New data appended (autobase append event)')
+        // For now, we rely entirely on apply() to forward changes to the UI.
     })
 
     // Restart chat swarm with new topic
@@ -247,7 +245,7 @@ async function initAutobase (newBaseKey) {
         }
         chatSwarm = null
     }
-    setupChatSwarm()
+    setupChatSwarm(baseKey != null? baseKey : autobase.key)
 }
 
 async function joinNewBase (baseKeyHexStr) {
@@ -284,12 +282,14 @@ rpc = new RPC(IPC, async (req, error) => {
             }
             case RPC_UPDATE: {
                 const data = JSON.parse(req.data.toString())
-                await updateItem(data.id, data.listId, data.updates)
+                // FRONTEND NOW SENDS: { item: <full item> }
+                await updateItem(data.item)
                 break
             }
             case RPC_DELETE: {
                 const data = JSON.parse(req.data.toString())
-                await deleteItem(data)
+                // FRONTEND SENDS: { item: <full item> }
+                await deleteItem(data.item)
                 break
             }
             case RPC_GET_KEY: {
@@ -308,12 +308,6 @@ rpc = new RPC(IPC, async (req, error) => {
                 const data = JSON.parse(req.data.toString())
                 console.error('Joining new base key from RPC:', data.key)
                 await joinNewBase(data.key)
-
-                // Respond with the base key we actually joined (for confirmation)
-                if (autobase) {
-                    const joinResp = rpc.request(RPC_JOIN_KEY)
-                    joinResp.send(JSON.stringify({ baseKey: autobase.key?.toString('hex') }))
-                }
                 break
             }
         }
@@ -389,58 +383,56 @@ async function apply (nodes, view, host) {
             }
             continue
         }
+
         if (value.type === 'add') {
             if (!validateItem(value.value)) {
                 console.error('Invalid item schema in add operation:', value.value)
                 continue
             }
             console.error('Applying add operation for item:', value.value)
-            // send to UI
             const addReq = rpc.request(RPC_ADD_FROM_BACKEND)
             addReq.send(JSON.stringify(value.value))
             continue
         }
+
         if (value.type === 'delete') {
             if (!validateItem(value.value)) {
                 console.error('Invalid item schema in delete operation:', value.value)
                 continue
             }
             console.error('Applying delete operation for item:', value.value)
-            // send to UI
             const deleteReq = rpc.request(RPC_DELETE_FROM_BACKEND)
             deleteReq.send(JSON.stringify(value.value))
             continue
         }
+
         if (value.type === 'update') {
             if (!validateItem(value.value)) {
                 console.error('Invalid item schema in update operation:', value.value)
                 continue
             }
             console.error('Applying update operation for item:', value.value)
-            // send to UI
             const updateReq = rpc.request(RPC_UPDATE_FROM_BACKEND)
             updateReq.send(JSON.stringify(value.value))
             continue
         }
 
-        // All other values are appended to the view
+        // All other values are appended to the view (for future use)
         await view.append(value)
     }
 }
 
-// Simple inline schema validation
+// Simple inline schema validation matching the mobile ListEntry
 function validateItem (item) {
     if (typeof item !== 'object' || item === null) return false
-    if (typeof item.id !== 'string') return false
     if (typeof item.text !== 'string') return false
     if (typeof item.isDone !== 'boolean') return false
     if (typeof item.timeOfCompletion !== 'number') return false
-    if (typeof item.timestamp !== 'number') return false
     return true
 }
 
 
-// Add item operation
+// Add item operation (backend creates the canonical item)
 async function addItem (text, listId) {
     if (!autobase) {
         console.error('addItem called before Autobase is initialized')
@@ -450,14 +442,13 @@ async function addItem (text, listId) {
     console.error('command RPC_ADD addItem text', text)
 
     const item = {
-        id: generateId(),
+        id: generateId(),                    // extra metadata, frontend can ignore
         text,
         isDone: false,
         listId: listId || null,
         timeOfCompletion: 0,
         updatedAt: Date.now(),
         timestamp: Date.now(),
-        author: autobase.local.key.toString('hex').slice(0, 8)
     }
 
     const op = {
@@ -469,37 +460,38 @@ async function addItem (text, listId) {
     console.error('Added item:', text)
 }
 
-// Update item operation
-async function updateItem (id, listId, updates) {
+// Update item operation: AUTONOMOUS, NO BACKEND MEMORY
+async function updateItem (item) {
     if (!autobase) {
         console.error('updateItem called before Autobase is initialized')
         return
     }
-    console.error('command RPC_UPDATE updateItem id, listId, updates', id, listId, updates)
-    const item = {
-        ...updates,
-        updatedAt: Date.now(),
-        timestamp: Date.now()
-    }
+
+    console.error('command RPC_UPDATE updateItem item', item)
+
     const op = {
         type: 'update',
         value: item
     }
+
     await autobase.append(op)
     console.error('Updated item:', item.text)
 }
 
-// Delete item operation
+// Delete item operation: AUTONOMOUS, NO BACKEND MEMORY
 async function deleteItem (item) {
     if (!autobase) {
         console.error('deleteItem called before Autobase is initialized')
         return
     }
+
     console.error('command RPC_DELETE deleteItem item', item)
+
     const op = {
         type: 'delete',
         value: item
     }
+
     await autobase.append(op)
     console.error('Deleted item:', item.text)
 }

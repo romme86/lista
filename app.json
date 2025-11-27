@@ -5,7 +5,7 @@
     "version": "1.0.0",
     "newArchEnabled": true,
     "orientation": "portrait",
-    "scheme": "it.euncasino.lista",
+    "scheme": "ch.saynode.lista",
     "icon": "./assets/images/icon.png",
     "userInterfaceStyle": "automatic",
     "splash": {
@@ -15,17 +15,20 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "it.euncasino.lista"
+      "bundleIdentifier": "ch.saynode.lista",
+      "appleTeamId": "4F2NJTPHF4"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "it.euncasino.lista"
+      "package": "ch.saynode.lista"
     },
     "plugins": [
-      ["expo-router"],
+      [
+        "expo-router"
+      ],
       [
         "expo-build-properties",
         {
