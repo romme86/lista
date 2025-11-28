@@ -30,25 +30,13 @@ const peerKeysString = Bare.argv[1] || '' // Comma-separated peer keys
 const baseKeyHex = Bare.argv[2] || '' // Optional Autobase key (to join an existing base)
 
 // Initialize Corestore
-const store = new Corestore(storagePath)
-await store.ready()
-console.error('Corestore ready at:', storagePath)
-
-
-// Optional Autobase key from argv (initial base)
-let baseKey = null
-if (baseKeyHex) {
-    try {
-        baseKey = Buffer.from(baseKeyHex.trim(), 'hex')
-        console.error('Using existing Autobase key from argv[2]:', baseKeyHex.trim())
-    } catch (err) {
-        console.error('Invalid base key hex, creating new base instead:', err.message)
-        baseKey = null
-    }
-}
+// const store = new Corestore(storagePath)
+let store 
+// await store.ready()
+// console.error('Corestore ready at:', storagePath)
 
 // P2P state
-const swarm = new Hyperswarm()
+let swarm = null
 let autobase = null
 let discovery = null
 let currentTopic = null
@@ -63,6 +51,21 @@ let addedStaticPeers = false
 let rpc = null
 
 
+
+
+// Optional Autobase key from argv (initial base)
+let baseKey = null
+if (baseKeyHex) {
+    try {
+        baseKey = Buffer.from(baseKeyHex.trim(), 'hex')
+        console.error('Using existing Autobase key from argv[2]:', baseKeyHex.trim())
+    } catch (err) {
+        console.error('Invalid base key hex, creating new base instead:', err.message)
+        baseKey = null
+    }
+}
+
+
 // Generate unique ID (used only for addItem)
 function generateId () {
     return randomBytes(16).toString('hex')
@@ -70,14 +73,7 @@ function generateId () {
 
 
 // Replicate on connection (swarm is shared between bases)
-swarm.on('connection', (conn) => {
-    console.error('New peer connected (replication swarm)', conn.publicKey)
-    if (autobase) {
-        autobase.replicate(conn)
-    } else {
-        console.error('No Autobase yet to replicate with')
-    }
-})
+
 
 // --- Handshake swarm for writer key exchange (desktop parity) ---
 
@@ -172,28 +168,78 @@ function setupChatSwarm (chatTopic) {
 
 
 async function initAutobase (newBaseKey) {
-    // Detach listeners from previous base
+    // 1. Clean up previous Autobase instance (if any)
     if (autobase) {
-        autobase.removeAllListeners('append')
+        try {
+            autobase.removeAllListeners('append')
+            if (typeof autobase.close === 'function') {
+                console.error('Closing previous Autobase instance...')
+                await autobase.close()
+                // store = new Corestore(storagePath)
+                // await store.ready()
+                // console.error('Recreated Corestore after closing previous Autobase')
+            } else {
+                console.error('Previous Autobase has no close() method, skipping close')
+            }
+        } catch (e) {
+            console.error('Error while closing previous Autobase:', e)
+        }
         autobase = null
     }
-    console.error("initializing a new autobase with key:", newBaseKey ? newBaseKey.toString('hex') : 'null (new base)')
+
+    // 2. Tear down networking bound to old store
+    if (discovery) {
+        try { await discovery.destroy() } catch (e) { console.error(e) }
+        discovery = null
+    }
+    if (chatSwarm) {
+        try { await chatSwarm.destroy() } catch (e) { console.error(e) }
+        chatSwarm = null
+    }
+
+    // 3. Close old store
+    if (store) {
+        try {
+            await store.close()
+        } catch (e) {
+            console.error('Error closing Corestore:', e)
+        }
+    }
+
+    // 4. Create fresh Corestore
+    store = new Corestore(storagePath)
+    await store.ready()
+
     baseKey = newBaseKey || null
+    console.error(
+        'initializing a new autobase with key:',
+        baseKey ? baseKey.toString('hex') : '(new base)'
+    )
+
     autobase = new Autobase(store, baseKey, { apply, open, valueEncoding: 'json' })
 
+    console.error('Calling autobase.ready()...')
     await autobase.ready()
-
     console.error(
-        'Autobase ready, writable? ',
+        'autobase.ready() resolved. Autobase ready, writable?',
         autobase.writable,
         ' key:',
         autobase.key?.toString('hex'),
         ' local writer key:',
         autobase.local?.key?.toString('hex')
     )
+    if (autobase) {
+        const req = rpc.request(RPC_GET_KEY)
+        req.send(autobase.key?.toString('hex'))
+    }
+    // Re-attach the append listener to the *new* instance
+    autobase.on('append', async () => {
+        console.error('New data appended, rebuilding view...')
+        // await rebuildView()
+    })
 
-    // Add static peer inputs if provided via argv[1] (only once)
-    if (peerKeysString && !addedStaticPeers) {
+    // Add static peers only once
+    if (!addedStaticPeers && peerKeysString) {
         const peerKeys = peerKeysString.split(',').filter(k => k.trim())
         for (const keyHex of peerKeys) {
             try {
@@ -209,15 +255,15 @@ async function initAutobase (newBaseKey) {
         addedStaticPeers = true
     }
 
-    // Reset writer cache; add our own writer
-    knownWriters.clear()
-    knownWriters.add(autobase.local.key.toString('hex'))
-
-    // Join replication topic for this base
-    const topic = autobase.key || randomBytes(32)
-    currentTopic = topic
+    // Rebuild view from the new base
+    // await rebuildView()
+    
+    // --- Update replication swarm topic for this base ---
+    const firstLocalAutobaseKey = randomBytes(32)
+    const topic = autobase.key || firstLocalAutobaseKey
     console.error('Discovery topic (replication swarm):', topic.toString('hex'))
 
+    // Switch discovery to new topic
     if (discovery) {
         try {
             await discovery.destroy()
@@ -226,15 +272,21 @@ async function initAutobase (newBaseKey) {
         }
     }
 
+    swarm = new Hyperswarm()
+    swarm.on('connection', (conn) => {
+        console.error('New peer connected (replication swarm)', b4a.from(conn.publicKey), conn.publicKey)
+        if (autobase) {
+            autobase.replicate(conn)
+        } else {
+            console.error('No Autobase yet to replicate with')
+        }
+    })
+    
     discovery = swarm.join(topic, { server: true, client: true })
     await discovery.flushed()
     console.error('Joined replication swarm for current base')
-
-    // Listen for new data from any input
-    autobase.on('append', async () => {
-        console.error('New data appended (autobase append event)')
-        // For now, we rely entirely on apply() to forward changes to the UI.
-    })
+    discovery = swarm.join(topic, { server: true, client: true })
+    await discovery.flushed()
 
     // Restart chat swarm with new topic
     if (chatSwarm) {
@@ -320,10 +372,7 @@ rpc = new RPC(IPC, async (req, error) => {
 await initAutobase(baseKey)
 
 // send the autobase key to react (for joining/sharing)
-if (autobase) {
-    const req = rpc.request(RPC_GET_KEY)
-    req.send(autobase.key?.toString('hex'))
-}
+
 
 // Backend ready
 console.error('Backend ready')
@@ -413,6 +462,17 @@ async function apply (nodes, view, host) {
             }
             console.error('Applying update operation for item:', value.value)
             const updateReq = rpc.request(RPC_UPDATE_FROM_BACKEND)
+            updateReq.send(JSON.stringify(value.value))
+            continue
+        }
+
+        if (value.type === 'list') {
+            if (!validateItem(value.value)) {
+                console.error('Invalid item schema in list operation:', value.value)
+                continue
+            }
+            console.error('Applying list operation for items:', value.value)
+            const updateReq = rpc.request(SYNC_LIST)
             updateReq.send(JSON.stringify(value.value))
             continue
         }
