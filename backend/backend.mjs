@@ -147,8 +147,14 @@ function setupChatSwarm (chatTopic) {
     console.error('setting up chat swarm with topic:', chatTopic.toString('hex'))
     chatSwarm.on('connection', (conn, info) => {
         console.error('Handshake connection (chat swarm) with peer', info?.peer)
+        conn.on('error', (err) => {
+            console.error('Chat swarm connection error:', err)
+        })
         setupHandshakeChannel(conn)
-        // NOTE: chatSwarm connections are not counted towards peerCount
+    })
+
+    chatSwarm.on('error', (err) => {
+        console.error('Chat swarm error:', err)
     })
 
     chatSwarm.join(chatTopic, { server: true, client: true })
@@ -269,9 +275,15 @@ async function initAutobase (newBaseKey) {
     }
 
     swarm = new Hyperswarm()
+    swarm.on('error', (err) => {
+        console.error('Replication swarm error:', err)
+    })
+
     swarm.on('connection', (conn) => {
         console.error('New peer connected (replication swarm)', b4a.from(conn.publicKey), conn.publicKey)
-
+        conn.on('error', (err) => {
+            console.error('Replication connection error:', err)
+        })
         peerCount++
         broadcastPeerCount()
 
@@ -279,6 +291,7 @@ async function initAutobase (newBaseKey) {
             peerCount = Math.max(0, peerCount - 1)
             broadcastPeerCount()
         })
+
 
         if (autobase) {
             autobase.replicate(conn)
@@ -290,8 +303,6 @@ async function initAutobase (newBaseKey) {
     discovery = swarm.join(topic, { server: true, client: true })
     await discovery.flushed()
     console.error('Joined replication swarm for current base')
-    discovery = swarm.join(topic, { server: true, client: true })
-    await discovery.flushed()
 
     // Restart chat swarm with new topic
     if (chatSwarm) {
@@ -318,7 +329,11 @@ async function joinNewBase (baseKeyHexStr) {
             return
         }
         console.error('Joining new Autobase key at runtime:', baseKeyHexStr.trim())
-        await initAutobase(newKey)
+        await initAutobase(newKey).then(() => {
+            console.error('Backend ready')
+        }).catch((err) => {
+            console.error('initAutobase failed at startup:', err)
+        })
     } catch (e) {
         console.error('joinNewBase failed:', e)
     }
@@ -371,7 +386,11 @@ rpc = new RPC(IPC, async (req, error) => {
 })
 
 // Initialize Autobase for the initial baseKey (from argv or new)
-await initAutobase(baseKey)
+await initAutobase(baseKey).then(() => {
+    console.error('Backend ready')
+}).catch((err) => {
+    console.error('initAutobase failed at startup:', err)
+})
 
 // Backend ready
 console.error('Backend ready')

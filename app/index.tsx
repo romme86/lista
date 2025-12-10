@@ -197,8 +197,7 @@ export default function App() {
             console.log('sending RPC request update')
 
             if (rpcRef.current) {
-                const req = sendRPC(RPC_UPDATE)
-                req.send(JSON.stringify({ item: updatedItem }))
+                sendRPC(RPC_UPDATE, JSON.stringify({ item: updatedItem }))
             } else {
                 console.warn('RPC not ready, ignoring UPDATE')
             }
@@ -210,30 +209,16 @@ export default function App() {
     const handleDelete = (index: number) => {
         const deletedItem = dataList[index];
         setDataList((prevList) => prevList.filter((_, i) => i !== index))
-        const req = sendRPC(RPC_DELETE)
-        req.send(JSON.stringify({ item: deletedItem }))
+        sendRPC(RPC_DELETE, JSON.stringify({ item: deletedItem }))
     }
 
     const handleInsert = (index: number, text: string) => {
-        // setDataList((prevList) => {
-        //     const newList = [...prevList]
-        //     const newEntry: ListEntry = {
-        //         text,
-        //         isDone: false,
-        //         timeOfCompletion: 0
-        //     }
-        //     newList.splice(index, 0, newEntry)
-        //     const req = sendRPC(RPC_ADD)
-        //     req.send(JSON.stringify(text))
-        //     return newList
-        // })
         if (!rpcRef.current) {
             console.warn('RPC not ready, ignoring ADD')
             return
         }
 
-        const req = sendRPC(RPC_ADD)
-        req.send(JSON.stringify(text))
+        sendRPC(RPC_ADD, JSON.stringify(text))
     }
 
     const handleShare = async () => {
@@ -277,8 +262,7 @@ export default function App() {
         console.log('Submitting join key:', joinKeyInput);
 
         // Make RPC call to backend
-        const req = sendRPC(RPC_JOIN_KEY);
-        req.send(JSON.stringify({ key: joinKeyInput }));
+        sendRPC(RPC_JOIN_KEY, JSON.stringify({ key: joinKeyInput }));
 
         // Close dialog and reset input
         setJoinDialogVisible(false);
