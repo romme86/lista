@@ -5,9 +5,10 @@
   "main": "expo-router/entry",
   "scripts": {
     "start": "expo start",
-    "android": "expo run:android",
-    "ios": "npm run bundle:backend && expo run:ios --device",
-    "bundle:backend": "npx bare-pack --target ios --linked --out app/app.bundle.mjs backend/backend.mjs"
+    "android": "npm run bundle:backend:android && expo run:android",
+    "ios": "npm run bundle:backend:ios && expo run:ios --device",
+    "bundle:backend:ios": "npx bare-pack --target ios --linked --out app/app.bundle.ios.mjs backend/backend.mjs",
+    "bundle:backend:android": "npx bare-pack --target android --linked --out app/app.bundle.android.mjs backend/backend.mjs"
   },
   "dependencies": {
     "@inquirer/prompts": "^7.8.1",
