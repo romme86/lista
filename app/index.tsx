@@ -2,7 +2,7 @@ import React, {useEffect, useRef, useState} from 'react'
 import {Platform, StyleSheet, View, TouchableOpacity, SafeAreaView, Share, Modal, TextInput, Text, Alert} from 'react-native'
 import {documentDirectory} from 'expo-file-system'
 import {Worklet} from 'react-native-bare-kit'
-import bundle from './app.bundle.android.mjs'
+import bundle from './app.android.js'
 import RPC from 'bare-rpc'
 import b4a from 'b4a'
 import { Ionicons } from '@expo/vector-icons';

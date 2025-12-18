@@ -1,5 +1,5 @@
-98894
-{"version":0,"id":"da1c619f6a1602e5f019f8d97ef7f5e5ced5fac06d05063cfc09bbfb3b2416c7","main":"/backend/backend.mjs","imports":{},"resolutions":{"/backend/backend.mjs":{"#package":"/package.json","../rpc-commands.mjs":"/rpc-commands.mjs","autobase":"/node_modules/autobase/index.js","b4a":"/node_modules/b4a/index.js","bare-crypto":"/node_modules/bare-crypto/index.js","bare-path":"/node_modules/bare-path/index.js","bare-rpc":"/node_modules/bare-rpc/index.js","bare-url":"/node_modules/bare-url/index.js","corestore":"/node_modules/corestore/index.js","hyperswarm":"/node_modules/hyperswarm/index.js"},"/node_modules/@hyperswarm/secret-stream/index.js":{"#package":"/node_modules/@hyperswarm/secret-stream/package.json","./lib/bridge":"/node_modules/@hyperswarm/secret-stream/lib/bridge.js","./lib/handshake":"/node_modules/@hyperswarm/secret-stream/lib/handshake.js","b4a":"/node_modules/b4a/index.js","hypercore-crypto":"/node_modules/hypercore-crypto/index.js","sodium-secretstream":"/node_modules/sodium-secretstream/index.js","sodium-universal":"/node_modules/sodium-universal/index.js","streamx":"/node_modules/streamx/index.js","timeout-refresh":"/node_modules/timeout-refresh/index.js","unslab":"/node_modules/unslab/index.js"},"/node_modules/@hyperswarm/secret-stream/lib/bridge.js":{"#package":"/node_modules/@hyperswarm/secret-stream/package.json","streamx":"/node_modules/streamx/index.js"},"/node_modules/@hyperswarm/secret-stream/lib/handshake.js":{"#package":"/node_modules/@hyperswarm/secret-stream/package.json","b4a":"/node_modules/b4a/index.js","noise-curve-ed":"/node_modules/noise-curve-ed/index.js","noise-handshake":"/node_modules/noise-handshake/noise.js","sodium-universal":"/node_modules/sodium-universal/index.js"},"/node_modules/@hyperswarm/secret-stream/package.json":{},"/node_modules/autobase/encoding/legacy.js":{"#package":"/node_modules/autobase/package.json","compact-encoding":"/node_modules/compact-encoding/index.js","index-encoder":"/node_modules/index-encoder/index.js"},"/node_modules/autobase/encoding/spec/autobase/index.js":{"#package":"/node_modules/autobase/package.json","../../legacy.js":"/node_modules/autobase/encoding/legacy.js","hyperschema/runtime":"/node_modules/hyperschema/runtime.cjs"},"/node_modules/autobase/index.js":{"#package":"/node_modules/autobase/package.json","./lib/active-writers.js":"/node_modules/autobase/lib/active-writers.js","./lib/append-batch.js":"/node_modules/autobase/lib/append-batch.js","./lib/apply-calls.js":"/node_modules/autobase/lib/apply-calls.js","./lib/apply-state.js":"/node_modules/autobase/lib/apply-state.js","./lib/boot.js":"/node_modules/autobase/lib/boot.js","./lib/caps.js":"/node_modules/autobase/lib/caps.js","./lib/encryption.js":"/node_modules/autobase/lib/encryption.js","./lib/fast-forward.js":"/node_modules/autobase/lib/fast-forward.js","./lib/linearizer.js":"/node_modules/autobase/lib/linearizer.js","./lib/local-state.js":"/node_modules/autobase/lib/local-state.js","./lib/messages.js":"/node_modules/autobase/lib/messages.js","./lib/store.js":"/node_modules/autobase/lib/store.js","./lib/system.js":"/node_modules/autobase/lib/system.js","./lib/timer.js":"/node_modules/autobase/lib/timer.js","./lib/updates.js":"/node_modules/autobase/lib/updates.js","./lib/values.js":"/node_modules/autobase/lib/values.js","./lib/wakeup.js":"/node_modules/autobase/lib/wakeup.js","./lib/writer.js":"/node_modules/autobase/lib/writer.js","b4a":"/node_modules/b4a/index.js","compact-encoding":"/node_modules/compact-encoding/index.js","core-coupler":"/node_modules/core-coupler/index.js","debounceify":"/node_modules/debounceify/index.js","hypercore":"/node_modules/hypercore/index.js","hypercore-id-encoding":"/node_modules/hypercore-id-encoding/index.js","nanoassert":"/node_modules/nanoassert/index.js","protomux-wakeup":"/node_modules/protomux-wakeup/index.js","ready-resource":"/node_modules/ready-resource/index.js","resolve-reject-promise":"/node_modules/resolve-reject-promise/index.js","safety-catch":"/node_modules/safety-catch/index.js","scope-lock":"/node_modules/scope-lock/index.js","signal-promise":"/node_modules/signal-promise/index.js"},"/node_modules/autobase/lib/active-writers.js":{"#package":"/node_modules/autobase/package.json","b4a":"/node_modules/b4a/index.js"},"/node_modules/autobase/lib/append-batch.js":{"#package":"/node_modules/autobase/package.json","signal-promise":"/node_modules/signal-promise/index.js"},"/node_modules/autobase/lib/apply-calls.js":{"#package":"/node_modules/autobase/package.json"},"/node_modules/autobase/lib/apply-state.js":{"#package":"/node_modules/autobase/package.json","./apply-calls.js":"/node_modules/autobase/lib/apply-calls.js","./caps.js":"/node_modules/autobase/lib/caps.js","./encryption.js":"/node_modules/autobase/lib/encryption.js","./fork.js":"/node_modules/autobase/lib/fork.js","./local-state.js":"/node_modules/autobase/lib/local-state.js","./messages.js":"/node_modules/autobase/lib/messages.js","./system.js":"/node_modules/autobase/lib/system.js","./updates.js":"/node_modules/autobase/lib/updates.js","./values.js":"/node_modules/autobase/lib/values.js","b4a":"/node_modules/b4a/index.js","compact-encoding":"/node_modules/compact-encoding/index.js","hypercore-crypto":"/node_modules/hypercore-crypto/index.js","hypercore/lib/multisig.js":"/node_modules/hypercore/lib/multisig.js","nanoassert":"/node_modules/nanoassert/index.js","ready-resource":"/node_modules/ready-resource/index.js","safety-catch":"/node_modules/safety-catch/index.js"},"/node_modules/autobase/lib/boot.js":{"#package":"/node_modules/autobase/package.json","./messages.js":"/node_modules/autobase/lib/messages.js","compact-encoding":"/node_modules/compact-encoding/index.js"},"/node_modules/autobase/lib/caps.js":{"#package":"/node_modules/autobase/package.json","hypercore-crypto":"/node_modules/hypercore-crypto/index.js"},"/node_modules/autobase/lib/clock.js":{"#package":"/node_modules/autobase/package.json","tiny-buffer-map":"/node_modules/tiny-buffer-map/index.js"},"/node_modules/autobase/lib/consensus.js":{"#package":"/node_modules/autobase/package.json","./clock.js":"/node_modules/autobase/lib/clock.js","tiny-buffer-map":"/node_modules/tiny-buffer-map/index.js"},"/node_modules/autobase/lib/encryption.js":{"#package":"/node_modules/autobase/package.json","./caps.js":"/node_modules/autobase/lib/caps.js","./messages.js":"/node_modules/autobase/lib/messages.js","./system.js":"/node_modules/autobase/lib/system.js","b4a":"/node_modules/b4a/index.js","compact-encoding":"/node_modules/compact-encoding/index.js","hypercore-crypto":"/node_modules/hypercore-crypto/index.js","hypercore/lib/default-encryption.js":"/node_modules/hypercore/lib/default-encryption.js","ready-resource":"/node_modules/ready-resource/index.js","resolve-reject-promise":"/node_modules/resolve-reject-promise/index.js","sodium-universal":"/node_modules/sodium-universal/index.js"},"/node_modules/autobase/lib/fast-forward.js":{"#package":"/node_modules/autobase/package.json","./encryption.js":"/node_modules/autobase/lib/encryption.js","./system.js":"/node_modules/autobase/lib/system.js","resolve-reject-promise":"/node_modules/resolve-reject-promise/index.js","safety-catch":"/node_modules/safety-catch/index.js"},"/node_modules/autobase/lib/fork.js":{"#package":"/node_modules/autobase/package.json","./encryption.js":"/node_modules/autobase/lib/encryption.js","./messages.js":"/node_modules/autobase/lib/messages.js","./system.js":"/node_modules/autobase/lib/system.js","compact-encoding":"/node_modules/compact-encoding/index.js"},"/node_modules/autobase/lib/linearizer.js":{"#package":"/node_modules/autobase/package.json","./clock.js":"/node_modules/autobase/lib/clock.js","./consensus.js":"/node_modules/autobase/lib/consensus.js","./topolist.js":"/node_modules/autobase/lib/topolist.js","b4a":"/node_modules/b4a/index.js","nanoassert":"/node_modules/nanoassert/index.js"},"/node_modules/autobase/lib/local-state.js":{"#package":"/node_modules/autobase/package.json","./messages.js":"/node_modules/autobase/lib/messages.js","b4a":"/node_modules/b4a/index.js","compact-encoding":"/node_modules/compact-encoding/index.js"},"/node_modules/autobase/lib/messages.js":{"#package":"/node_modules/autobase/package.json","../encoding/spec/autobase":"/node_modules/autobase/encoding/spec/autobase/index.js"},"/node_modules/autobase/lib/node-buffer.js":{"#package":"/node_modules/autobase/package.json"},"/node_modules/autobase/lib/store.js":{"#package":"/node_modules/autobase/package.json","./messages.js":"/node_modules/autobase/lib/messages.js","b4a":"/node_modules/b4a/index.js","compact-encoding":"/node_modules/compact-encoding/index.js","hypercore":"/node_modules/hypercore/index.js","hypercore-crypto":"/node_modules/hypercore-crypto/index.js"},"/node_modules/autobase/lib/system.js":{"#package":"/node_modules/autobase/package.json","./caps.js":"/node_modules/autobase/lib/caps.js","./messages.js":"/node_modules/autobase/lib/messages.js","b4a":"/node_modules/b4a/index.js","compact-encoding":"/node_modules/compact-encoding/index.js","hyperbee":"/node_modules/hyperbee/index.js","hypercore-crypto":"/node_modules/hypercore-crypto/index.js","ready-resource":"/node_modules/ready-resource/index.js","sub-encoder":"/node_modules/sub-encoder/index.js"},"/node_modules/autobase/lib/timer.js":{"#package":"/node_modules/autobase/package.json","safety-catch":"/node_modules/safety-catch/index.js"},"/node_modules/autobase/lib/topolist.js":{"#package":"/node_modules/autobase/package.json","b4a":"/node_modules/b4a/index.js","nanoassert":"/node_modules/nanoassert/index.js"},"/node_modules/autobase/lib/updates.js":{"#package":"/node_modules/autobase/package.json"},"/node_modules/autobase/lib/values.js":{"#package":"/node_modules/autobase/package.json","./caps.js":"/node_modules/autobase/lib/caps.js","./encryption.js":"/node_modules/autobase/lib/encryption.js","./messages.js":"/node_modules/autobase/lib/messages.js","b4a":"/node_modules/b4a/index.js","compact-encoding":"/node_modules/compact-encoding/index.js","hypercore-crypto":"/node_modules/hypercore-crypto/index.js"},"/node_modules/autobase/lib/wakeup.js":{"#package":"/node_modules/autobase/package.json","b4a":"/node_modules/b4a/index.js","compact-encoding":"/node_modules/compact-encoding/index.js","ready-resource":"/node_modules/ready-resource/index.js","safety-catch":"/node_modules/safety-catch/index.js"},"/node_modules/autobase/lib/writer.js":{"#package":"/node_modules/autobase/package.json","./linearizer.js":"/node_modules/autobase/lib/linearizer.js","./node-buffer.js":"/node_modules/autobase/lib/node-buffer.js","b4a":"/node_modules/b4a/index.js","compact-encoding":"/node_modules/compact-encoding/index.js","nanoassert":"/node_modules/nanoassert/index.js","ready-resource":"/node_modules/ready-resource/index.js","signal-promise":"/node_modules/signal-promise/index.js"},"/node_modules/autobase/package.json":{},"/node_modules/b4a/index.js":{"#package":"/node_modules/b4a/package.json"},"/node_modules/b4a/package.json":{},"/node_modules/bare-crypto/binding.js":{"#package":"/node_modules/bare-crypto/package.json",".":"linked:bare-crypto.1.12.0.framework/bare-crypto.1.12.0"},"/node_modules/bare-crypto/index.js":{"#package":"/node_modules/bare-crypto/package.json","./lib/cipher":"/node_modules/bare-crypto/lib/cipher.js","./lib/constants":"/node_modules/bare-crypto/lib/constants.js","./lib/hash":"/node_modules/bare-crypto/lib/hash.js","./lib/hmac":"/node_modules/bare-crypto/lib/hmac.js","./lib/key":"/node_modules/bare-crypto/lib/key.js","./lib/pbkdf2":"/node_modules/bare-crypto/lib/pbkdf2.js","./lib/random":"/node_modules/bare-crypto/lib/random.js","./lib/signature":"/node_modules/bare-crypto/lib/signature.js","./web":"/node_modules/bare-crypto/web.js"},"/node_modules/bare-crypto/lib/cipher.js":{"#package":"/node_modules/bare-crypto/package.json","../binding":"/node_modules/bare-crypto/binding.js","./constants":"/node_modules/bare-crypto/lib/constants.js","bare-stream":"/node_modules/bare-stream/index.js"},"/node_modules/bare-crypto/lib/constants.js":{"#package":"/node_modules/bare-crypto/package.json","../binding":"/node_modules/bare-crypto/binding.js","./errors":"/node_modules/bare-crypto/lib/errors.js"},"/node_modules/bare-crypto/lib/errors.js":{"#package":"/node_modules/bare-crypto/package.json"},"/node_modules/bare-crypto/lib/hash.js":{"#package":"/node_modules/bare-crypto/package.json","../binding":"/node_modules/bare-crypto/binding.js","./constants":"/node_modules/bare-crypto/lib/constants.js","bare-stream":"/node_modules/bare-stream/index.js"},"/node_modules/bare-crypto/lib/hmac.js":{"#package":"/node_modules/bare-crypto/package.json","../binding":"/node_modules/bare-crypto/binding.js","./constants":"/node_modules/bare-crypto/lib/constants.js","bare-stream":"/node_modules/bare-stream/index.js"},"/node_modules/bare-crypto/lib/key.js":{"#package":"/node_modules/bare-crypto/package.json","../binding":"/node_modules/bare-crypto/binding.js","./constants":"/node_modules/bare-crypto/lib/constants.js"},"/node_modules/bare-crypto/lib/pbkdf2.js":{"#package":"/node_modules/bare-crypto/package.json","../binding":"/node_modules/bare-crypto/binding.js","./constants":"/node_modules/bare-crypto/lib/constants.js"},"/node_modules/bare-crypto/lib/random.js":{"#package":"/node_modules/bare-crypto/package.json","../binding":"/node_modules/bare-crypto/binding.js"},"/node_modules/bare-crypto/lib/signature.js":{"#package":"/node_modules/bare-crypto/package.json","../binding":"/node_modules/bare-crypto/binding.js","./constants":"/node_modules/bare-crypto/lib/constants.js"},"/node_modules/bare-crypto/lib/web/algorithm/ed25519.js":{"#package":"/node_modules/bare-crypto/package.json","../../..":"/node_modules/bare-crypto/index.js","../../../binding":"/node_modules/bare-crypto/binding.js","../../errors":"/node_modules/bare-crypto/lib/errors.js","../../key":"/node_modules/bare-crypto/lib/key.js","../crypto-key":"/node_modules/bare-crypto/lib/web/crypto-key.js"},"/node_modules/bare-crypto/lib/web/algorithm/hmac.js":{"#package":"/node_modules/bare-crypto/package.json","../../..":"/node_modules/bare-crypto/index.js","../../errors":"/node_modules/bare-crypto/lib/errors.js","../crypto-key":"/node_modules/bare-crypto/lib/web/crypto-key.js"},"/node_modules/bare-crypto/lib/web/algorithm/pbkdf2.js":{"#package":"/node_modules/bare-crypto/package.json","../../..":"/node_modules/bare-crypto/index.js","../../errors":"/node_modules/bare-crypto/lib/errors.js","../crypto-key":"/node_modules/bare-crypto/lib/web/crypto-key.js"},"/node_modules/bare-crypto/lib/web/algorithm/sha.js":{"#package":"/node_modules/bare-crypto/package.json","../../..":"/node_modules/bare-crypto/index.js"},"/node_modules/bare-crypto/lib/web/crypto-key.js":{"#package":"/node_modules/bare-crypto/package.json"},"/node_modules/bare-crypto/package.json":{},"/node_modules/bare-crypto/web.js":{"#package":"/node_modules/bare-crypto/package.json",".":"/node_modules/bare-crypto/index.js","./lib/errors":"/node_modules/bare-crypto/lib/errors.js","./lib/web/algorithm/ed25519":"/node_modules/bare-crypto/lib/web/algorithm/ed25519.js","./lib/web/algorithm/hmac":"/node_modules/bare-crypto/lib/web/algorithm/hmac.js","./lib/web/algorithm/pbkdf2":"/node_modules/bare-crypto/lib/web/algorithm/pbkdf2.js","./lib/web/algorithm/sha":"/node_modules/bare-crypto/lib/web/algorithm/sha.js","./lib/web/crypto-key":"/node_modules/bare-crypto/lib/web/crypto-key.js"},"/node_modules/bare-events/index.js":{"#package":"/node_modules/bare-events/package.json","./lib/errors":"/node_modules/bare-events/lib/errors.js"},"/node_modules/bare-events/lib/errors.js":{"#package":"/node_modules/bare-events/package.json"},"/node_modules/bare-events/package.json":{},"/node_modules/bare-fs/binding.js":{"#package":"/node_modules/bare-fs/package.json",".":"linked:bare-fs.4.5.1.framework/bare-fs.4.5.1"},"/node_modules/bare-fs/index.js":{"#package":"/node_modules/bare-fs/package.json","./binding":"/node_modules/bare-fs/binding.js","./lib/constants":"/node_modules/bare-fs/lib/constants.js","./lib/errors":"/node_modules/bare-fs/lib/errors.js","./promises":"/node_modules/bare-fs/promises.js","bare-events":"/node_modules/bare-events/index.js","bare-path":"/node_modules/bare-path/index.js","bare-stream":"/node_modules/bare-stream/index.js","bare-url":"/node_modules/bare-url/index.js","fast-fifo":"/node_modules/fast-fifo/index.js"},"/node_modules/bare-fs/lib/constants.js":{"#package":"/node_modules/bare-fs/package.json","../binding":"/node_modules/bare-fs/binding.js"},"/node_modules/bare-fs/lib/errors.js":{"#package":"/node_modules/bare-fs/package.json","bare-os":"/node_modules/bare-os/index.js"},"/node_modules/bare-fs/package.json":{},"/node_modules/bare-fs/promises.js":{"#package":"/node_modules/bare-fs/package.json",".":"/node_modules/bare-fs/index.js","bare-events":"/node_modules/bare-events/index.js"},"/node_modules/bare-os/binding.js":{"#package":"/node_modules/bare-os/package.json",".":"linked:bare-os.3.6.2.framework/bare-os.3.6.2"},"/node_modules/bare-os/index.js":{"#package":"/node_modules/bare-os/package.json","./binding":"/node_modules/bare-os/binding.js","./lib/constants":"/node_modules/bare-os/lib/constants.js","./lib/errors":"/node_modules/bare-os/lib/errors.js"},"/node_modules/bare-os/lib/constants.js":{"#package":"/node_modules/bare-os/package.json","../binding":"/node_modules/bare-os/binding.js"},"/node_modules/bare-os/lib/errors.js":{"#package":"/node_modules/bare-os/package.json"},"/node_modules/bare-os/package.json":{},"/node_modules/bare-path/index.js":{"#package":"/node_modules/bare-path/package.json","./lib/posix":"/node_modules/bare-path/lib/posix.js","./lib/win32":"/node_modules/bare-path/lib/win32.js"},"/node_modules/bare-path/lib/constants.js":{"#package":"/node_modules/bare-path/package.json"},"/node_modules/bare-path/lib/posix.js":{"#package":"/node_modules/bare-path/package.json","./constants":"/node_modules/bare-path/lib/constants.js","./shared":"/node_modules/bare-path/lib/shared.js","./win32":"/node_modules/bare-path/lib/win32.js","bare-os":"/node_modules/bare-os/index.js"},"/node_modules/bare-path/lib/shared.js":{"#package":"/node_modules/bare-path/package.json","./constants":"/node_modules/bare-path/lib/constants.js"},"/node_modules/bare-path/lib/win32.js":{"#package":"/node_modules/bare-path/package.json","./constants":"/node_modules/bare-path/lib/constants.js","./posix":"/node_modules/bare-path/lib/posix.js","./shared":"/node_modules/bare-path/lib/shared.js","bare-os":"/node_modules/bare-os/index.js"},"/node_modules/bare-path/package.json":{},"/node_modules/bare-rpc/index.js":{"#package":"/node_modules/bare-rpc/package.json","./lib/command-router":"/node_modules/bare-rpc/lib/command-router.js","./lib/constants":"/node_modules/bare-rpc/lib/constants.js","./lib/incoming-request":"/node_modules/bare-rpc/lib/incoming-request.js","./lib/incoming-stream":"/node_modules/bare-rpc/lib/incoming-stream.js","./lib/messages":"/node_modules/bare-rpc/lib/messages.js","./lib/outgoing-request":"/node_modules/bare-rpc/lib/outgoing-request.js","./lib/outgoing-stream":"/node_modules/bare-rpc/lib/outgoing-stream.js","b4a":"/node_modules/b4a/index.js","compact-encoding":"/node_modules/compact-encoding/index.js","safety-catch":"/node_modules/safety-catch/index.js"},"/node_modules/bare-rpc/lib/command-router.js":{"#package":"/node_modules/bare-rpc/package.json","compact-encoding":"/node_modules/compact-encoding/index.js"},"/node_modules/bare-rpc/lib/constants.js":{"#package":"/node_modules/bare-rpc/package.json"},"/node_modules/bare-rpc/lib/errors.js":{"#package":"/node_modules/bare-rpc/package.json"},"/node_modules/bare-rpc/lib/incoming-request.js":{"#package":"/node_modules/bare-rpc/package.json","./errors":"/node_modules/bare-rpc/lib/errors.js","compact-encoding":"/node_modules/compact-encoding/index.js"},"/node_modules/bare-rpc/lib/incoming-stream.js":{"#package":"/node_modules/bare-rpc/package.json","./constants":"/node_modules/bare-rpc/lib/constants.js","bare-stream":"/node_modules/bare-stream/index.js"},"/node_modules/bare-rpc/lib/messages.js":{"#package":"/node_modules/bare-rpc/package.json","./constants":"/node_modules/bare-rpc/lib/constants.js","./errors":"/node_modules/bare-rpc/lib/errors.js","compact-encoding":"/node_modules/compact-encoding/index.js"},"/node_modules/bare-rpc/lib/outgoing-request.js":{"#package":"/node_modules/bare-rpc/package.json","./errors":"/node_modules/bare-rpc/lib/errors.js","compact-encoding":"/node_modules/compact-encoding/index.js"},"/node_modules/bare-rpc/lib/outgoing-stream.js":{"#package":"/node_modules/bare-rpc/package.json","./constants":"/node_modules/bare-rpc/lib/constants.js","bare-stream":"/node_modules/bare-stream/index.js"},"/node_modules/bare-rpc/package.json":{},"/node_modules/bare-stream/index.js":{"#package":"/node_modules/bare-stream/package.json","streamx":"/node_modules/streamx/index.js"},"/node_modules/bare-stream/package.json":{},"/node_modules/bare-url/binding.js":{"#package":"/node_modules/bare-url/package.json",".":"linked:bare-url.2.3.2.framework/bare-url.2.3.2"},"/node_modules/bare-url/index.js":{"#package":"/node_modules/bare-url/package.json","./binding":"/node_modules/bare-url/binding.js","./lib/errors":"/node_modules/bare-url/lib/errors.js","./lib/url-search-params":"/node_modules/bare-url/lib/url-search-params.js","bare-path":"/node_modules/bare-path/index.js"},"/node_modules/bare-url/lib/errors.js":{"#package":"/node_modules/bare-url/package.json"},"/node_modules/bare-url/lib/url-search-params.js":{"#package":"/node_modules/bare-url/package.json"},"/node_modules/bare-url/package.json":{},"/node_modules/big-sparse-array/index.js":{"#package":"/node_modules/big-sparse-array/package.json"},"/node_modules/big-sparse-array/package.json":{},"/node_modules/bits-to-bytes/index.js":{"#package":"/node_modules/bits-to-bytes/package.json","b4a":"/node_modules/b4a/index.js"},"/node_modules/bits-to-bytes/package.json":{},"/node_modules/blind-relay/index.js":{"#package":"/node_modules/blind-relay/package.json","./lib/errors":"/node_modules/blind-relay/lib/errors.js","b4a":"/node_modules/b4a/index.js","bits-to-bytes":"/node_modules/bits-to-bytes/index.js","compact-encoding":"/node_modules/compact-encoding/index.js","compact-encoding-bitfield":"/node_modules/compact-encoding-bitfield/index.js","events":"/node_modules/bare-events/index.js","protomux":"/node_modules/protomux/index.js","sodium-universal":"/node_modules/sodium-universal/index.js","streamx":"/node_modules/streamx/index.js"},"/node_modules/blind-relay/lib/errors.js":{"#package":"/node_modules/blind-relay/package.json"},"/node_modules/blind-relay/package.json":{},"/node_modules/bogon/index.js":{"#package":"/node_modules/bogon/package.json","b4a":"/node_modules/b4a/index.js","compact-encoding":"/node_modules/compact-encoding/index.js","compact-encoding-net":"/node_modules/compact-encoding-net/index.js"},"/node_modules/bogon/package.json":{},"/node_modules/codecs/index.js":{"#package":"/node_modules/codecs/package.json","b4a":"/node_modules/b4a/index.js"},"/node_modules/codecs/package.json":{},"/node_modules/compact-encoding-bitfield/index.js":{"#package":"/node_modules/compact-encoding-bitfield/package.json","compact-encoding":"/node_modules/compact-encoding/index.js"},"/node_modules/compact-encoding-bitfield/package.json":{},"/node_modules/compact-encoding-net/index.js":{"#package":"/node_modules/compact-encoding-net/package.json","compact-encoding":"/node_modules/compact-encoding/index.js"},"/node_modules/compact-encoding-net/package.json":{},"/node_modules/compact-encoding/endian.js":{"#package":"/node_modules/compact-encoding/package.json"},"/node_modules/compact-encoding/index.js":{"#package":"/node_modules/compact-encoding/package.json","./endian":"/node_modules/compact-encoding/endian.js","./lexint":"/node_modules/compact-encoding/lexint.js","./raw":"/node_modules/compact-encoding/raw.js","b4a":"/node_modules/b4a/index.js"},"/node_modules/compact-encoding/lexint.js":{"#package":"/node_modules/compact-encoding/package.json"},"/node_modules/compact-encoding/package.json":{},"/node_modules/compact-encoding/raw.js":{"#package":"/node_modules/compact-encoding/package.json","./endian":"/node_modules/compact-encoding/endian.js","b4a":"/node_modules/b4a/index.js"},"/node_modules/core-coupler/index.js":{"#package":"/node_modules/core-coupler/package.json","safety-catch":"/node_modules/safety-catch/index.js"},"/node_modules/core-coupler/package.json":{},"/node_modules/corestore/index.js":{"#package":"/node_modules/corestore/package.json","./lib/audit.js":"/node_modules/corestore/lib/audit.js","b4a":"/node_modules/b4a/index.js","hypercore":"/node_modules/hypercore/index.js","hypercore-crypto":"/node_modules/hypercore-crypto/index.js","hypercore-errors":"/node_modules/hypercore-errors/index.js","hypercore-id-encoding":"/node_modules/hypercore-id-encoding/index.js","ready-resource":"/node_modules/ready-resource/index.js","sodium-universal":"/node_modules/sodium-universal/index.js","which-runtime":"/node_modules/which-runtime/index.js"},"/node_modules/corestore/lib/audit.js":{"#package":"/node_modules/corestore/package.json"},"/node_modules/corestore/package.json":{},"/node_modules/debounceify/index.js":{"#package":"/node_modules/debounceify/package.json"},"/node_modules/debounceify/package.json":{},"/node_modules/device-file/index.js":{"#package":"/node_modules/device-file/package.json","b4a":"/node_modules/b4a/index.js","fd-lock":"/node_modules/fd-lock/index.js","fs":"/node_modules/bare-fs/index.js","fs-native-extensions":"/node_modules/fs-native-extensions/index.js","path":"/node_modules/bare-path/index.js","ready-resource":"/node_modules/ready-resource/index.js"},"/node_modules/device-file/package.json":{},"/node_modules/dht-rpc/index.js":{"#package":"/node_modules/dht-rpc/package.json","./lib/commands":"/node_modules/dht-rpc/lib/commands.js","./lib/errors":"/node_modules/dht-rpc/lib/errors.js","./lib/io":"/node_modules/dht-rpc/lib/io.js","./lib/peer":"/node_modules/dht-rpc/lib/peer.js","./lib/query":"/node_modules/dht-rpc/lib/query.js","./lib/session":"/node_modules/dht-rpc/lib/session.js","b4a":"/node_modules/b4a/index.js","compact-encoding":"/node_modules/compact-encoding/index.js","events":"/node_modules/bare-events/index.js","kademlia-routing-table":"/node_modules/kademlia-routing-table/index.js","nat-sampler":"/node_modules/nat-sampler/index.js","sodium-universal":"/node_modules/sodium-universal/index.js","time-ordered-set":"/node_modules/time-ordered-set/index.js","udx-native":"/node_modules/udx-native/lib/udx.js"},"/node_modules/dht-rpc/lib/commands.js":{"#package":"/node_modules/dht-rpc/package.json"},"/node_modules/dht-rpc/lib/errors.js":{"#package":"/node_modules/dht-rpc/package.json"},"/node_modules/dht-rpc/lib/io.js":{"#package":"/node_modules/dht-rpc/package.json","./errors":"/node_modules/dht-rpc/lib/errors.js","./peer":"/node_modules/dht-rpc/lib/peer.js","b4a":"/node_modules/b4a/index.js","compact-encoding":"/node_modules/compact-encoding/index.js","fast-fifo":"/node_modules/fast-fifo/index.js","sodium-universal":"/node_modules/sodium-universal/index.js"},"/node_modules/dht-rpc/lib/peer.js":{"#package":"/node_modules/dht-rpc/package.json","b4a":"/node_modules/b4a/index.js","compact-encoding":"/node_modules/compact-encoding/index.js","compact-encoding-net":"/node_modules/compact-encoding-net/index.js","sodium-universal":"/node_modules/sodium-universal/index.js"},"/node_modules/dht-rpc/lib/query.js":{"#package":"/node_modules/dht-rpc/package.json","./commands":"/node_modules/dht-rpc/lib/commands.js","./peer":"/node_modules/dht-rpc/lib/peer.js","b4a":"/node_modules/b4a/index.js","streamx":"/node_modules/streamx/index.js"},"/node_modules/dht-rpc/lib/session.js":{"#package":"/node_modules/dht-rpc/package.json"},"/node_modules/dht-rpc/package.json":{},"/node_modules/events-universal/bare.js":{"#package":"/node_modules/events-universal/package.json","bare-events":"/node_modules/bare-events/index.js"},"/node_modules/events-universal/package.json":{},"/node_modules/fast-fifo/fixed-size.js":{"#package":"/node_modules/fast-fifo/package.json"},"/node_modules/fast-fifo/index.js":{"#package":"/node_modules/fast-fifo/package.json","./fixed-size":"/node_modules/fast-fifo/fixed-size.js"},"/node_modules/fast-fifo/package.json":{},"/node_modules/fd-lock/index.js":{"#package":"/node_modules/fd-lock/package.json","fs":"/node_modules/bare-fs/index.js","fs-native-extensions":"/node_modules/fs-native-extensions/index.js","ready-resource":"/node_modules/ready-resource/index.js","resource-on-exit":"/node_modules/resource-on-exit/index.js"},"/node_modules/fd-lock/package.json":{},"/node_modules/flat-tree/index.js":{"#package":"/node_modules/flat-tree/package.json"},"/node_modules/flat-tree/package.json":{},"/node_modules/fs-native-extensions/binding.js":{"#package":"/node_modules/fs-native-extensions/package.json",".":"linked:fs-native-extensions.1.4.5.framework/fs-native-extensions.1.4.5","require-addon":"/node_modules/require-addon/lib/bare.js"},"/node_modules/fs-native-extensions/index.js":{"#package":"/node_modules/fs-native-extensions/package.json","./binding":"/node_modules/fs-native-extensions/binding.js","which-runtime":"/node_modules/which-runtime/index.js"},"/node_modules/fs-native-extensions/package.json":{},"/node_modules/hyperbee/index.js":{"#package":"/node_modules/hyperbee/package.json","./iterators/diff":"/node_modules/hyperbee/iterators/diff.js","./iterators/history":"/node_modules/hyperbee/iterators/history.js","./iterators/local":"/node_modules/hyperbee/iterators/local.js","./iterators/range":"/node_modules/hyperbee/iterators/range.js","./lib/extension":"/node_modules/hyperbee/lib/extension.js","./lib/messages":"/node_modules/hyperbee/lib/messages.js","b4a":"/node_modules/b4a/index.js","codecs":"/node_modules/codecs/index.js","debounceify":"/node_modules/debounceify/index.js","hypercore-errors":"/node_modules/hypercore-errors/index.js","mutexify/promise":"/node_modules/mutexify/promise.js","rache":"/node_modules/rache/index.js","ready-resource":"/node_modules/ready-resource/index.js","resolve-reject-promise":"/node_modules/resolve-reject-promise/index.js","safety-catch":"/node_modules/safety-catch/index.js","streamx":"/node_modules/streamx/index.js","unslab":"/node_modules/unslab/index.js"},"/node_modules/hyperbee/iterators/diff.js":{"#package":"/node_modules/hyperbee/package.json","b4a":"/node_modules/b4a/index.js"},"/node_modules/hyperbee/iterators/history.js":{"#package":"/node_modules/hyperbee/package.json"},"/node_modules/hyperbee/iterators/local.js":{"#package":"/node_modules/hyperbee/package.json"},"/node_modules/hyperbee/iterators/range.js":{"#package":"/node_modules/hyperbee/package.json","b4a":"/node_modules/b4a/index.js"},"/node_modules/hyperbee/lib/extension.js":{"#package":"/node_modules/hyperbee/package.json","./messages":"/node_modules/hyperbee/lib/messages.js"},"/node_modules/hyperbee/lib/messages.js":{"#package":"/node_modules/hyperbee/package.json","b4a":"/node_modules/b4a/index.js","protocol-buffers-encodings":"/node_modules/protocol-buffers-encodings/index.js"},"/node_modules/hyperbee/package.json":{},"/node_modules/hypercore-crypto/index.js":{"#package":"/node_modules/hypercore-crypto/package.json","b4a":"/node_modules/b4a/index.js","compact-encoding":"/node_modules/compact-encoding/index.js","sodium-universal":"/node_modules/sodium-universal/index.js"},"/node_modules/hypercore-crypto/package.json":{},"/node_modules/hypercore-errors/index.js":{"#package":"/node_modules/hypercore-errors/package.json","hypercore-id-encoding":"/node_modules/hypercore-id-encoding/index.js"},"/node_modules/hypercore-errors/package.json":{},"/node_modules/hypercore-id-encoding/index.js":{"#package":"/node_modules/hypercore-id-encoding/package.json","b4a":"/node_modules/b4a/index.js","z32":"/node_modules/z32/index.js"},"/node_modules/hypercore-id-encoding/package.json":{},"/node_modules/hypercore-storage/index.js":{"#package":"/node_modules/hypercore-storage/package.json","./lib/keys.js":"/node_modules/hypercore-storage/lib/keys.js","./lib/streams.js":"/node_modules/hypercore-storage/lib/streams.js","./lib/tx.js":"/node_modules/hypercore-storage/lib/tx.js","./lib/view.js":"/node_modules/hypercore-storage/lib/view.js","./migrations/0":"/node_modules/hypercore-storage/migrations/0/index.js","device-file":"/node_modules/device-file/index.js","fs":"/node_modules/bare-fs/index.js","path":"/node_modules/bare-path/index.js","resolve-reject-promise":"/node_modules/resolve-reject-promise/index.js","rocksdb-native":"/node_modules/rocksdb-native/index.js","scope-lock":"/node_modules/scope-lock/index.js"},"/node_modules/hypercore-storage/lib/block-dependency-stream.js":{"#package":"/node_modules/hypercore-storage/package.json","./keys":"/node_modules/hypercore-storage/lib/keys.js","streamx":"/node_modules/streamx/index.js"},"/node_modules/hypercore-storage/lib/close-error-stream.js":{"#package":"/node_modules/hypercore-storage/package.json","streamx":"/node_modules/streamx/index.js"},"/node_modules/hypercore-storage/lib/keys.js":{"#package":"/node_modules/hypercore-storage/package.json","b4a":"/node_modules/b4a/index.js","compact-encoding":"/node_modules/compact-encoding/index.js","index-encoder":"/node_modules/index-encoder/index.js"},"/node_modules/hypercore-storage/lib/streams.js":{"#package":"/node_modules/hypercore-storage/package.json","../spec/hyperschema":"/node_modules/hypercore-storage/spec/hyperschema/index.js","./block-dependency-stream.js":"/node_modules/hypercore-storage/lib/block-dependency-stream.js","./keys.js":"/node_modules/hypercore-storage/lib/keys.js","b4a":"/node_modules/b4a/index.js"},"/node_modules/hypercore-storage/lib/tx.js":{"#package":"/node_modules/hypercore-storage/package.json","../spec/hyperschema":"/node_modules/hypercore-storage/spec/hyperschema/index.js","./keys.js":"/node_modules/hypercore-storage/lib/keys.js","./view.js":"/node_modules/hypercore-storage/lib/view.js","b4a":"/node_modules/b4a/index.js","flat-tree":"/node_modules/flat-tree/index.js"},"/node_modules/hypercore-storage/lib/view.js":{"#package":"/node_modules/hypercore-storage/package.json","./close-error-stream.js":"/node_modules/hypercore-storage/lib/close-error-stream.js","b4a":"/node_modules/b4a/index.js","streamx":"/node_modules/streamx/index.js"},"/node_modules/hypercore-storage/migrations/0/index.js":{"#package":"/node_modules/hypercore-storage/package.json","../../lib/tx.js":"/node_modules/hypercore-storage/lib/tx.js","../../lib/view.js":"/node_modules/hypercore-storage/lib/view.js","./messages.js":"/node_modules/hypercore-storage/migrations/0/messages.js","b4a":"/node_modules/b4a/index.js","compact-encoding":"/node_modules/compact-encoding/index.js","flat-tree":"/node_modules/flat-tree/index.js","fs":"/node_modules/bare-fs/index.js","hypercore-crypto":"/node_modules/hypercore-crypto/index.js","path":"/node_modules/bare-path/index.js","streamx":"/node_modules/streamx/index.js"},"/node_modules/hypercore-storage/migrations/0/messages.js":{"#package":"/node_modules/hypercore-storage/package.json","b4a":"/node_modules/b4a/index.js","compact-encoding":"/node_modules/compact-encoding/index.js"},"/node_modules/hypercore-storage/package.json":{},"/node_modules/hypercore-storage/spec/hyperschema/index.js":{"#package":"/node_modules/hypercore-storage/package.json","hyperschema/runtime":"/node_modules/hyperschema/runtime.cjs"},"/node_modules/hypercore/index.js":{"#package":"/node_modules/hypercore/package.json","./lib/caps":"/node_modules/hypercore/lib/caps.js","./lib/core":"/node_modules/hypercore/lib/core.js","./lib/default-encryption":"/node_modules/hypercore/lib/default-encryption.js","./lib/download":"/node_modules/hypercore/lib/download.js","./lib/info":"/node_modules/hypercore/lib/info.js","./lib/inspect":"/node_modules/hypercore/lib/inspect.js","./lib/merkle-tree":"/node_modules/hypercore/lib/merkle-tree.js","./lib/replicator":"/node_modules/hypercore/lib/replicator.js","./lib/streams":"/node_modules/hypercore/lib/streams.js","./lib/verifier":"/node_modules/hypercore/lib/verifier.js","@hyperswarm/secret-stream":"/node_modules/@hyperswarm/secret-stream/index.js","b4a":"/node_modules/b4a/index.js","compact-encoding":"/node_modules/compact-encoding/index.js","events":"/node_modules/bare-events/index.js","hypercore-crypto":"/node_modules/hypercore-crypto/index.js","hypercore-errors":"/node_modules/hypercore-errors/index.js","hypercore-id-encoding":"/node_modules/hypercore-id-encoding/index.js","hypercore-storage":"/node_modules/hypercore-storage/index.js","is-options":"/node_modules/is-options/index.js","protomux":"/node_modules/protomux/index.js","safety-catch":"/node_modules/safety-catch/index.js","unslab":"/node_modules/unslab/index.js"},"/node_modules/hypercore/lib/audit.js":{"#package":"/node_modules/hypercore/package.json","./merkle-tree":"/node_modules/hypercore/lib/merkle-tree.js","b4a":"/node_modules/b4a/index.js","flat-tree":"/node_modules/flat-tree/index.js","hypercore-crypto":"/node_modules/hypercore-crypto/index.js"},"/node_modules/hypercore/lib/bit-interlude.js":{"#package":"/node_modules/hypercore/package.json","./compat":"/node_modules/hypercore/lib/compat.js","b4a":"/node_modules/b4a/index.js"},"/node_modules/hypercore/lib/bitfield.js":{"#package":"/node_modules/hypercore/package.json","./compat":"/node_modules/hypercore/lib/compat.js","b4a":"/node_modules/b4a/index.js","big-sparse-array":"/node_modules/big-sparse-array/index.js"},"/node_modules/hypercore/lib/caps.js":{"#package":"/node_modules/hypercore/package.json","b4a":"/node_modules/b4a/index.js","compact-encoding":"/node_modules/compact-encoding/index.js","hypercore-crypto":"/node_modules/hypercore-crypto/index.js","sodium-universal":"/node_modules/sodium-universal/index.js"},"/node_modules/hypercore/lib/compat.js":{"#package":"/node_modules/hypercore/package.json","quickbit-universal":"/node_modules/quickbit-universal/index.js","quickbit-universal/fallback":"/node_modules/quickbit-universal/fallback.js"},"/node_modules/hypercore/lib/copy-prologue.js":{"#package":"/node_modules/hypercore/package.json","./bitfield":"/node_modules/hypercore/lib/bitfield.js","b4a":"/node_modules/b4a/index.js","flat-tree":"/node_modules/flat-tree/index.js","hypercore-crypto":"/node_modules/hypercore-crypto/index.js","quickbit-universal":"/node_modules/quickbit-universal/index.js"},"/node_modules/hypercore/lib/core.js":{"#package":"/node_modules/hypercore/package.json","./audit":"/node_modules/hypercore/lib/audit.js","./bit-interlude":"/node_modules/hypercore/lib/bit-interlude.js","./bitfield":"/node_modules/hypercore/lib/bitfield.js","./copy-prologue":"/node_modules/hypercore/lib/copy-prologue.js","./merkle-tree":"/node_modules/hypercore/lib/merkle-tree.js","./mutex":"/node_modules/hypercore/lib/mutex.js","./remote-bitfield":"/node_modules/hypercore/lib/remote-bitfield.js","./replicator":"/node_modules/hypercore/lib/replicator.js","./session-state":"/node_modules/hypercore/lib/session-state.js","./verifier":"/node_modules/hypercore/lib/verifier.js","b4a":"/node_modules/b4a/index.js","hypercore-crypto":"/node_modules/hypercore-crypto/index.js","hypercore-errors":"/node_modules/hypercore-errors/index.js","unslab":"/node_modules/unslab/index.js","z32":"/node_modules/z32/index.js"},"/node_modules/hypercore/lib/default-encryption.js":{"#package":"/node_modules/hypercore/package.json","./caps":"/node_modules/hypercore/lib/caps.js","b4a":"/node_modules/b4a/index.js","compact-encoding":"/node_modules/compact-encoding/index.js","sodium-universal":"/node_modules/sodium-universal/index.js"},"/node_modules/hypercore/lib/download.js":{"#package":"/node_modules/hypercore/package.json"},"/node_modules/hypercore/lib/hotswap-queue.js":{"#package":"/node_modules/hypercore/package.json"},"/node_modules/hypercore/lib/info.js":{"#package":"/node_modules/hypercore/package.json"},"/node_modules/hypercore/lib/inspect.js":{"#package":"/node_modules/hypercore/package.json","b4a":"/node_modules/b4a/index.js"},"/node_modules/hypercore/lib/merkle-tree.js":{"#package":"/node_modules/hypercore/package.json","./caps":"/node_modules/hypercore/lib/caps.js","b4a":"/node_modules/b4a/index.js","flat-tree":"/node_modules/flat-tree/index.js","hypercore-crypto":"/node_modules/hypercore-crypto/index.js","hypercore-errors":"/node_modules/hypercore-errors/index.js","unslab":"/node_modules/unslab/index.js"},"/node_modules/hypercore/lib/messages.js":{"#package":"/node_modules/hypercore/package.json","./caps":"/node_modules/hypercore/lib/caps.js","b4a":"/node_modules/b4a/index.js","compact-encoding":"/node_modules/compact-encoding/index.js","hypercore-errors":"/node_modules/hypercore-errors/index.js","unslab":"/node_modules/unslab/index.js"},"/node_modules/hypercore/lib/multisig.js":{"#package":"/node_modules/hypercore/package.json","./merkle-tree":"/node_modules/hypercore/lib/merkle-tree.js","./messages":"/node_modules/hypercore/lib/messages.js","b4a":"/node_modules/b4a/index.js","compact-encoding":"/node_modules/compact-encoding/index.js","flat-tree":"/node_modules/flat-tree/index.js"},"/node_modules/hypercore/lib/mutex.js":{"#package":"/node_modules/hypercore/package.json"},"/node_modules/hypercore/lib/receiver-queue.js":{"#package":"/node_modules/hypercore/package.json","fast-fifo":"/node_modules/fast-fifo/index.js"},"/node_modules/hypercore/lib/remote-bitfield.js":{"#package":"/node_modules/hypercore/package.json","./compat":"/node_modules/hypercore/lib/compat.js","big-sparse-array":"/node_modules/big-sparse-array/index.js"},"/node_modules/hypercore/lib/replicator.js":{"#package":"/node_modules/hypercore/package.json","./caps":"/node_modules/hypercore/lib/caps.js","./hotswap-queue":"/node_modules/hypercore/lib/hotswap-queue.js","./merkle-tree":"/node_modules/hypercore/lib/merkle-tree.js","./messages":"/node_modules/hypercore/lib/messages.js","./receiver-queue":"/node_modules/hypercore/lib/receiver-queue.js","./remote-bitfield":"/node_modules/hypercore/lib/remote-bitfield.js","b4a":"/node_modules/b4a/index.js","flat-tree":"/node_modules/flat-tree/index.js","hypercore-errors":"/node_modules/hypercore-errors/index.js","random-array-iterator":"/node_modules/random-array-iterator/index.js","safety-catch":"/node_modules/safety-catch/index.js"},"/node_modules/hypercore/lib/session-state.js":{"#package":"/node_modules/hypercore/package.json","./bitfield":"/node_modules/hypercore/lib/bitfield.js","./merkle-tree":"/node_modules/hypercore/lib/merkle-tree.js","./mutex":"/node_modules/hypercore/lib/mutex.js","b4a":"/node_modules/b4a/index.js","flat-tree":"/node_modules/flat-tree/index.js","hypercore-crypto":"/node_modules/hypercore-crypto/index.js","hypercore-errors":"/node_modules/hypercore-errors/index.js","nanoassert":"/node_modules/nanoassert/index.js","quickbit-universal":"/node_modules/quickbit-universal/index.js"},"/node_modules/hypercore/lib/streams.js":{"#package":"/node_modules/hypercore/package.json","streamx":"/node_modules/streamx/index.js"},"/node_modules/hypercore/lib/verifier.js":{"#package":"/node_modules/hypercore/package.json","./caps":"/node_modules/hypercore/lib/caps.js","./messages":"/node_modules/hypercore/lib/messages.js","./multisig":"/node_modules/hypercore/lib/multisig.js","b4a":"/node_modules/b4a/index.js","compact-encoding":"/node_modules/compact-encoding/index.js","flat-tree":"/node_modules/flat-tree/index.js","hypercore-crypto":"/node_modules/hypercore-crypto/index.js","hypercore-errors":"/node_modules/hypercore-errors/index.js","unslab":"/node_modules/unslab/index.js"},"/node_modules/hypercore/package.json":{},"/node_modules/hyperdht/index.js":{"#package":"/node_modules/hyperdht/package.json","./lib/connect":"/node_modules/hyperdht/lib/connect.js","./lib/connection-pool":"/node_modules/hyperdht/lib/connection-pool.js","./lib/constants":"/node_modules/hyperdht/lib/constants.js","./lib/crypto":"/node_modules/hyperdht/lib/crypto.js","./lib/errors":"/node_modules/hyperdht/lib/errors.js","./lib/messages":"/node_modules/hyperdht/lib/messages.js","./lib/persistent":"/node_modules/hyperdht/lib/persistent.js","./lib/raw-stream-set":"/node_modules/hyperdht/lib/raw-stream-set.js","./lib/router":"/node_modules/hyperdht/lib/router.js","./lib/server":"/node_modules/hyperdht/lib/server.js","./lib/socket-pool":"/node_modules/hyperdht/lib/socket-pool.js","b4a":"/node_modules/b4a/index.js","compact-encoding":"/node_modules/compact-encoding/index.js","dht-rpc":"/node_modules/dht-rpc/index.js","hypercore-id-encoding":"/node_modules/hypercore-id-encoding/index.js","safety-catch":"/node_modules/safety-catch/index.js","sodium-universal":"/node_modules/sodium-universal/index.js","xache":"/node_modules/xache/index.js"},"/node_modules/hyperdht/lib/announcer.js":{"#package":"/node_modules/hyperdht/package.json","./constants":"/node_modules/hyperdht/lib/constants.js","./encode":"/node_modules/hyperdht/lib/encode.js","./messages":"/node_modules/hyperdht/lib/messages.js","./persistent":"/node_modules/hyperdht/lib/persistent.js","./sleeper":"/node_modules/hyperdht/lib/sleeper.js","compact-encoding":"/node_modules/compact-encoding/index.js","safety-catch":"/node_modules/safety-catch/index.js","signal-promise":"/node_modules/signal-promise/index.js"},"/node_modules/hyperdht/lib/connect.js":{"#package":"/node_modules/hyperdht/package.json","./constants":"/node_modules/hyperdht/lib/constants.js","./crypto":"/node_modules/hyperdht/lib/crypto.js","./errors":"/node_modules/hyperdht/lib/errors.js","./holepuncher":"/node_modules/hyperdht/lib/holepuncher.js","./noise-wrap":"/node_modules/hyperdht/lib/noise-wrap.js","./secure-payload":"/node_modules/hyperdht/lib/secure-payload.js","./semaphore":"/node_modules/hyperdht/lib/semaphore.js","./sleeper":"/node_modules/hyperdht/lib/sleeper.js","@hyperswarm/secret-stream":"/node_modules/@hyperswarm/secret-stream/index.js","b4a":"/node_modules/b4a/index.js","blind-relay":"/node_modules/blind-relay/index.js","bogon":"/node_modules/bogon/index.js","safety-catch":"/node_modules/safety-catch/index.js","unslab":"/node_modules/unslab/index.js"},"/node_modules/hyperdht/lib/connection-pool.js":{"#package":"/node_modules/hyperdht/package.json","./errors":"/node_modules/hyperdht/lib/errors.js","b4a":"/node_modules/b4a/index.js","events":"/node_modules/bare-events/index.js"},"/node_modules/hyperdht/lib/constants.js":{"#package":"/node_modules/hyperdht/package.json","hypercore-crypto":"/node_modules/hypercore-crypto/index.js"},"/node_modules/hyperdht/lib/crypto.js":{"#package":"/node_modules/hyperdht/package.json","b4a":"/node_modules/b4a/index.js","sodium-universal":"/node_modules/sodium-universal/index.js"},"/node_modules/hyperdht/lib/encode.js":{"#package":"/node_modules/hyperdht/package.json","b4a":"/node_modules/b4a/index.js","compact-encoding":"/node_modules/compact-encoding/index.js"},"/node_modules/hyperdht/lib/errors.js":{"#package":"/node_modules/hyperdht/package.json"},"/node_modules/hyperdht/lib/holepuncher.js":{"#package":"/node_modules/hyperdht/package.json","./constants":"/node_modules/hyperdht/lib/constants.js","./nat":"/node_modules/hyperdht/lib/nat.js","./sleeper":"/node_modules/hyperdht/lib/sleeper.js","b4a":"/node_modules/b4a/index.js"},"/node_modules/hyperdht/lib/messages.js":{"#package":"/node_modules/hyperdht/package.json","compact-encoding":"/node_modules/compact-encoding/index.js","compact-encoding-net":"/node_modules/compact-encoding-net/index.js"},"/node_modules/hyperdht/lib/nat.js":{"#package":"/node_modules/hyperdht/package.json","../lib/constants":"/node_modules/hyperdht/lib/constants.js"},"/node_modules/hyperdht/lib/noise-wrap.js":{"#package":"/node_modules/hyperdht/package.json","./constants":"/node_modules/hyperdht/lib/constants.js","./errors":"/node_modules/hyperdht/lib/errors.js","./messages":"/node_modules/hyperdht/lib/messages.js","@hyperswarm/secret-stream":"/node_modules/@hyperswarm/secret-stream/index.js","b4a":"/node_modules/b4a/index.js","compact-encoding":"/node_modules/compact-encoding/index.js","noise-curve-ed":"/node_modules/noise-curve-ed/index.js","noise-handshake":"/node_modules/noise-handshake/noise.js","sodium-universal":"/node_modules/sodium-universal/index.js"},"/node_modules/hyperdht/lib/persistent.js":{"#package":"/node_modules/hyperdht/package.json","./constants":"/node_modules/hyperdht/lib/constants.js","./encode":"/node_modules/hyperdht/lib/encode.js","./messages":"/node_modules/hyperdht/lib/messages.js","b4a":"/node_modules/b4a/index.js","compact-encoding":"/node_modules/compact-encoding/index.js","record-cache":"/node_modules/record-cache/index.js","sodium-universal":"/node_modules/sodium-universal/index.js","unslab":"/node_modules/unslab/index.js","xache":"/node_modules/xache/index.js"},"/node_modules/hyperdht/lib/raw-stream-set.js":{"#package":"/node_modules/hyperdht/package.json"},"/node_modules/hyperdht/lib/router.js":{"#package":"/node_modules/hyperdht/package.json","./constants":"/node_modules/hyperdht/lib/constants.js","./errors":"/node_modules/hyperdht/lib/errors.js","./messages":"/node_modules/hyperdht/lib/messages.js","b4a":"/node_modules/b4a/index.js","compact-encoding":"/node_modules/compact-encoding/index.js","safety-catch":"/node_modules/safety-catch/index.js","xache":"/node_modules/xache/index.js"},"/node_modules/hyperdht/lib/secure-payload.js":{"#package":"/node_modules/hyperdht/package.json","./messages":"/node_modules/hyperdht/lib/messages.js","b4a":"/node_modules/b4a/index.js","sodium-universal":"/node_modules/sodium-universal/index.js"},"/node_modules/hyperdht/lib/semaphore.js":{"#package":"/node_modules/hyperdht/package.json"},"/node_modules/hyperdht/lib/server.js":{"#package":"/node_modules/hyperdht/package.json","./announcer":"/node_modules/hyperdht/lib/announcer.js","./constants":"/node_modules/hyperdht/lib/constants.js","./crypto":"/node_modules/hyperdht/lib/crypto.js","./errors":"/node_modules/hyperdht/lib/errors.js","./holepuncher":"/node_modules/hyperdht/lib/holepuncher.js","./noise-wrap":"/node_modules/hyperdht/lib/noise-wrap.js","./secure-payload":"/node_modules/hyperdht/lib/secure-payload.js","@hyperswarm/secret-stream":"/node_modules/@hyperswarm/secret-stream/index.js","b4a":"/node_modules/b4a/index.js","blind-relay":"/node_modules/blind-relay/index.js","bogon":"/node_modules/bogon/index.js","events":"/node_modules/bare-events/index.js","safety-catch":"/node_modules/safety-catch/index.js"},"/node_modules/hyperdht/lib/sleeper.js":{"#package":"/node_modules/hyperdht/package.json"},"/node_modules/hyperdht/lib/socket-pool.js":{"#package":"/node_modules/hyperdht/package.json","b4a":"/node_modules/b4a/index.js"},"/node_modules/hyperdht/package.json":{},"/node_modules/hyperschema/package.json":{},"/node_modules/hyperschema/runtime.cjs":{"#package":"/node_modules/hyperschema/package.json","compact-encoding":"/node_modules/compact-encoding/index.js"},"/node_modules/hyperswarm/index.js":{"#package":"/node_modules/hyperswarm/package.json","./lib/connection-set":"/node_modules/hyperswarm/lib/connection-set.js","./lib/peer-discovery":"/node_modules/hyperswarm/lib/peer-discovery.js","./lib/peer-info":"/node_modules/hyperswarm/lib/peer-info.js","./lib/retry-timer":"/node_modules/hyperswarm/lib/retry-timer.js","b4a":"/node_modules/b4a/index.js","events":"/node_modules/bare-events/index.js","hyperdht":"/node_modules/hyperdht/index.js","shuffled-priority-queue":"/node_modules/shuffled-priority-queue/index.js","streamx":"/node_modules/streamx/index.js","unslab":"/node_modules/unslab/index.js"},"/node_modules/hyperswarm/lib/bulk-timer.js":{"#package":"/node_modules/hyperswarm/package.json"},"/node_modules/hyperswarm/lib/connection-set.js":{"#package":"/node_modules/hyperswarm/package.json","b4a":"/node_modules/b4a/index.js"},"/node_modules/hyperswarm/lib/peer-discovery.js":{"#package":"/node_modules/hyperswarm/package.json","b4a":"/node_modules/b4a/index.js","safety-catch":"/node_modules/safety-catch/index.js"},"/node_modules/hyperswarm/lib/peer-info.js":{"#package":"/node_modules/hyperswarm/package.json","b4a":"/node_modules/b4a/index.js","events":"/node_modules/bare-events/index.js","unslab":"/node_modules/unslab/index.js"},"/node_modules/hyperswarm/lib/retry-timer.js":{"#package":"/node_modules/hyperswarm/package.json","./bulk-timer":"/node_modules/hyperswarm/lib/bulk-timer.js"},"/node_modules/hyperswarm/package.json":{},"/node_modules/index-encoder/index.js":{"#package":"/node_modules/index-encoder/package.json","b4a":"/node_modules/b4a/index.js"},"/node_modules/index-encoder/package.json":{},"/node_modules/is-options/index.js":{"#package":"/node_modules/is-options/package.json","b4a":"/node_modules/b4a/index.js"},"/node_modules/is-options/package.json":{},"/node_modules/kademlia-routing-table/index.js":{"#package":"/node_modules/kademlia-routing-table/package.json","events":"/node_modules/bare-events/index.js"},"/node_modules/kademlia-routing-table/package.json":{},"/node_modules/mutexify/index.js":{"#package":"/node_modules/mutexify/package.json","queue-tick":"/node_modules/queue-tick/process-next-tick.js"},"/node_modules/mutexify/package.json":{},"/node_modules/mutexify/promise.js":{"#package":"/node_modules/mutexify/package.json",".":"/node_modules/mutexify/index.js"},"/node_modules/nanoassert/index.js":{"#package":"/node_modules/nanoassert/package.json"},"/node_modules/nanoassert/package.json":{},"/node_modules/nat-sampler/index.js":{"#package":"/node_modules/nat-sampler/package.json"},"/node_modules/nat-sampler/package.json":{},"/node_modules/noise-curve-ed/index.js":{"#package":"/node_modules/noise-curve-ed/package.json","b4a":"/node_modules/b4a/index.js","nanoassert":"/node_modules/nanoassert/index.js","sodium-universal":"/node_modules/sodium-universal/index.js"},"/node_modules/noise-curve-ed/package.json":{},"/node_modules/noise-handshake/cipher.js":{"#package":"/node_modules/noise-handshake/package.json","b4a":"/node_modules/b4a/index.js","sodium-universal":"/node_modules/sodium-universal/index.js"},"/node_modules/noise-handshake/dh.js":{"#package":"/node_modules/noise-handshake/package.json","b4a":"/node_modules/b4a/index.js","nanoassert":"/node_modules/nanoassert/index.js","sodium-universal":"/node_modules/sodium-universal/index.js"},"/node_modules/noise-handshake/hkdf.js":{"#package":"/node_modules/noise-handshake/package.json","./hmac":"/node_modules/noise-handshake/hmac.js","b4a":"/node_modules/b4a/index.js"},"/node_modules/noise-handshake/hmac.js":{"#package":"/node_modules/noise-handshake/package.json","b4a":"/node_modules/b4a/index.js","sodium-universal":"/node_modules/sodium-universal/index.js"},"/node_modules/noise-handshake/noise.js":{"#package":"/node_modules/noise-handshake/package.json","./hkdf":"/node_modules/noise-handshake/hkdf.js","./symmetric-state":"/node_modules/noise-handshake/symmetric-state.js","b4a":"/node_modules/b4a/index.js","nanoassert":"/node_modules/nanoassert/index.js"},"/node_modules/noise-handshake/package.json":{},"/node_modules/noise-handshake/symmetric-state.js":{"#package":"/node_modules/noise-handshake/package.json","./cipher":"/node_modules/noise-handshake/cipher.js","./dh":"/node_modules/noise-handshake/dh.js","./hkdf":"/node_modules/noise-handshake/hkdf.js","b4a":"/node_modules/b4a/index.js","nanoassert":"/node_modules/nanoassert/index.js","sodium-universal":"/node_modules/sodium-universal/index.js"},"/node_modules/protocol-buffers-encodings/index.js":{"#package":"/node_modules/protocol-buffers-encodings/package.json","b4a":"/node_modules/b4a/index.js","signed-varint":"/node_modules/signed-varint/index.js","varint":"/node_modules/varint/index.js"},"/node_modules/protocol-buffers-encodings/package.json":{},"/node_modules/protomux-wakeup/index.js":{"#package":"/node_modules/protomux-wakeup/package.json","./spec/hyperschema":"/node_modules/protomux-wakeup/spec/hyperschema/index.js","b4a":"/node_modules/b4a/index.js","hypercore-crypto":"/node_modules/hypercore-crypto/index.js","protomux":"/node_modules/protomux/index.js"},"/node_modules/protomux-wakeup/package.json":{},"/node_modules/protomux-wakeup/spec/hyperschema/index.js":{"#package":"/node_modules/protomux-wakeup/package.json","hyperschema/runtime":"/node_modules/hyperschema/runtime.cjs"},"/node_modules/protomux/index.js":{"#package":"/node_modules/protomux/package.json","b4a":"/node_modules/b4a/index.js","compact-encoding":"/node_modules/compact-encoding/index.js","queue-tick":"/node_modules/queue-tick/process-next-tick.js","safety-catch":"/node_modules/safety-catch/index.js","unslab":"/node_modules/unslab/index.js"},"/node_modules/protomux/package.json":{},"/node_modules/queue-tick/package.json":{},"/node_modules/queue-tick/process-next-tick.js":{"#package":"/node_modules/queue-tick/package.json","./queue-microtask":"/node_modules/queue-tick/queue-microtask.js"},"/node_modules/queue-tick/queue-microtask.js":{"#package":"/node_modules/queue-tick/package.json"},"/node_modules/quickbit-native/binding.js":{"#package":"/node_modules/quickbit-native/package.json",".":"linked:quickbit-native.2.4.8.framework/quickbit-native.2.4.8","require-addon":"/node_modules/require-addon/lib/bare.js"},"/node_modules/quickbit-native/index.js":{"#package":"/node_modules/quickbit-native/package.json","./binding":"/node_modules/quickbit-native/binding.js"},"/node_modules/quickbit-native/package.json":{},"/node_modules/quickbit-universal/fallback.js":{"#package":"/node_modules/quickbit-universal/package.json","simdle-universal":"/node_modules/simdle-universal/index.js"},"/node_modules/quickbit-universal/index.js":{"#package":"/node_modules/quickbit-universal/package.json","./fallback":"/node_modules/quickbit-universal/fallback.js","quickbit-native":"/node_modules/quickbit-native/index.js"},"/node_modules/quickbit-universal/package.json":{},"/node_modules/rache/index.js":{"#package":"/node_modules/rache/package.json"},"/node_modules/rache/package.json":{},"/node_modules/random-array-iterator/index.js":{"#package":"/node_modules/random-array-iterator/package.json"},"/node_modules/random-array-iterator/package.json":{},"/node_modules/ready-resource/index.js":{"#package":"/node_modules/ready-resource/package.json","events":"/node_modules/bare-events/index.js"},"/node_modules/ready-resource/package.json":{},"/node_modules/record-cache/index.js":{"#package":"/node_modules/record-cache/package.json","b4a":"/node_modules/b4a/index.js"},"/node_modules/record-cache/package.json":{},"/node_modules/refcounter/index.js":{"#package":"/node_modules/refcounter/package.json"},"/node_modules/refcounter/package.json":{},"/node_modules/require-addon/lib/bare.js":{"#package":"/node_modules/require-addon/package.json"},"/node_modules/require-addon/package.json":{},"/node_modules/resolve-reject-promise/index.js":{"#package":"/node_modules/resolve-reject-promise/package.json"},"/node_modules/resolve-reject-promise/package.json":{},"/node_modules/resource-on-exit/index.js":{"#package":"/node_modules/resource-on-exit/package.json"},"/node_modules/resource-on-exit/package.json":{},"/node_modules/rocksdb-native/binding.js":{"#package":"/node_modules/rocksdb-native/package.json",".":"linked:rocksdb-native.3.11.4.framework/rocksdb-native.3.11.4","require-addon":"/node_modules/require-addon/lib/bare.js"},"/node_modules/rocksdb-native/index.js":{"#package":"/node_modules/rocksdb-native/package.json","./lib/column-family":"/node_modules/rocksdb-native/lib/column-family.js","./lib/constants":"/node_modules/rocksdb-native/lib/constants.js","./lib/filter-policy":"/node_modules/rocksdb-native/lib/filter-policy.js","./lib/iterator":"/node_modules/rocksdb-native/lib/iterator.js","./lib/snapshot":"/node_modules/rocksdb-native/lib/snapshot.js","./lib/state":"/node_modules/rocksdb-native/lib/state.js"},"/node_modules/rocksdb-native/lib/batch.js":{"#package":"/node_modules/rocksdb-native/package.json","../binding":"/node_modules/rocksdb-native/binding.js","compact-encoding":"/node_modules/compact-encoding/index.js"},"/node_modules/rocksdb-native/lib/column-family.js":{"#package":"/node_modules/rocksdb-native/package.json","../binding":"/node_modules/rocksdb-native/binding.js","./constants":"/node_modules/rocksdb-native/lib/constants.js","./filter-policy":"/node_modules/rocksdb-native/lib/filter-policy.js"},"/node_modules/rocksdb-native/lib/constants.js":{"#package":"/node_modules/rocksdb-native/package.json"},"/node_modules/rocksdb-native/lib/filter-policy.js":{"#package":"/node_modules/rocksdb-native/package.json"},"/node_modules/rocksdb-native/lib/iterator.js":{"#package":"/node_modules/rocksdb-native/package.json","../binding":"/node_modules/rocksdb-native/binding.js","compact-encoding":"/node_modules/compact-encoding/index.js","streamx":"/node_modules/streamx/index.js"},"/node_modules/rocksdb-native/lib/snapshot.js":{"#package":"/node_modules/rocksdb-native/package.json","../binding":"/node_modules/rocksdb-native/binding.js"},"/node_modules/rocksdb-native/lib/state.js":{"#package":"/node_modules/rocksdb-native/package.json","../binding":"/node_modules/rocksdb-native/binding.js","./batch":"/node_modules/rocksdb-native/lib/batch.js","./column-family":"/node_modules/rocksdb-native/lib/column-family.js","compact-encoding":"/node_modules/compact-encoding/index.js","ready-resource":"/node_modules/ready-resource/index.js","refcounter":"/node_modules/refcounter/index.js","resolve-reject-promise":"/node_modules/resolve-reject-promise/index.js","signal-promise":"/node_modules/signal-promise/index.js"},"/node_modules/rocksdb-native/package.json":{},"/node_modules/safety-catch/index.js":{"#package":"/node_modules/safety-catch/package.json"},"/node_modules/safety-catch/package.json":{},"/node_modules/scope-lock/index.js":{"#package":"/node_modules/scope-lock/package.json"},"/node_modules/scope-lock/package.json":{},"/node_modules/shuffled-priority-queue/index.js":{"#package":"/node_modules/shuffled-priority-queue/package.json","unordered-set":"/node_modules/unordered-set/index.js"},"/node_modules/shuffled-priority-queue/package.json":{},"/node_modules/signal-promise/index.js":{"#package":"/node_modules/signal-promise/package.json"},"/node_modules/signal-promise/package.json":{},"/node_modules/signed-varint/index.js":{"#package":"/node_modules/signed-varint/package.json","varint":"/node_modules/varint/index.js"},"/node_modules/signed-varint/package.json":{},"/node_modules/simdle-native/binding.js":{"#package":"/node_modules/simdle-native/package.json",".":"linked:simdle-native.1.3.9.framework/simdle-native.1.3.9","require-addon":"/node_modules/require-addon/lib/bare.js"},"/node_modules/simdle-native/index.js":{"#package":"/node_modules/simdle-native/package.json","./binding":"/node_modules/simdle-native/binding.js","b4a":"/node_modules/b4a/index.js"},"/node_modules/simdle-native/package.json":{},"/node_modules/simdle-universal/fallback.js":{"#package":"/node_modules/simdle-universal/package.json","./scalar":"/node_modules/simdle-universal/scalar.js","b4a":"/node_modules/b4a/index.js"},"/node_modules/simdle-universal/index.js":{"#package":"/node_modules/simdle-universal/package.json","./fallback":"/node_modules/simdle-universal/fallback.js","simdle-native":"/node_modules/simdle-native/index.js"},"/node_modules/simdle-universal/package.json":{},"/node_modules/simdle-universal/scalar.js":{"#package":"/node_modules/simdle-universal/package.json"},"/node_modules/sodium-native/binding.js":{"#package":"/node_modules/sodium-native/package.json",".":"linked:sodium-native.5.0.10.framework/sodium-native.5.0.10","require-addon":"/node_modules/require-addon/lib/bare.js"},"/node_modules/sodium-native/index.js":{"#package":"/node_modules/sodium-native/package.json","./binding":"/node_modules/sodium-native/binding.js","which-runtime":"/node_modules/which-runtime/index.js"},"/node_modules/sodium-native/package.json":{},"/node_modules/sodium-secretstream/index.js":{"#package":"/node_modules/sodium-secretstream/package.json","b4a":"/node_modules/b4a/index.js","sodium-universal":"/node_modules/sodium-universal/index.js"},"/node_modules/sodium-secretstream/package.json":{},"/node_modules/sodium-universal/index.js":{"#package":"/node_modules/sodium-universal/package.json","sodium-native":"/node_modules/sodium-native/index.js"},"/node_modules/sodium-universal/package.json":{},"/node_modules/streamx/index.js":{"#package":"/node_modules/streamx/package.json","events-universal":"/node_modules/events-universal/bare.js","fast-fifo":"/node_modules/fast-fifo/index.js","text-decoder":"/node_modules/text-decoder/index.js"},"/node_modules/streamx/package.json":{},"/node_modules/sub-encoder/index.js":{"#package":"/node_modules/sub-encoder/package.json","b4a":"/node_modules/b4a/index.js","codecs":"/node_modules/codecs/index.js"},"/node_modules/sub-encoder/package.json":{},"/node_modules/text-decoder/index.js":{"#package":"/node_modules/text-decoder/package.json","./lib/pass-through-decoder":"/node_modules/text-decoder/lib/pass-through-decoder.js","./lib/utf8-decoder":"/node_modules/text-decoder/lib/utf8-decoder.js"},"/node_modules/text-decoder/lib/pass-through-decoder.js":{"#package":"/node_modules/text-decoder/package.json","b4a":"/node_modules/b4a/index.js"},"/node_modules/text-decoder/lib/utf8-decoder.js":{"#package":"/node_modules/text-decoder/package.json","b4a":"/node_modules/b4a/index.js"},"/node_modules/text-decoder/package.json":{},"/node_modules/time-ordered-set/index.js":{"#package":"/node_modules/time-ordered-set/package.json"},"/node_modules/time-ordered-set/package.json":{},"/node_modules/timeout-refresh/browser.js":{"#package":"/node_modules/timeout-refresh/package.json"},"/node_modules/timeout-refresh/index.js":{"#package":"/node_modules/timeout-refresh/package.json","./browser":"/node_modules/timeout-refresh/browser.js","./node":"/node_modules/timeout-refresh/node.js"},"/node_modules/timeout-refresh/node.js":{"#package":"/node_modules/timeout-refresh/package.json"},"/node_modules/timeout-refresh/package.json":{},"/node_modules/tiny-buffer-map/index.js":{"#package":"/node_modules/tiny-buffer-map/package.json","b4a":"/node_modules/b4a/index.js"},"/node_modules/tiny-buffer-map/package.json":{},"/node_modules/udx-native/binding.js":{"#package":"/node_modules/udx-native/package.json",".":"linked:udx-native.1.19.2.framework/udx-native.1.19.2","require-addon":"/node_modules/require-addon/lib/bare.js"},"/node_modules/udx-native/lib/ip.js":{"#package":"/node_modules/udx-native/package.json"},"/node_modules/udx-native/lib/network-interfaces.js":{"#package":"/node_modules/udx-native/package.json","../binding":"/node_modules/udx-native/binding.js","b4a":"/node_modules/b4a/index.js","events":"/node_modules/bare-events/index.js"},"/node_modules/udx-native/lib/socket.js":{"#package":"/node_modules/udx-native/package.json","../binding":"/node_modules/udx-native/binding.js","./ip":"/node_modules/udx-native/lib/ip.js","b4a":"/node_modules/b4a/index.js","events":"/node_modules/bare-events/index.js"},"/node_modules/udx-native/lib/stream.js":{"#package":"/node_modules/udx-native/package.json","../binding":"/node_modules/udx-native/binding.js","./ip":"/node_modules/udx-native/lib/ip.js","b4a":"/node_modules/b4a/index.js","streamx":"/node_modules/streamx/index.js"},"/node_modules/udx-native/lib/udx.js":{"#package":"/node_modules/udx-native/package.json","../binding":"/node_modules/udx-native/binding.js","./ip":"/node_modules/udx-native/lib/ip.js","./network-interfaces":"/node_modules/udx-native/lib/network-interfaces.js","./socket":"/node_modules/udx-native/lib/socket.js","./stream":"/node_modules/udx-native/lib/stream.js","b4a":"/node_modules/b4a/index.js"},"/node_modules/udx-native/package.json":{},"/node_modules/unordered-set/index.js":{"#package":"/node_modules/unordered-set/package.json"},"/node_modules/unordered-set/package.json":{},"/node_modules/unslab/index.js":{"#package":"/node_modules/unslab/package.json","b4a":"/node_modules/b4a/index.js"},"/node_modules/unslab/package.json":{},"/node_modules/varint/decode.js":{"#package":"/node_modules/varint/package.json"},"/node_modules/varint/encode.js":{"#package":"/node_modules/varint/package.json"},"/node_modules/varint/index.js":{"#package":"/node_modules/varint/package.json","./decode.js":"/node_modules/varint/decode.js","./encode.js":"/node_modules/varint/encode.js","./length.js":"/node_modules/varint/length.js"},"/node_modules/varint/length.js":{"#package":"/node_modules/varint/package.json"},"/node_modules/varint/package.json":{},"/node_modules/which-runtime/index.js":{"#package":"/node_modules/which-runtime/package.json"},"/node_modules/which-runtime/package.json":{},"/node_modules/xache/index.js":{"#package":"/node_modules/xache/package.json"},"/node_modules/xache/package.json":{},"/node_modules/z32/index.js":{"#package":"/node_modules/z32/package.json","b4a":"/node_modules/b4a/index.js"},"/node_modules/z32/package.json":{},"/package.json":{},"/rpc-commands.mjs":{"#package":"/package.json"}},"addons":["linked:bare-crypto.1.12.0.framework/bare-crypto.1.12.0","linked:bare-fs.4.5.1.framework/bare-fs.4.5.1","linked:bare-os.3.6.2.framework/bare-os.3.6.2","linked:bare-url.2.3.2.framework/bare-url.2.3.2","linked:fs-native-extensions.1.4.5.framework/fs-native-extensions.1.4.5","linked:quickbit-native.2.4.8.framework/quickbit-native.2.4.8","linked:rocksdb-native.3.11.4.framework/rocksdb-native.3.11.4","linked:simdle-native.1.3.9.framework/simdle-native.1.3.9","linked:sodium-native.5.0.10.framework/sodium-native.5.0.10","linked:udx-native.1.19.2.framework/udx-native.1.19.2"],"assets":[],"files":{"/backend/backend.mjs":{"offset":0,"length":17167,"mode":420},"/node_modules/@hyperswarm/secret-stream/index.js":{"offset":17167,"length":16722,"mode":420},"/node_modules/@hyperswarm/secret-stream/lib/bridge.js":{"offset":33889,"length":1273,"mode":420},"/node_modules/@hyperswarm/secret-stream/lib/handshake.js":{"offset":35162,"length":1950,"mode":420},"/node_modules/@hyperswarm/secret-stream/package.json":{"offset":37112,"length":1132,"mode":420},"/node_modules/autobase/encoding/legacy.js":{"offset":38244,"length":8848,"mode":420},"/node_modules/autobase/encoding/spec/autobase/index.js":{"offset":47092,"length":18918,"mode":420},"/node_modules/autobase/index.js":{"offset":66010,"length":58147,"mode":420},"/node_modules/autobase/lib/active-writers.js":{"offset":124157,"length":736,"mode":420},"/node_modules/autobase/lib/append-batch.js":{"offset":124893,"length":1426,"mode":420},"/node_modules/autobase/lib/apply-calls.js":{"offset":126319,"length":2275,"mode":420},"/node_modules/autobase/lib/apply-state.js":{"offset":128594,"length":45236,"mode":420},"/node_modules/autobase/lib/boot.js":{"offset":173830,"length":3461,"mode":420},"/node_modules/autobase/lib/caps.js":{"offset":177291,"length":505,"mode":420},"/node_modules/autobase/lib/clock.js":{"offset":177796,"length":749,"mode":420},"/node_modules/autobase/lib/consensus.js":{"offset":178545,"length":11754,"mode":420},"/node_modules/autobase/lib/encryption.js":{"offset":190299,"length":9444,"mode":420},"/node_modules/autobase/lib/fast-forward.js":{"offset":199743,"length":5710,"mode":420},"/node_modules/autobase/lib/fork.js":{"offset":205453,"length":4230,"mode":420},"/node_modules/autobase/lib/linearizer.js":{"offset":209683,"length":9696,"mode":420},"/node_modules/autobase/lib/local-state.js":{"offset":219379,"length":2013,"mode":420},"/node_modules/autobase/lib/messages.js":{"offset":221392,"length":827,"mode":420},"/node_modules/autobase/lib/node-buffer.js":{"offset":222219,"length":1563,"mode":420},"/node_modules/autobase/lib/store.js":{"offset":223782,"length":14107,"mode":420},"/node_modules/autobase/lib/system.js":{"offset":237889,"length":20176,"mode":420},"/node_modules/autobase/lib/timer.js":{"offset":258065,"length":2937,"mode":420},"/node_modules/autobase/lib/topolist.js":{"offset":261002,"length":5108,"mode":420},"/node_modules/autobase/lib/updates.js":{"offset":266110,"length":1148,"mode":420},"/node_modules/autobase/lib/values.js":{"offset":267258,"length":1539,"mode":420},"/node_modules/autobase/lib/wakeup.js":{"offset":268797,"length":4034,"mode":420},"/node_modules/autobase/lib/writer.js":{"offset":272831,"length":8901,"mode":420},"/node_modules/autobase/package.json":{"offset":281732,"length":2249,"mode":420},"/node_modules/b4a/index.js":{"offset":283981,"length":4054,"mode":420},"/node_modules/b4a/package.json":{"offset":288035,"length":1140,"mode":420},"/node_modules/bare-crypto/binding.js":{"offset":289175,"length":33,"mode":420},"/node_modules/bare-crypto/index.js":{"offset":289208,"length":1611,"mode":420},"/node_modules/bare-crypto/lib/cipher.js":{"offset":290819,"length":7366,"mode":420},"/node_modules/bare-crypto/lib/constants.js":{"offset":298185,"length":2313,"mode":420},"/node_modules/bare-crypto/lib/errors.js":{"offset":300498,"length":957,"mode":420},"/node_modules/bare-crypto/lib/hash.js":{"offset":301455,"length":829,"mode":420},"/node_modules/bare-crypto/lib/hmac.js":{"offset":302284,"length":1015,"mode":420},"/node_modules/bare-crypto/lib/key.js":{"offset":303299,"length":1067,"mode":420},"/node_modules/bare-crypto/lib/pbkdf2.js":{"offset":304366,"length":713,"mode":420},"/node_modules/bare-crypto/lib/random.js":{"offset":305079,"length":1707,"mode":420},"/node_modules/bare-crypto/lib/signature.js":{"offset":306786,"length":1010,"mode":420},"/node_modules/bare-crypto/lib/web/algorithm/ed25519.js":{"offset":307796,"length":6918,"mode":420},"/node_modules/bare-crypto/lib/web/algorithm/hmac.js":{"offset":314714,"length":4925,"mode":420},"/node_modules/bare-crypto/lib/web/algorithm/pbkdf2.js":{"offset":319639,"length":1467,"mode":420},"/node_modules/bare-crypto/lib/web/algorithm/sha.js":{"offset":321106,"length":299,"mode":420},"/node_modules/bare-crypto/lib/web/crypto-key.js":{"offset":321405,"length":970,"mode":420},"/node_modules/bare-crypto/package.json":{"offset":322375,"length":1475,"mode":420},"/node_modules/bare-crypto/web.js":{"offset":323850,"length":7393,"mode":420},"/node_modules/bare-events/index.js":{"offset":331243,"length":8033,"mode":420},"/node_modules/bare-events/lib/errors.js":{"offset":339276,"length":671,"mode":420},"/node_modules/bare-events/package.json":{"offset":339947,"length":1399,"mode":420},"/node_modules/bare-fs/binding.js":{"offset":341346,"length":33,"mode":420},"/node_modules/bare-fs/index.js":{"offset":341379,"length":48249,"mode":420},"/node_modules/bare-fs/lib/constants.js":{"offset":389628,"length":1494,"mode":420},"/node_modules/bare-fs/lib/errors.js":{"offset":391122,"length":1163,"mode":420},"/node_modules/bare-fs/package.json":{"offset":392285,"length":1546,"mode":420},"/node_modules/bare-fs/promises.js":{"offset":393831,"length":1866,"mode":420},"/node_modules/bare-os/binding.js":{"offset":395697,"length":33,"mode":420},"/node_modules/bare-os/index.js":{"offset":395730,"length":2433,"mode":420},"/node_modules/bare-os/lib/constants.js":{"offset":398163,"length":113,"mode":420},"/node_modules/bare-os/lib/errors.js":{"offset":398276,"length":479,"mode":420},"/node_modules/bare-os/package.json":{"offset":398755,"length":1023,"mode":420},"/node_modules/bare-path/index.js":{"offset":399778,"length":306,"mode":420},"/node_modules/bare-path/lib/constants.js":{"offset":400084,"length":247,"mode":420},"/node_modules/bare-path/lib/posix.js":{"offset":400331,"length":5991,"mode":420},"/node_modules/bare-path/lib/shared.js":{"offset":406322,"length":1888,"mode":420},"/node_modules/bare-path/lib/win32.js":{"offset":408210,"length":13427,"mode":420},"/node_modules/bare-path/package.json":{"offset":421637,"length":796,"mode":420},"/node_modules/bare-rpc/index.js":{"offset":422433,"length":10199,"mode":420},"/node_modules/bare-rpc/lib/command-router.js":{"offset":432632,"length":1073,"mode":420},"/node_modules/bare-rpc/lib/constants.js":{"offset":433705,"length":270,"mode":420},"/node_modules/bare-rpc/lib/errors.js":{"offset":433975,"length":597,"mode":420},"/node_modules/bare-rpc/lib/incoming-request.js":{"offset":434572,"length":1241,"mode":420},"/node_modules/bare-rpc/lib/incoming-stream.js":{"offset":435813,"length":1263,"mode":420},"/node_modules/bare-rpc/lib/messages.js":{"offset":437076,"length":3934,"mode":420},"/node_modules/bare-rpc/lib/outgoing-request.js":{"offset":441010,"length":1670,"mode":420},"/node_modules/bare-rpc/lib/outgoing-stream.js":{"offset":442680,"length":2374,"mode":420},"/node_modules/bare-rpc/package.json":{"offset":445054,"length":1208,"mode":420},"/node_modules/bare-stream/index.js":{"offset":446262,"length":7658,"mode":420},"/node_modules/bare-stream/package.json":{"offset":453920,"length":1307,"mode":420},"/node_modules/bare-url/binding.js":{"offset":455227,"length":33,"mode":420},"/node_modules/bare-url/index.js":{"offset":455260,"length":9261,"mode":420},"/node_modules/bare-url/lib/errors.js":{"offset":464521,"length":778,"mode":420},"/node_modules/bare-url/lib/url-search-params.js":{"offset":465299,"length":3867,"mode":420},"/node_modules/bare-url/package.json":{"offset":469166,"length":1105,"mode":420},"/node_modules/big-sparse-array/index.js":{"offset":470271,"length":2471,"mode":420},"/node_modules/big-sparse-array/package.json":{"offset":472742,"length":636,"mode":420},"/node_modules/bits-to-bytes/index.js":{"offset":473378,"length":3083,"mode":420},"/node_modules/bits-to-bytes/package.json":{"offset":476461,"length":708,"mode":420},"/node_modules/blind-relay/index.js":{"offset":477169,"length":10851,"mode":420},"/node_modules/blind-relay/lib/errors.js":{"offset":488020,"length":1043,"mode":420},"/node_modules/blind-relay/package.json":{"offset":489063,"length":1046,"mode":420},"/node_modules/bogon/index.js":{"offset":490109,"length":3961,"mode":420},"/node_modules/bogon/package.json":{"offset":494070,"length":657,"mode":420},"/node_modules/codecs/index.js":{"offset":494727,"length":2416,"mode":420},"/node_modules/codecs/package.json":{"offset":497143,"length":655,"mode":420},"/node_modules/compact-encoding-bitfield/index.js":{"offset":497798,"length":1963,"mode":420},"/node_modules/compact-encoding-bitfield/package.json":{"offset":499761,"length":827,"mode":420},"/node_modules/compact-encoding-net/index.js":{"offset":500588,"length":4109,"mode":420},"/node_modules/compact-encoding-net/package.json":{"offset":504697,"length":734,"mode":420},"/node_modules/compact-encoding/endian.js":{"offset":505431,"length":105,"mode":420},"/node_modules/compact-encoding/index.js":{"offset":505536,"length":23634,"mode":420},"/node_modules/compact-encoding/lexint.js":{"offset":529170,"length":2851,"mode":420},"/node_modules/compact-encoding/package.json":{"offset":532021,"length":801,"mode":420},"/node_modules/compact-encoding/raw.js":{"offset":532822,"length":4093,"mode":420},"/node_modules/core-coupler/index.js":{"offset":536915,"length":2243,"mode":420},"/node_modules/core-coupler/package.json":{"offset":539158,"length":599,"mode":420},"/node_modules/corestore/index.js":{"offset":539757,"length":17862,"mode":420},"/node_modules/corestore/lib/audit.js":{"offset":557619,"length":475,"mode":420},"/node_modules/corestore/package.json":{"offset":558094,"length":1085,"mode":420},"/node_modules/debounceify/index.js":{"offset":559179,"length":585,"mode":420},"/node_modules/debounceify/package.json":{"offset":559764,"length":567,"mode":420},"/node_modules/device-file/index.js":{"offset":560331,"length":5900,"mode":420},"/node_modules/device-file/package.json":{"offset":566231,"length":1063,"mode":420},"/node_modules/dht-rpc/index.js":{"offset":567294,"length":25385,"mode":420},"/node_modules/dht-rpc/lib/commands.js":{"offset":592679,"length":82,"mode":420},"/node_modules/dht-rpc/lib/errors.js":{"offset":592761,"length":719,"mode":420},"/node_modules/dht-rpc/lib/io.js":{"offset":593480,"length":15918,"mode":420},"/node_modules/dht-rpc/lib/peer.js":{"offset":609398,"length":631,"mode":420},"/node_modules/dht-rpc/lib/query.js":{"offset":610029,"length":9746,"mode":420},"/node_modules/dht-rpc/lib/session.js":{"offset":619775,"length":1103,"mode":420},"/node_modules/dht-rpc/package.json":{"offset":620878,"length":1218,"mode":420},"/node_modules/events-universal/bare.js":{"offset":622096,"length":40,"mode":420},"/node_modules/events-universal/package.json":{"offset":622136,"length":908,"mode":420},"/node_modules/fast-fifo/fixed-size.js":{"offset":623044,"length":875,"mode":420},"/node_modules/fast-fifo/index.js":{"offset":623919,"length":972,"mode":420},"/node_modules/fast-fifo/package.json":{"offset":624891,"length":682,"mode":420},"/node_modules/fd-lock/index.js":{"offset":625573,"length":1661,"mode":420},"/node_modules/fd-lock/package.json":{"offset":627234,"length":1099,"mode":420},"/node_modules/flat-tree/index.js":{"offset":628333,"length":8164,"mode":420},"/node_modules/flat-tree/package.json":{"offset":636497,"length":631,"mode":420},"/node_modules/fs-native-extensions/binding.js":{"offset":637128,"length":90,"mode":420},"/node_modules/fs-native-extensions/index.js":{"offset":637218,"length":5718,"mode":420},"/node_modules/fs-native-extensions/package.json":{"offset":642936,"length":1699,"mode":420},"/node_modules/hyperbee/index.js":{"offset":644635,"length":46120,"mode":420},"/node_modules/hyperbee/iterators/diff.js":{"offset":690755,"length":5368,"mode":420},"/node_modules/hyperbee/iterators/history.js":{"offset":696123,"length":1642,"mode":420},"/node_modules/hyperbee/iterators/local.js":{"offset":697765,"length":1180,"mode":420},"/node_modules/hyperbee/iterators/range.js":{"offset":698945,"length":4734,"mode":420},"/node_modules/hyperbee/lib/extension.js":{"offset":703679,"length":3445,"mode":420},"/node_modules/hyperbee/lib/messages.js":{"offset":707124,"length":28162,"mode":420},"/node_modules/hyperbee/package.json":{"offset":735286,"length":1216,"mode":420},"/node_modules/hypercore-crypto/index.js":{"offset":736502,"length":5040,"mode":420},"/node_modules/hypercore-crypto/package.json":{"offset":741542,"length":771,"mode":420},"/node_modules/hypercore-errors/index.js":{"offset":742313,"length":4896,"mode":420},"/node_modules/hypercore-errors/package.json":{"offset":747209,"length":688,"mode":420},"/node_modules/hypercore-id-encoding/index.js":{"offset":747897,"length":923,"mode":420},"/node_modules/hypercore-id-encoding/package.json":{"offset":748820,"length":799,"mode":420},"/node_modules/hypercore-storage/index.js":{"offset":749619,"length":27551,"mode":420},"/node_modules/hypercore-storage/lib/block-dependency-stream.js":{"offset":777170,"length":2557,"mode":420},"/node_modules/hypercore-storage/lib/close-error-stream.js":{"offset":779727,"length":276,"mode":420},"/node_modules/hypercore-storage/lib/keys.js":{"offset":780003,"length":7454,"mode":420},"/node_modules/hypercore-storage/lib/streams.js":{"offset":787457,"length":4820,"mode":420},"/node_modules/hypercore-storage/lib/tx.js":{"offset":792277,"length":8416,"mode":420},"/node_modules/hypercore-storage/lib/view.js":{"offset":800693,"length":8378,"mode":420},"/node_modules/hypercore-storage/migrations/0/index.js":{"offset":809071,"length":20125,"mode":420},"/node_modules/hypercore-storage/migrations/0/messages.js":{"offset":829196,"length":26210,"mode":420},"/node_modules/hypercore-storage/package.json":{"offset":855406,"length":1248,"mode":420},"/node_modules/hypercore-storage/spec/hyperschema/index.js":{"offset":856654,"length":13108,"mode":420},"/node_modules/hypercore/index.js":{"offset":869762,"length":33712,"mode":420},"/node_modules/hypercore/lib/audit.js":{"offset":903474,"length":3834,"mode":420},"/node_modules/hypercore/lib/bit-interlude.js":{"offset":907308,"length":4257,"mode":420},"/node_modules/hypercore/lib/bitfield.js":{"offset":911565,"length":11854,"mode":420},"/node_modules/hypercore/lib/caps.js":{"offset":923419,"length":1537,"mode":420},"/node_modules/hypercore/lib/compat.js":{"offset":924956,"length":477,"mode":420},"/node_modules/hypercore/lib/copy-prologue.js":{"offset":925433,"length":5999,"mode":420},"/node_modules/hypercore/lib/core.js":{"offset":931432,"length":24028,"mode":420},"/node_modules/hypercore/lib/default-encryption.js":{"offset":955460,"length":3453,"mode":420},"/node_modules/hypercore/lib/download.js":{"offset":958913,"length":1278,"mode":420},"/node_modules/hypercore/lib/hotswap-queue.js":{"offset":960191,"length":1498,"mode":420},"/node_modules/hypercore/lib/info.js":{"offset":961689,"length":1517,"mode":420},"/node_modules/hypercore/lib/inspect.js":{"offset":963206,"length":1983,"mode":420},"/node_modules/hypercore/lib/merkle-tree.js":{"offset":965189,"length":32847,"mode":420},"/node_modules/hypercore/lib/messages.js":{"offset":998036,"length":27563,"mode":420},"/node_modules/hypercore/lib/multisig.js":{"offset":1025599,"length":2851,"mode":420},"/node_modules/hypercore/lib/mutex.js":{"offset":1028450,"length":1028,"mode":420},"/node_modules/hypercore/lib/receiver-queue.js":{"offset":1029478,"length":1413,"mode":420},"/node_modules/hypercore/lib/remote-bitfield.js":{"offset":1030891,"length":8079,"mode":420},"/node_modules/hypercore/lib/replicator.js":{"offset":1038970,"length":76852,"mode":420},"/node_modules/hypercore/lib/session-state.js":{"offset":1115822,"length":31711,"mode":420},"/node_modules/hypercore/lib/streams.js":{"offset":1147533,"length":3034,"mode":420},"/node_modules/hypercore/lib/verifier.js":{"offset":1150567,"length":9678,"mode":420},"/node_modules/hypercore/package.json":{"offset":1160245,"length":2197,"mode":420},"/node_modules/hyperdht/index.js":{"offset":1162442,"length":16099,"mode":420},"/node_modules/hyperdht/lib/announcer.js":{"offset":1178541,"length":7533,"mode":420},"/node_modules/hyperdht/lib/connect.js":{"offset":1186074,"length":23668,"mode":420},"/node_modules/hyperdht/lib/connection-pool.js":{"offset":1209742,"length":3050,"mode":420},"/node_modules/hyperdht/lib/constants.js":{"offset":1212792,"length":1211,"mode":420},"/node_modules/hyperdht/lib/crypto.js":{"offset":1214003,"length":632,"mode":420},"/node_modules/hyperdht/lib/encode.js":{"offset":1214635,"length":446,"mode":420},"/node_modules/hyperdht/lib/errors.js":{"offset":1215081,"length":3712,"mode":420},"/node_modules/hyperdht/lib/holepuncher.js":{"offset":1218793,"length":10003,"mode":420},"/node_modules/hyperdht/lib/messages.js":{"offset":1228796,"length":11266,"mode":420},"/node_modules/hyperdht/lib/nat.js":{"offset":1240062,"length":4714,"mode":420},"/node_modules/hyperdht/lib/noise-wrap.js":{"offset":1244776,"length":1669,"mode":420},"/node_modules/hyperdht/lib/persistent.js":{"offset":1246445,"length":8086,"mode":420},"/node_modules/hyperdht/lib/raw-stream-set.js":{"offset":1254531,"length":1511,"mode":420},"/node_modules/hyperdht/lib/router.js":{"offset":1256042,"length":6978,"mode":420},"/node_modules/hyperdht/lib/secure-payload.js":{"offset":1263020,"length":1491,"mode":420},"/node_modules/hyperdht/lib/semaphore.js":{"offset":1264511,"length":1577,"mode":420},"/node_modules/hyperdht/lib/server.js":{"offset":1266088,"length":21137,"mode":420},"/node_modules/hyperdht/lib/sleeper.js":{"offset":1287225,"length":690,"mode":420},"/node_modules/hyperdht/lib/socket-pool.js":{"offset":1287915,"length":4343,"mode":420},"/node_modules/hyperdht/package.json":{"offset":1292258,"length":2011,"mode":420},"/node_modules/hyperschema/package.json":{"offset":1294269,"length":1556,"mode":420},"/node_modules/hyperschema/runtime.cjs":{"offset":1295825,"length":54,"mode":420},"/node_modules/hyperswarm/index.js":{"offset":1295879,"length":18226,"mode":420},"/node_modules/hyperswarm/lib/bulk-timer.js":{"offset":1314105,"length":728,"mode":420},"/node_modules/hyperswarm/lib/connection-set.js":{"offset":1314833,"length":823,"mode":420},"/node_modules/hyperswarm/lib/peer-discovery.js":{"offset":1315656,"length":9280,"mode":420},"/node_modules/hyperswarm/lib/peer-info.js":{"offset":1324936,"length":2688,"mode":420},"/node_modules/hyperswarm/lib/retry-timer.js":{"offset":1327624,"length":1889,"mode":420},"/node_modules/hyperswarm/package.json":{"offset":1329513,"length":1244,"mode":420},"/node_modules/index-encoder/index.js":{"offset":1330757,"length":6762,"mode":420},"/node_modules/index-encoder/package.json":{"offset":1337519,"length":729,"mode":420},"/node_modules/is-options/index.js":{"offset":1338248,"length":140,"mode":420},"/node_modules/is-options/package.json":{"offset":1338388,"length":605,"mode":420},"/node_modules/kademlia-routing-table/index.js":{"offset":1338993,"length":4145,"mode":420},"/node_modules/kademlia-routing-table/package.json":{"offset":1343138,"length":967,"mode":420},"/node_modules/mutexify/index.js":{"offset":1344105,"length":536,"mode":420},"/node_modules/mutexify/package.json":{"offset":1344641,"length":679,"mode":420},"/node_modules/mutexify/promise.js":{"offset":1345320,"length":324,"mode":420},"/node_modules/nanoassert/index.js":{"offset":1345644,"length":438,"mode":420},"/node_modules/nanoassert/package.json":{"offset":1346082,"length":647,"mode":420},"/node_modules/nat-sampler/index.js":{"offset":1346729,"length":1550,"mode":420},"/node_modules/nat-sampler/package.json":{"offset":1348279,"length":608,"mode":420},"/node_modules/noise-curve-ed/index.js":{"offset":1348887,"length":1642,"mode":420},"/node_modules/noise-curve-ed/package.json":{"offset":1350529,"length":808,"mode":420},"/node_modules/noise-handshake/cipher.js":{"offset":1351337,"length":2817,"mode":420},"/node_modules/noise-handshake/dh.js":{"offset":1354154,"length":1439,"mode":420},"/node_modules/noise-handshake/hkdf.js":{"offset":1355593,"length":1092,"mode":420},"/node_modules/noise-handshake/hmac.js":{"offset":1356685,"length":1273,"mode":420},"/node_modules/noise-handshake/noise.js":{"offset":1357958,"length":6345,"mode":420},"/node_modules/noise-handshake/package.json":{"offset":1364303,"length":638,"mode":420},"/node_modules/noise-handshake/symmetric-state.js":{"offset":1364941,"length":2206,"mode":420},"/node_modules/protocol-buffers-encodings/index.js":{"offset":1367147,"length":6489,"mode":420},"/node_modules/protocol-buffers-encodings/package.json":{"offset":1373636,"length":719,"mode":420},"/node_modules/protomux-wakeup/index.js":{"offset":1374355,"length":16824,"mode":420},"/node_modules/protomux-wakeup/package.json":{"offset":1391179,"length":972,"mode":420},"/node_modules/protomux-wakeup/spec/hyperschema/index.js":{"offset":1392151,"length":3335,"mode":420},"/node_modules/protomux/index.js":{"offset":1395486,"length":18996,"mode":420},"/node_modules/protomux/package.json":{"offset":1414482,"length":816,"mode":420},"/node_modules/queue-tick/package.json":{"offset":1415298,"length":669,"mode":420},"/node_modules/queue-tick/process-next-tick.js":{"offset":1415967,"length":160,"mode":420},"/node_modules/queue-tick/queue-microtask.js":{"offset":1416127,"length":108,"mode":420},"/node_modules/quickbit-native/binding.js":{"offset":1416235,"length":90,"mode":420},"/node_modules/quickbit-native/index.js":{"offset":1416325,"length":4683,"mode":420},"/node_modules/quickbit-native/package.json":{"offset":1421008,"length":1104,"mode":420},"/node_modules/quickbit-universal/fallback.js":{"offset":1422112,"length":10204,"mode":420},"/node_modules/quickbit-universal/index.js":{"offset":1432316,"length":442,"mode":420},"/node_modules/quickbit-universal/package.json":{"offset":1432758,"length":908,"mode":420},"/node_modules/rache/index.js":{"offset":1433666,"length":2463,"mode":420},"/node_modules/rache/package.json":{"offset":1436129,"length":602,"mode":420},"/node_modules/random-array-iterator/index.js":{"offset":1436731,"length":1001,"mode":420},"/node_modules/random-array-iterator/package.json":{"offset":1437732,"length":700,"mode":420},"/node_modules/ready-resource/index.js":{"offset":1438432,"length":1091,"mode":420},"/node_modules/ready-resource/package.json":{"offset":1439523,"length":812,"mode":420},"/node_modules/record-cache/index.js":{"offset":1440335,"length":3668,"mode":420},"/node_modules/record-cache/package.json":{"offset":1444003,"length":612,"mode":420},"/node_modules/refcounter/index.js":{"offset":1444615,"length":611,"mode":420},"/node_modules/refcounter/package.json":{"offset":1445226,"length":451,"mode":420},"/node_modules/require-addon/lib/bare.js":{"offset":1445677,"length":45,"mode":420},"/node_modules/require-addon/package.json":{"offset":1445722,"length":1449,"mode":420},"/node_modules/resolve-reject-promise/index.js":{"offset":1447171,"length":443,"mode":420},"/node_modules/resolve-reject-promise/package.json":{"offset":1447614,"length":581,"mode":420},"/node_modules/resource-on-exit/index.js":{"offset":1448195,"length":361,"mode":420},"/node_modules/resource-on-exit/package.json":{"offset":1448556,"length":496,"mode":420},"/node_modules/rocksdb-native/binding.js":{"offset":1449052,"length":90,"mode":420},"/node_modules/rocksdb-native/index.js":{"offset":1449142,"length":4708,"mode":420},"/node_modules/rocksdb-native/lib/batch.js":{"offset":1453850,"length":8812,"mode":420},"/node_modules/rocksdb-native/lib/column-family.js":{"offset":1462662,"length":2674,"mode":420},"/node_modules/rocksdb-native/lib/constants.js":{"offset":1465336,"length":94,"mode":420},"/node_modules/rocksdb-native/lib/filter-policy.js":{"offset":1465430,"length":437,"mode":420},"/node_modules/rocksdb-native/lib/iterator.js":{"offset":1465867,"length":4311,"mode":420},"/node_modules/rocksdb-native/lib/snapshot.js":{"offset":1470178,"length":503,"mode":420},"/node_modules/rocksdb-native/lib/state.js":{"offset":1470681,"length":9762,"mode":420},"/node_modules/rocksdb-native/package.json":{"offset":1480443,"length":1539,"mode":420},"/node_modules/safety-catch/index.js":{"offset":1481982,"length":506,"mode":420},"/node_modules/safety-catch/package.json":{"offset":1482488,"length":547,"mode":420},"/node_modules/scope-lock/index.js":{"offset":1483035,"length":1821,"mode":420},"/node_modules/scope-lock/package.json":{"offset":1484856,"length":611,"mode":420},"/node_modules/shuffled-priority-queue/index.js":{"offset":1485467,"length":2607,"mode":420},"/node_modules/shuffled-priority-queue/package.json":{"offset":1488074,"length":691,"mode":420},"/node_modules/signal-promise/index.js":{"offset":1488765,"length":1252,"mode":420},"/node_modules/signal-promise/package.json":{"offset":1490017,"length":503,"mode":420},"/node_modules/signed-varint/index.js":{"offset":1490520,"length":435,"mode":420},"/node_modules/signed-varint/package.json":{"offset":1490955,"length":523,"mode":420},"/node_modules/simdle-native/binding.js":{"offset":1491478,"length":90,"mode":420},"/node_modules/simdle-native/index.js":{"offset":1491568,"length":3474,"mode":420},"/node_modules/simdle-native/package.json":{"offset":1495042,"length":1115,"mode":420},"/node_modules/simdle-universal/fallback.js":{"offset":1496157,"length":5137,"mode":420},"/node_modules/simdle-universal/index.js":{"offset":1501294,"length":103,"mode":420},"/node_modules/simdle-universal/package.json":{"offset":1501397,"length":879,"mode":420},"/node_modules/simdle-universal/scalar.js":{"offset":1502276,"length":469,"mode":420},"/node_modules/sodium-native/binding.js":{"offset":1502745,"length":89,"mode":420},"/node_modules/sodium-native/index.js":{"offset":1502834,"length":66328,"mode":420},"/node_modules/sodium-native/package.json":{"offset":1569162,"length":1356,"mode":420},"/node_modules/sodium-secretstream/index.js":{"offset":1570518,"length":2257,"mode":420},"/node_modules/sodium-secretstream/package.json":{"offset":1572775,"length":657,"mode":420},"/node_modules/sodium-universal/index.js":{"offset":1573432,"length":42,"mode":420},"/node_modules/sodium-universal/package.json":{"offset":1573474,"length":1217,"mode":420},"/node_modules/streamx/index.js":{"offset":1574691,"length":33350,"mode":420},"/node_modules/streamx/package.json":{"offset":1608041,"length":836,"mode":420},"/node_modules/sub-encoder/index.js":{"offset":1608877,"length":1968,"mode":420},"/node_modules/sub-encoder/package.json":{"offset":1610845,"length":908,"mode":420},"/node_modules/text-decoder/index.js":{"offset":1611753,"length":1378,"mode":420},"/node_modules/text-decoder/lib/pass-through-decoder.js":{"offset":1613131,"length":273,"mode":420},"/node_modules/text-decoder/lib/utf8-decoder.js":{"offset":1613404,"length":2529,"mode":420},"/node_modules/text-decoder/package.json":{"offset":1615933,"length":987,"mode":420},"/node_modules/time-ordered-set/index.js":{"offset":1616920,"length":1444,"mode":420},"/node_modules/time-ordered-set/package.json":{"offset":1618364,"length":666,"mode":420},"/node_modules/timeout-refresh/browser.js":{"offset":1619030,"length":1098,"mode":420},"/node_modules/timeout-refresh/index.js":{"offset":1620128,"length":184,"mode":420},"/node_modules/timeout-refresh/node.js":{"offset":1620312,"length":928,"mode":420},"/node_modules/timeout-refresh/package.json":{"offset":1621240,"length":619,"mode":420},"/node_modules/tiny-buffer-map/index.js":{"offset":1621859,"length":936,"mode":420},"/node_modules/tiny-buffer-map/package.json":{"offset":1622795,"length":650,"mode":420},"/node_modules/udx-native/binding.js":{"offset":1623445,"length":90,"mode":420},"/node_modules/udx-native/lib/ip.js":{"offset":1623535,"length":2204,"mode":420},"/node_modules/udx-native/lib/network-interfaces.js":{"offset":1625739,"length":1341,"mode":420},"/node_modules/udx-native/lib/socket.js":{"offset":1627080,"length":7557,"mode":420},"/node_modules/udx-native/lib/stream.js":{"offset":1634637,"length":12706,"mode":420},"/node_modules/udx-native/lib/udx.js":{"offset":1647343,"length":2868,"mode":420},"/node_modules/udx-native/package.json":{"offset":1650211,"length":1615,"mode":420},"/node_modules/unordered-set/index.js":{"offset":1651826,"length":677,"mode":420},"/node_modules/unordered-set/package.json":{"offset":1652503,"length":654,"mode":420},"/node_modules/unslab/index.js":{"offset":1653157,"length":913,"mode":420},"/node_modules/unslab/package.json":{"offset":1654070,"length":613,"mode":420},"/node_modules/varint/decode.js":{"offset":1654683,"length":508,"mode":420},"/node_modules/varint/encode.js":{"offset":1655191,"length":452,"mode":420},"/node_modules/varint/index.js":{"offset":1655643,"length":134,"mode":420},"/node_modules/varint/length.js":{"offset":1655777,"length":471,"mode":420},"/node_modules/varint/package.json":{"offset":1656248,"length":511,"mode":420},"/node_modules/which-runtime/index.js":{"offset":1656759,"length":1231,"mode":420},"/node_modules/which-runtime/package.json":{"offset":1657990,"length":602,"mode":420},"/node_modules/xache/index.js":{"offset":1658592,"length":2378,"mode":420},"/node_modules/xache/package.json":{"offset":1660970,"length":584,"mode":420},"/node_modules/z32/index.js":{"offset":1661554,"length":2654,"mode":420},"/node_modules/z32/package.json":{"offset":1664208,"length":701,"mode":420},"/package.json":{"offset":1664909,"length":1757,"mode":420},"/rpc-commands.mjs":{"offset":1666666,"length":344,"mode":420}}}
+98479
+{"version":0,"id":"2f2bf93fda09982d0176d2149f03648cd141a250013d741b28fcab7df2bbffc6","main":"/backend/backend.mjs","imports":{},"resolutions":{"/backend/backend.mjs":{"#package":"/package.json","../rpc-commands.mjs":"/rpc-commands.mjs","autobase":"/node_modules/autobase/index.js","b4a":"/node_modules/b4a/index.js","bare-crypto":"/node_modules/bare-crypto/index.js","bare-path":"/node_modules/bare-path/index.js","bare-rpc":"/node_modules/bare-rpc/index.js","bare-url":"/node_modules/bare-url/index.js","corestore":"/node_modules/corestore/index.js","hyperswarm":"/node_modules/hyperswarm/index.js"},"/node_modules/@hyperswarm/secret-stream/index.js":{"#package":"/node_modules/@hyperswarm/secret-stream/package.json","./lib/bridge":"/node_modules/@hyperswarm/secret-stream/lib/bridge.js","./lib/handshake":"/node_modules/@hyperswarm/secret-stream/lib/handshake.js","b4a":"/node_modules/b4a/index.js","hypercore-crypto":"/node_modules/hypercore-crypto/index.js","sodium-secretstream":"/node_modules/sodium-secretstream/index.js","sodium-universal":"/node_modules/sodium-universal/index.js","streamx":"/node_modules/streamx/index.js","timeout-refresh":"/node_modules/timeout-refresh/index.js","unslab":"/node_modules/unslab/index.js"},"/node_modules/@hyperswarm/secret-stream/lib/bridge.js":{"#package":"/node_modules/@hyperswarm/secret-stream/package.json","streamx":"/node_modules/streamx/index.js"},"/node_modules/@hyperswarm/secret-stream/lib/handshake.js":{"#package":"/node_modules/@hyperswarm/secret-stream/package.json","b4a":"/node_modules/b4a/index.js","noise-curve-ed":"/node_modules/noise-curve-ed/index.js","noise-handshake":"/node_modules/noise-handshake/noise.js","sodium-universal":"/node_modules/sodium-universal/index.js"},"/node_modules/@hyperswarm/secret-stream/package.json":{},"/node_modules/autobase/encoding/legacy.js":{"#package":"/node_modules/autobase/package.json","compact-encoding":"/node_modules/compact-encoding/index.js","index-encoder":"/node_modules/index-encoder/index.js"},"/node_modules/autobase/encoding/spec/autobase/index.js":{"#package":"/node_modules/autobase/package.json","../../legacy.js":"/node_modules/autobase/encoding/legacy.js","hyperschema/runtime":"/node_modules/hyperschema/runtime.cjs"},"/node_modules/autobase/index.js":{"#package":"/node_modules/autobase/package.json","./lib/active-writers.js":"/node_modules/autobase/lib/active-writers.js","./lib/append-batch.js":"/node_modules/autobase/lib/append-batch.js","./lib/apply-calls.js":"/node_modules/autobase/lib/apply-calls.js","./lib/apply-state.js":"/node_modules/autobase/lib/apply-state.js","./lib/boot.js":"/node_modules/autobase/lib/boot.js","./lib/caps.js":"/node_modules/autobase/lib/caps.js","./lib/encryption.js":"/node_modules/autobase/lib/encryption.js","./lib/fast-forward.js":"/node_modules/autobase/lib/fast-forward.js","./lib/linearizer.js":"/node_modules/autobase/lib/linearizer.js","./lib/local-state.js":"/node_modules/autobase/lib/local-state.js","./lib/messages.js":"/node_modules/autobase/lib/messages.js","./lib/store.js":"/node_modules/autobase/lib/store.js","./lib/system.js":"/node_modules/autobase/lib/system.js","./lib/timer.js":"/node_modules/autobase/lib/timer.js","./lib/updates.js":"/node_modules/autobase/lib/updates.js","./lib/values.js":"/node_modules/autobase/lib/values.js","./lib/wakeup.js":"/node_modules/autobase/lib/wakeup.js","./lib/writer.js":"/node_modules/autobase/lib/writer.js","b4a":"/node_modules/b4a/index.js","compact-encoding":"/node_modules/compact-encoding/index.js","core-coupler":"/node_modules/core-coupler/index.js","debounceify":"/node_modules/debounceify/index.js","hypercore":"/node_modules/hypercore/index.js","hypercore-id-encoding":"/node_modules/hypercore-id-encoding/index.js","nanoassert":"/node_modules/nanoassert/index.js","protomux-wakeup":"/node_modules/protomux-wakeup/index.js","ready-resource":"/node_modules/ready-resource/index.js","resolve-reject-promise":"/node_modules/resolve-reject-promise/index.js","safety-catch":"/node_modules/safety-catch/index.js","scope-lock":"/node_modules/scope-lock/index.js","signal-promise":"/node_modules/signal-promise/index.js"},"/node_modules/autobase/lib/active-writers.js":{"#package":"/node_modules/autobase/package.json","b4a":"/node_modules/b4a/index.js"},"/node_modules/autobase/lib/append-batch.js":{"#package":"/node_modules/autobase/package.json","signal-promise":"/node_modules/signal-promise/index.js"},"/node_modules/autobase/lib/apply-calls.js":{"#package":"/node_modules/autobase/package.json"},"/node_modules/autobase/lib/apply-state.js":{"#package":"/node_modules/autobase/package.json","./apply-calls.js":"/node_modules/autobase/lib/apply-calls.js","./caps.js":"/node_modules/autobase/lib/caps.js","./encryption.js":"/node_modules/autobase/lib/encryption.js","./fork.js":"/node_modules/autobase/lib/fork.js","./local-state.js":"/node_modules/autobase/lib/local-state.js","./messages.js":"/node_modules/autobase/lib/messages.js","./system.js":"/node_modules/autobase/lib/system.js","./updates.js":"/node_modules/autobase/lib/updates.js","./values.js":"/node_modules/autobase/lib/values.js","b4a":"/node_modules/b4a/index.js","compact-encoding":"/node_modules/compact-encoding/index.js","hypercore-crypto":"/node_modules/hypercore-crypto/index.js","hypercore/lib/multisig.js":"/node_modules/hypercore/lib/multisig.js","nanoassert":"/node_modules/nanoassert/index.js","ready-resource":"/node_modules/ready-resource/index.js","safety-catch":"/node_modules/safety-catch/index.js"},"/node_modules/autobase/lib/boot.js":{"#package":"/node_modules/autobase/package.json","./messages.js":"/node_modules/autobase/lib/messages.js","compact-encoding":"/node_modules/compact-encoding/index.js"},"/node_modules/autobase/lib/caps.js":{"#package":"/node_modules/autobase/package.json","hypercore-crypto":"/node_modules/hypercore-crypto/index.js"},"/node_modules/autobase/lib/clock.js":{"#package":"/node_modules/autobase/package.json","tiny-buffer-map":"/node_modules/tiny-buffer-map/index.js"},"/node_modules/autobase/lib/consensus.js":{"#package":"/node_modules/autobase/package.json","./clock.js":"/node_modules/autobase/lib/clock.js","tiny-buffer-map":"/node_modules/tiny-buffer-map/index.js"},"/node_modules/autobase/lib/encryption.js":{"#package":"/node_modules/autobase/package.json","./caps.js":"/node_modules/autobase/lib/caps.js","./messages.js":"/node_modules/autobase/lib/messages.js","./system.js":"/node_modules/autobase/lib/system.js","b4a":"/node_modules/b4a/index.js","compact-encoding":"/node_modules/compact-encoding/index.js","hypercore-crypto":"/node_modules/hypercore-crypto/index.js","hypercore/lib/default-encryption.js":"/node_modules/hypercore/lib/default-encryption.js","ready-resource":"/node_modules/ready-resource/index.js","resolve-reject-promise":"/node_modules/resolve-reject-promise/index.js","sodium-universal":"/node_modules/sodium-universal/index.js"},"/node_modules/autobase/lib/fast-forward.js":{"#package":"/node_modules/autobase/package.json","./encryption.js":"/node_modules/autobase/lib/encryption.js","./system.js":"/node_modules/autobase/lib/system.js","resolve-reject-promise":"/node_modules/resolve-reject-promise/index.js","safety-catch":"/node_modules/safety-catch/index.js"},"/node_modules/autobase/lib/fork.js":{"#package":"/node_modules/autobase/package.json","./encryption.js":"/node_modules/autobase/lib/encryption.js","./messages.js":"/node_modules/autobase/lib/messages.js","./system.js":"/node_modules/autobase/lib/system.js","compact-encoding":"/node_modules/compact-encoding/index.js"},"/node_modules/autobase/lib/linearizer.js":{"#package":"/node_modules/autobase/package.json","./clock.js":"/node_modules/autobase/lib/clock.js","./consensus.js":"/node_modules/autobase/lib/consensus.js","./topolist.js":"/node_modules/autobase/lib/topolist.js","b4a":"/node_modules/b4a/index.js","nanoassert":"/node_modules/nanoassert/index.js"},"/node_modules/autobase/lib/local-state.js":{"#package":"/node_modules/autobase/package.json","./messages.js":"/node_modules/autobase/lib/messages.js","b4a":"/node_modules/b4a/index.js","compact-encoding":"/node_modules/compact-encoding/index.js"},"/node_modules/autobase/lib/messages.js":{"#package":"/node_modules/autobase/package.json","../encoding/spec/autobase":"/node_modules/autobase/encoding/spec/autobase/index.js"},"/node_modules/autobase/lib/node-buffer.js":{"#package":"/node_modules/autobase/package.json"},"/node_modules/autobase/lib/store.js":{"#package":"/node_modules/autobase/package.json","./messages.js":"/node_modules/autobase/lib/messages.js","b4a":"/node_modules/b4a/index.js","compact-encoding":"/node_modules/compact-encoding/index.js","hypercore":"/node_modules/hypercore/index.js","hypercore-crypto":"/node_modules/hypercore-crypto/index.js"},"/node_modules/autobase/lib/system.js":{"#package":"/node_modules/autobase/package.json","./caps.js":"/node_modules/autobase/lib/caps.js","./messages.js":"/node_modules/autobase/lib/messages.js","b4a":"/node_modules/b4a/index.js","compact-encoding":"/node_modules/compact-encoding/index.js","hyperbee":"/node_modules/hyperbee/index.js","hypercore-crypto":"/node_modules/hypercore-crypto/index.js","ready-resource":"/node_modules/ready-resource/index.js","sub-encoder":"/node_modules/sub-encoder/index.js"},"/node_modules/autobase/lib/timer.js":{"#package":"/node_modules/autobase/package.json","safety-catch":"/node_modules/safety-catch/index.js"},"/node_modules/autobase/lib/topolist.js":{"#package":"/node_modules/autobase/package.json","b4a":"/node_modules/b4a/index.js","nanoassert":"/node_modules/nanoassert/index.js"},"/node_modules/autobase/lib/updates.js":{"#package":"/node_modules/autobase/package.json"},"/node_modules/autobase/lib/values.js":{"#package":"/node_modules/autobase/package.json","./caps.js":"/node_modules/autobase/lib/caps.js","./encryption.js":"/node_modules/autobase/lib/encryption.js","./messages.js":"/node_modules/autobase/lib/messages.js","b4a":"/node_modules/b4a/index.js","compact-encoding":"/node_modules/compact-encoding/index.js","hypercore-crypto":"/node_modules/hypercore-crypto/index.js"},"/node_modules/autobase/lib/wakeup.js":{"#package":"/node_modules/autobase/package.json","b4a":"/node_modules/b4a/index.js","compact-encoding":"/node_modules/compact-encoding/index.js","ready-resource":"/node_modules/ready-resource/index.js","safety-catch":"/node_modules/safety-catch/index.js"},"/node_modules/autobase/lib/writer.js":{"#package":"/node_modules/autobase/package.json","./linearizer.js":"/node_modules/autobase/lib/linearizer.js","./node-buffer.js":"/node_modules/autobase/lib/node-buffer.js","b4a":"/node_modules/b4a/index.js","compact-encoding":"/node_modules/compact-encoding/index.js","nanoassert":"/node_modules/nanoassert/index.js","ready-resource":"/node_modules/ready-resource/index.js","signal-promise":"/node_modules/signal-promise/index.js"},"/node_modules/autobase/package.json":{},"/node_modules/b4a/index.js":{"#package":"/node_modules/b4a/package.json"},"/node_modules/b4a/package.json":{},"/node_modules/bare-crypto/binding.js":{"#package":"/node_modules/bare-crypto/package.json",".":"linked:libbare-crypto.1.12.0.so"},"/node_modules/bare-crypto/index.js":{"#package":"/node_modules/bare-crypto/package.json","./lib/cipher":"/node_modules/bare-crypto/lib/cipher.js","./lib/constants":"/node_modules/bare-crypto/lib/constants.js","./lib/hash":"/node_modules/bare-crypto/lib/hash.js","./lib/hmac":"/node_modules/bare-crypto/lib/hmac.js","./lib/key":"/node_modules/bare-crypto/lib/key.js","./lib/pbkdf2":"/node_modules/bare-crypto/lib/pbkdf2.js","./lib/random":"/node_modules/bare-crypto/lib/random.js","./lib/signature":"/node_modules/bare-crypto/lib/signature.js","./web":"/node_modules/bare-crypto/web.js"},"/node_modules/bare-crypto/lib/cipher.js":{"#package":"/node_modules/bare-crypto/package.json","../binding":"/node_modules/bare-crypto/binding.js","./constants":"/node_modules/bare-crypto/lib/constants.js","bare-stream":"/node_modules/bare-stream/index.js"},"/node_modules/bare-crypto/lib/constants.js":{"#package":"/node_modules/bare-crypto/package.json","../binding":"/node_modules/bare-crypto/binding.js","./errors":"/node_modules/bare-crypto/lib/errors.js"},"/node_modules/bare-crypto/lib/errors.js":{"#package":"/node_modules/bare-crypto/package.json"},"/node_modules/bare-crypto/lib/hash.js":{"#package":"/node_modules/bare-crypto/package.json","../binding":"/node_modules/bare-crypto/binding.js","./constants":"/node_modules/bare-crypto/lib/constants.js","bare-stream":"/node_modules/bare-stream/index.js"},"/node_modules/bare-crypto/lib/hmac.js":{"#package":"/node_modules/bare-crypto/package.json","../binding":"/node_modules/bare-crypto/binding.js","./constants":"/node_modules/bare-crypto/lib/constants.js","bare-stream":"/node_modules/bare-stream/index.js"},"/node_modules/bare-crypto/lib/key.js":{"#package":"/node_modules/bare-crypto/package.json","../binding":"/node_modules/bare-crypto/binding.js","./constants":"/node_modules/bare-crypto/lib/constants.js"},"/node_modules/bare-crypto/lib/pbkdf2.js":{"#package":"/node_modules/bare-crypto/package.json","../binding":"/node_modules/bare-crypto/binding.js","./constants":"/node_modules/bare-crypto/lib/constants.js"},"/node_modules/bare-crypto/lib/random.js":{"#package":"/node_modules/bare-crypto/package.json","../binding":"/node_modules/bare-crypto/binding.js"},"/node_modules/bare-crypto/lib/signature.js":{"#package":"/node_modules/bare-crypto/package.json","../binding":"/node_modules/bare-crypto/binding.js","./constants":"/node_modules/bare-crypto/lib/constants.js"},"/node_modules/bare-crypto/lib/web/algorithm/ed25519.js":{"#package":"/node_modules/bare-crypto/package.json","../../..":"/node_modules/bare-crypto/index.js","../../../binding":"/node_modules/bare-crypto/binding.js","../../errors":"/node_modules/bare-crypto/lib/errors.js","../../key":"/node_modules/bare-crypto/lib/key.js","../crypto-key":"/node_modules/bare-crypto/lib/web/crypto-key.js"},"/node_modules/bare-crypto/lib/web/algorithm/hmac.js":{"#package":"/node_modules/bare-crypto/package.json","../../..":"/node_modules/bare-crypto/index.js","../../errors":"/node_modules/bare-crypto/lib/errors.js","../crypto-key":"/node_modules/bare-crypto/lib/web/crypto-key.js"},"/node_modules/bare-crypto/lib/web/algorithm/pbkdf2.js":{"#package":"/node_modules/bare-crypto/package.json","../../..":"/node_modules/bare-crypto/index.js","../../errors":"/node_modules/bare-crypto/lib/errors.js","../crypto-key":"/node_modules/bare-crypto/lib/web/crypto-key.js"},"/node_modules/bare-crypto/lib/web/algorithm/sha.js":{"#package":"/node_modules/bare-crypto/package.json","../../..":"/node_modules/bare-crypto/index.js"},"/node_modules/bare-crypto/lib/web/crypto-key.js":{"#package":"/node_modules/bare-crypto/package.json"},"/node_modules/bare-crypto/package.json":{},"/node_modules/bare-crypto/web.js":{"#package":"/node_modules/bare-crypto/package.json",".":"/node_modules/bare-crypto/index.js","./lib/errors":"/node_modules/bare-crypto/lib/errors.js","./lib/web/algorithm/ed25519":"/node_modules/bare-crypto/lib/web/algorithm/ed25519.js","./lib/web/algorithm/hmac":"/node_modules/bare-crypto/lib/web/algorithm/hmac.js","./lib/web/algorithm/pbkdf2":"/node_modules/bare-crypto/lib/web/algorithm/pbkdf2.js","./lib/web/algorithm/sha":"/node_modules/bare-crypto/lib/web/algorithm/sha.js","./lib/web/crypto-key":"/node_modules/bare-crypto/lib/web/crypto-key.js"},"/node_modules/bare-events/index.js":{"#package":"/node_modules/bare-events/package.json","./lib/errors":"/node_modules/bare-events/lib/errors.js"},"/node_modules/bare-events/lib/errors.js":{"#package":"/node_modules/bare-events/package.json"},"/node_modules/bare-events/package.json":{},"/node_modules/bare-fs/binding.js":{"#package":"/node_modules/bare-fs/package.json",".":"linked:libbare-fs.4.5.2.so"},"/node_modules/bare-fs/index.js":{"#package":"/node_modules/bare-fs/package.json","./binding":"/node_modules/bare-fs/binding.js","./lib/constants":"/node_modules/bare-fs/lib/constants.js","./lib/errors":"/node_modules/bare-fs/lib/errors.js","./promises":"/node_modules/bare-fs/promises.js","bare-events":"/node_modules/bare-events/index.js","bare-path":"/node_modules/bare-path/index.js","bare-stream":"/node_modules/bare-stream/index.js","bare-url":"/node_modules/bare-url/index.js","fast-fifo":"/node_modules/fast-fifo/index.js"},"/node_modules/bare-fs/lib/constants.js":{"#package":"/node_modules/bare-fs/package.json","../binding":"/node_modules/bare-fs/binding.js"},"/node_modules/bare-fs/lib/errors.js":{"#package":"/node_modules/bare-fs/package.json","bare-os":"/node_modules/bare-os/index.js"},"/node_modules/bare-fs/package.json":{},"/node_modules/bare-fs/promises.js":{"#package":"/node_modules/bare-fs/package.json",".":"/node_modules/bare-fs/index.js","bare-events":"/node_modules/bare-events/index.js"},"/node_modules/bare-os/binding.js":{"#package":"/node_modules/bare-os/package.json",".":"linked:libbare-os.3.6.2.so"},"/node_modules/bare-os/index.js":{"#package":"/node_modules/bare-os/package.json","./binding":"/node_modules/bare-os/binding.js","./lib/constants":"/node_modules/bare-os/lib/constants.js","./lib/errors":"/node_modules/bare-os/lib/errors.js"},"/node_modules/bare-os/lib/constants.js":{"#package":"/node_modules/bare-os/package.json","../binding":"/node_modules/bare-os/binding.js"},"/node_modules/bare-os/lib/errors.js":{"#package":"/node_modules/bare-os/package.json"},"/node_modules/bare-os/package.json":{},"/node_modules/bare-path/index.js":{"#package":"/node_modules/bare-path/package.json","./lib/posix":"/node_modules/bare-path/lib/posix.js","./lib/win32":"/node_modules/bare-path/lib/win32.js"},"/node_modules/bare-path/lib/constants.js":{"#package":"/node_modules/bare-path/package.json"},"/node_modules/bare-path/lib/posix.js":{"#package":"/node_modules/bare-path/package.json","./constants":"/node_modules/bare-path/lib/constants.js","./shared":"/node_modules/bare-path/lib/shared.js","./win32":"/node_modules/bare-path/lib/win32.js","bare-os":"/node_modules/bare-os/index.js"},"/node_modules/bare-path/lib/shared.js":{"#package":"/node_modules/bare-path/package.json","./constants":"/node_modules/bare-path/lib/constants.js"},"/node_modules/bare-path/lib/win32.js":{"#package":"/node_modules/bare-path/package.json","./constants":"/node_modules/bare-path/lib/constants.js","./posix":"/node_modules/bare-path/lib/posix.js","./shared":"/node_modules/bare-path/lib/shared.js","bare-os":"/node_modules/bare-os/index.js"},"/node_modules/bare-path/package.json":{},"/node_modules/bare-rpc/index.js":{"#package":"/node_modules/bare-rpc/package.json","./lib/command-router":"/node_modules/bare-rpc/lib/command-router.js","./lib/constants":"/node_modules/bare-rpc/lib/constants.js","./lib/incoming-request":"/node_modules/bare-rpc/lib/incoming-request.js","./lib/incoming-stream":"/node_modules/bare-rpc/lib/incoming-stream.js","./lib/messages":"/node_modules/bare-rpc/lib/messages.js","./lib/outgoing-request":"/node_modules/bare-rpc/lib/outgoing-request.js","./lib/outgoing-stream":"/node_modules/bare-rpc/lib/outgoing-stream.js","b4a":"/node_modules/b4a/index.js","compact-encoding":"/node_modules/compact-encoding/index.js","safety-catch":"/node_modules/safety-catch/index.js"},"/node_modules/bare-rpc/lib/command-router.js":{"#package":"/node_modules/bare-rpc/package.json","compact-encoding":"/node_modules/compact-encoding/index.js"},"/node_modules/bare-rpc/lib/constants.js":{"#package":"/node_modules/bare-rpc/package.json"},"/node_modules/bare-rpc/lib/errors.js":{"#package":"/node_modules/bare-rpc/package.json"},"/node_modules/bare-rpc/lib/incoming-request.js":{"#package":"/node_modules/bare-rpc/package.json","./errors":"/node_modules/bare-rpc/lib/errors.js","compact-encoding":"/node_modules/compact-encoding/index.js"},"/node_modules/bare-rpc/lib/incoming-stream.js":{"#package":"/node_modules/bare-rpc/package.json","./constants":"/node_modules/bare-rpc/lib/constants.js","bare-stream":"/node_modules/bare-stream/index.js"},"/node_modules/bare-rpc/lib/messages.js":{"#package":"/node_modules/bare-rpc/package.json","./constants":"/node_modules/bare-rpc/lib/constants.js","./errors":"/node_modules/bare-rpc/lib/errors.js","compact-encoding":"/node_modules/compact-encoding/index.js"},"/node_modules/bare-rpc/lib/outgoing-request.js":{"#package":"/node_modules/bare-rpc/package.json","./errors":"/node_modules/bare-rpc/lib/errors.js","compact-encoding":"/node_modules/compact-encoding/index.js"},"/node_modules/bare-rpc/lib/outgoing-stream.js":{"#package":"/node_modules/bare-rpc/package.json","./constants":"/node_modules/bare-rpc/lib/constants.js","bare-stream":"/node_modules/bare-stream/index.js"},"/node_modules/bare-rpc/package.json":{},"/node_modules/bare-stream/index.js":{"#package":"/node_modules/bare-stream/package.json","streamx":"/node_modules/streamx/index.js"},"/node_modules/bare-stream/package.json":{},"/node_modules/bare-url/binding.js":{"#package":"/node_modules/bare-url/package.json",".":"linked:libbare-url.2.3.2.so"},"/node_modules/bare-url/index.js":{"#package":"/node_modules/bare-url/package.json","./binding":"/node_modules/bare-url/binding.js","./lib/errors":"/node_modules/bare-url/lib/errors.js","./lib/url-search-params":"/node_modules/bare-url/lib/url-search-params.js","bare-path":"/node_modules/bare-path/index.js"},"/node_modules/bare-url/lib/errors.js":{"#package":"/node_modules/bare-url/package.json"},"/node_modules/bare-url/lib/url-search-params.js":{"#package":"/node_modules/bare-url/package.json"},"/node_modules/bare-url/package.json":{},"/node_modules/big-sparse-array/index.js":{"#package":"/node_modules/big-sparse-array/package.json"},"/node_modules/big-sparse-array/package.json":{},"/node_modules/bits-to-bytes/index.js":{"#package":"/node_modules/bits-to-bytes/package.json","b4a":"/node_modules/b4a/index.js"},"/node_modules/bits-to-bytes/package.json":{},"/node_modules/blind-relay/index.js":{"#package":"/node_modules/blind-relay/package.json","./lib/errors":"/node_modules/blind-relay/lib/errors.js","b4a":"/node_modules/b4a/index.js","bits-to-bytes":"/node_modules/bits-to-bytes/index.js","compact-encoding":"/node_modules/compact-encoding/index.js","compact-encoding-bitfield":"/node_modules/compact-encoding-bitfield/index.js","events":"/node_modules/bare-events/index.js","protomux":"/node_modules/protomux/index.js","sodium-universal":"/node_modules/sodium-universal/index.js","streamx":"/node_modules/streamx/index.js"},"/node_modules/blind-relay/lib/errors.js":{"#package":"/node_modules/blind-relay/package.json"},"/node_modules/blind-relay/package.json":{},"/node_modules/bogon/index.js":{"#package":"/node_modules/bogon/package.json","b4a":"/node_modules/b4a/index.js","compact-encoding":"/node_modules/compact-encoding/index.js","compact-encoding-net":"/node_modules/compact-encoding-net/index.js"},"/node_modules/bogon/package.json":{},"/node_modules/codecs/index.js":{"#package":"/node_modules/codecs/package.json","b4a":"/node_modules/b4a/index.js"},"/node_modules/codecs/package.json":{},"/node_modules/compact-encoding-bitfield/index.js":{"#package":"/node_modules/compact-encoding-bitfield/package.json","compact-encoding":"/node_modules/compact-encoding/index.js"},"/node_modules/compact-encoding-bitfield/package.json":{},"/node_modules/compact-encoding-net/index.js":{"#package":"/node_modules/compact-encoding-net/package.json","compact-encoding":"/node_modules/compact-encoding/index.js"},"/node_modules/compact-encoding-net/package.json":{},"/node_modules/compact-encoding/endian.js":{"#package":"/node_modules/compact-encoding/package.json"},"/node_modules/compact-encoding/index.js":{"#package":"/node_modules/compact-encoding/package.json","./endian":"/node_modules/compact-encoding/endian.js","./lexint":"/node_modules/compact-encoding/lexint.js","./raw":"/node_modules/compact-encoding/raw.js","b4a":"/node_modules/b4a/index.js"},"/node_modules/compact-encoding/lexint.js":{"#package":"/node_modules/compact-encoding/package.json"},"/node_modules/compact-encoding/package.json":{},"/node_modules/compact-encoding/raw.js":{"#package":"/node_modules/compact-encoding/package.json","./endian":"/node_modules/compact-encoding/endian.js","b4a":"/node_modules/b4a/index.js"},"/node_modules/core-coupler/index.js":{"#package":"/node_modules/core-coupler/package.json","safety-catch":"/node_modules/safety-catch/index.js"},"/node_modules/core-coupler/package.json":{},"/node_modules/corestore/index.js":{"#package":"/node_modules/corestore/package.json","./lib/audit.js":"/node_modules/corestore/lib/audit.js","b4a":"/node_modules/b4a/index.js","hypercore":"/node_modules/hypercore/index.js","hypercore-crypto":"/node_modules/hypercore-crypto/index.js","hypercore-errors":"/node_modules/hypercore-errors/index.js","hypercore-id-encoding":"/node_modules/hypercore-id-encoding/index.js","ready-resource":"/node_modules/ready-resource/index.js","sodium-universal":"/node_modules/sodium-universal/index.js","which-runtime":"/node_modules/which-runtime/index.js"},"/node_modules/corestore/lib/audit.js":{"#package":"/node_modules/corestore/package.json"},"/node_modules/corestore/package.json":{},"/node_modules/debounceify/index.js":{"#package":"/node_modules/debounceify/package.json"},"/node_modules/debounceify/package.json":{},"/node_modules/device-file/index.js":{"#package":"/node_modules/device-file/package.json","b4a":"/node_modules/b4a/index.js","fd-lock":"/node_modules/fd-lock/index.js","fs":"/node_modules/bare-fs/index.js","fs-native-extensions":"/node_modules/fs-native-extensions/index.js","path":"/node_modules/bare-path/index.js","ready-resource":"/node_modules/ready-resource/index.js"},"/node_modules/device-file/package.json":{},"/node_modules/dht-rpc/index.js":{"#package":"/node_modules/dht-rpc/package.json","./lib/commands":"/node_modules/dht-rpc/lib/commands.js","./lib/errors":"/node_modules/dht-rpc/lib/errors.js","./lib/io":"/node_modules/dht-rpc/lib/io.js","./lib/peer":"/node_modules/dht-rpc/lib/peer.js","./lib/query":"/node_modules/dht-rpc/lib/query.js","./lib/session":"/node_modules/dht-rpc/lib/session.js","b4a":"/node_modules/b4a/index.js","compact-encoding":"/node_modules/compact-encoding/index.js","events":"/node_modules/bare-events/index.js","kademlia-routing-table":"/node_modules/kademlia-routing-table/index.js","nat-sampler":"/node_modules/nat-sampler/index.js","sodium-universal":"/node_modules/sodium-universal/index.js","time-ordered-set":"/node_modules/time-ordered-set/index.js","udx-native":"/node_modules/udx-native/lib/udx.js"},"/node_modules/dht-rpc/lib/commands.js":{"#package":"/node_modules/dht-rpc/package.json"},"/node_modules/dht-rpc/lib/errors.js":{"#package":"/node_modules/dht-rpc/package.json"},"/node_modules/dht-rpc/lib/io.js":{"#package":"/node_modules/dht-rpc/package.json","./errors":"/node_modules/dht-rpc/lib/errors.js","./peer":"/node_modules/dht-rpc/lib/peer.js","b4a":"/node_modules/b4a/index.js","compact-encoding":"/node_modules/compact-encoding/index.js","fast-fifo":"/node_modules/fast-fifo/index.js","sodium-universal":"/node_modules/sodium-universal/index.js"},"/node_modules/dht-rpc/lib/peer.js":{"#package":"/node_modules/dht-rpc/package.json","b4a":"/node_modules/b4a/index.js","compact-encoding":"/node_modules/compact-encoding/index.js","compact-encoding-net":"/node_modules/compact-encoding-net/index.js","sodium-universal":"/node_modules/sodium-universal/index.js"},"/node_modules/dht-rpc/lib/query.js":{"#package":"/node_modules/dht-rpc/package.json","./commands":"/node_modules/dht-rpc/lib/commands.js","./peer":"/node_modules/dht-rpc/lib/peer.js","b4a":"/node_modules/b4a/index.js","streamx":"/node_modules/streamx/index.js"},"/node_modules/dht-rpc/lib/session.js":{"#package":"/node_modules/dht-rpc/package.json"},"/node_modules/dht-rpc/package.json":{},"/node_modules/events-universal/bare.js":{"#package":"/node_modules/events-universal/package.json","bare-events":"/node_modules/bare-events/index.js"},"/node_modules/events-universal/package.json":{},"/node_modules/fast-fifo/fixed-size.js":{"#package":"/node_modules/fast-fifo/package.json"},"/node_modules/fast-fifo/index.js":{"#package":"/node_modules/fast-fifo/package.json","./fixed-size":"/node_modules/fast-fifo/fixed-size.js"},"/node_modules/fast-fifo/package.json":{},"/node_modules/fd-lock/index.js":{"#package":"/node_modules/fd-lock/package.json","fs":"/node_modules/bare-fs/index.js","fs-native-extensions":"/node_modules/fs-native-extensions/index.js","ready-resource":"/node_modules/ready-resource/index.js","resource-on-exit":"/node_modules/resource-on-exit/index.js"},"/node_modules/fd-lock/package.json":{},"/node_modules/flat-tree/index.js":{"#package":"/node_modules/flat-tree/package.json"},"/node_modules/flat-tree/package.json":{},"/node_modules/fs-native-extensions/binding.js":{"#package":"/node_modules/fs-native-extensions/package.json",".":"linked:libfs-native-extensions.1.4.5.so","require-addon":"/node_modules/require-addon/lib/bare.js"},"/node_modules/fs-native-extensions/index.js":{"#package":"/node_modules/fs-native-extensions/package.json","./binding":"/node_modules/fs-native-extensions/binding.js","which-runtime":"/node_modules/which-runtime/index.js"},"/node_modules/fs-native-extensions/package.json":{},"/node_modules/hyperbee/index.js":{"#package":"/node_modules/hyperbee/package.json","./iterators/diff":"/node_modules/hyperbee/iterators/diff.js","./iterators/history":"/node_modules/hyperbee/iterators/history.js","./iterators/local":"/node_modules/hyperbee/iterators/local.js","./iterators/range":"/node_modules/hyperbee/iterators/range.js","./lib/extension":"/node_modules/hyperbee/lib/extension.js","./lib/messages":"/node_modules/hyperbee/lib/messages.js","b4a":"/node_modules/b4a/index.js","codecs":"/node_modules/codecs/index.js","debounceify":"/node_modules/debounceify/index.js","hypercore-errors":"/node_modules/hypercore-errors/index.js","mutexify/promise":"/node_modules/mutexify/promise.js","rache":"/node_modules/rache/index.js","ready-resource":"/node_modules/ready-resource/index.js","resolve-reject-promise":"/node_modules/resolve-reject-promise/index.js","safety-catch":"/node_modules/safety-catch/index.js","streamx":"/node_modules/streamx/index.js","unslab":"/node_modules/unslab/index.js"},"/node_modules/hyperbee/iterators/diff.js":{"#package":"/node_modules/hyperbee/package.json","b4a":"/node_modules/b4a/index.js"},"/node_modules/hyperbee/iterators/history.js":{"#package":"/node_modules/hyperbee/package.json"},"/node_modules/hyperbee/iterators/local.js":{"#package":"/node_modules/hyperbee/package.json"},"/node_modules/hyperbee/iterators/range.js":{"#package":"/node_modules/hyperbee/package.json","b4a":"/node_modules/b4a/index.js"},"/node_modules/hyperbee/lib/extension.js":{"#package":"/node_modules/hyperbee/package.json","./messages":"/node_modules/hyperbee/lib/messages.js"},"/node_modules/hyperbee/lib/messages.js":{"#package":"/node_modules/hyperbee/package.json","b4a":"/node_modules/b4a/index.js","protocol-buffers-encodings":"/node_modules/protocol-buffers-encodings/index.js"},"/node_modules/hyperbee/package.json":{},"/node_modules/hypercore-crypto/index.js":{"#package":"/node_modules/hypercore-crypto/package.json","b4a":"/node_modules/b4a/index.js","compact-encoding":"/node_modules/compact-encoding/index.js","sodium-universal":"/node_modules/sodium-universal/index.js"},"/node_modules/hypercore-crypto/package.json":{},"/node_modules/hypercore-errors/index.js":{"#package":"/node_modules/hypercore-errors/package.json","hypercore-id-encoding":"/node_modules/hypercore-id-encoding/index.js"},"/node_modules/hypercore-errors/package.json":{},"/node_modules/hypercore-id-encoding/index.js":{"#package":"/node_modules/hypercore-id-encoding/package.json","b4a":"/node_modules/b4a/index.js","z32":"/node_modules/z32/index.js"},"/node_modules/hypercore-id-encoding/package.json":{},"/node_modules/hypercore-storage/index.js":{"#package":"/node_modules/hypercore-storage/package.json","./lib/keys.js":"/node_modules/hypercore-storage/lib/keys.js","./lib/streams.js":"/node_modules/hypercore-storage/lib/streams.js","./lib/tx.js":"/node_modules/hypercore-storage/lib/tx.js","./lib/view.js":"/node_modules/hypercore-storage/lib/view.js","./migrations/0":"/node_modules/hypercore-storage/migrations/0/index.js","device-file":"/node_modules/device-file/index.js","fs":"/node_modules/bare-fs/index.js","path":"/node_modules/bare-path/index.js","resolve-reject-promise":"/node_modules/resolve-reject-promise/index.js","rocksdb-native":"/node_modules/rocksdb-native/index.js","scope-lock":"/node_modules/scope-lock/index.js"},"/node_modules/hypercore-storage/lib/block-dependency-stream.js":{"#package":"/node_modules/hypercore-storage/package.json","./keys":"/node_modules/hypercore-storage/lib/keys.js","streamx":"/node_modules/streamx/index.js"},"/node_modules/hypercore-storage/lib/close-error-stream.js":{"#package":"/node_modules/hypercore-storage/package.json","streamx":"/node_modules/streamx/index.js"},"/node_modules/hypercore-storage/lib/keys.js":{"#package":"/node_modules/hypercore-storage/package.json","b4a":"/node_modules/b4a/index.js","compact-encoding":"/node_modules/compact-encoding/index.js","index-encoder":"/node_modules/index-encoder/index.js"},"/node_modules/hypercore-storage/lib/streams.js":{"#package":"/node_modules/hypercore-storage/package.json","../spec/hyperschema":"/node_modules/hypercore-storage/spec/hyperschema/index.js","./block-dependency-stream.js":"/node_modules/hypercore-storage/lib/block-dependency-stream.js","./keys.js":"/node_modules/hypercore-storage/lib/keys.js","b4a":"/node_modules/b4a/index.js"},"/node_modules/hypercore-storage/lib/tx.js":{"#package":"/node_modules/hypercore-storage/package.json","../spec/hyperschema":"/node_modules/hypercore-storage/spec/hyperschema/index.js","./keys.js":"/node_modules/hypercore-storage/lib/keys.js","./view.js":"/node_modules/hypercore-storage/lib/view.js","b4a":"/node_modules/b4a/index.js","flat-tree":"/node_modules/flat-tree/index.js"},"/node_modules/hypercore-storage/lib/view.js":{"#package":"/node_modules/hypercore-storage/package.json","./close-error-stream.js":"/node_modules/hypercore-storage/lib/close-error-stream.js","b4a":"/node_modules/b4a/index.js","streamx":"/node_modules/streamx/index.js"},"/node_modules/hypercore-storage/migrations/0/index.js":{"#package":"/node_modules/hypercore-storage/package.json","../../lib/tx.js":"/node_modules/hypercore-storage/lib/tx.js","../../lib/view.js":"/node_modules/hypercore-storage/lib/view.js","./messages.js":"/node_modules/hypercore-storage/migrations/0/messages.js","b4a":"/node_modules/b4a/index.js","compact-encoding":"/node_modules/compact-encoding/index.js","flat-tree":"/node_modules/flat-tree/index.js","fs":"/node_modules/bare-fs/index.js","hypercore-crypto":"/node_modules/hypercore-crypto/index.js","path":"/node_modules/bare-path/index.js","streamx":"/node_modules/streamx/index.js"},"/node_modules/hypercore-storage/migrations/0/messages.js":{"#package":"/node_modules/hypercore-storage/package.json","b4a":"/node_modules/b4a/index.js","compact-encoding":"/node_modules/compact-encoding/index.js"},"/node_modules/hypercore-storage/package.json":{},"/node_modules/hypercore-storage/spec/hyperschema/index.js":{"#package":"/node_modules/hypercore-storage/package.json","hyperschema/runtime":"/node_modules/hyperschema/runtime.cjs"},"/node_modules/hypercore/index.js":{"#package":"/node_modules/hypercore/package.json","./lib/caps":"/node_modules/hypercore/lib/caps.js","./lib/core":"/node_modules/hypercore/lib/core.js","./lib/default-encryption":"/node_modules/hypercore/lib/default-encryption.js","./lib/download":"/node_modules/hypercore/lib/download.js","./lib/info":"/node_modules/hypercore/lib/info.js","./lib/inspect":"/node_modules/hypercore/lib/inspect.js","./lib/merkle-tree":"/node_modules/hypercore/lib/merkle-tree.js","./lib/replicator":"/node_modules/hypercore/lib/replicator.js","./lib/streams":"/node_modules/hypercore/lib/streams.js","./lib/verifier":"/node_modules/hypercore/lib/verifier.js","@hyperswarm/secret-stream":"/node_modules/@hyperswarm/secret-stream/index.js","b4a":"/node_modules/b4a/index.js","compact-encoding":"/node_modules/compact-encoding/index.js","events":"/node_modules/bare-events/index.js","hypercore-crypto":"/node_modules/hypercore-crypto/index.js","hypercore-errors":"/node_modules/hypercore-errors/index.js","hypercore-id-encoding":"/node_modules/hypercore-id-encoding/index.js","hypercore-storage":"/node_modules/hypercore-storage/index.js","is-options":"/node_modules/is-options/index.js","protomux":"/node_modules/protomux/index.js","safety-catch":"/node_modules/safety-catch/index.js","unslab":"/node_modules/unslab/index.js"},"/node_modules/hypercore/lib/audit.js":{"#package":"/node_modules/hypercore/package.json","./merkle-tree":"/node_modules/hypercore/lib/merkle-tree.js","b4a":"/node_modules/b4a/index.js","flat-tree":"/node_modules/flat-tree/index.js","hypercore-crypto":"/node_modules/hypercore-crypto/index.js"},"/node_modules/hypercore/lib/bit-interlude.js":{"#package":"/node_modules/hypercore/package.json","./compat":"/node_modules/hypercore/lib/compat.js","b4a":"/node_modules/b4a/index.js"},"/node_modules/hypercore/lib/bitfield.js":{"#package":"/node_modules/hypercore/package.json","./compat":"/node_modules/hypercore/lib/compat.js","b4a":"/node_modules/b4a/index.js","big-sparse-array":"/node_modules/big-sparse-array/index.js"},"/node_modules/hypercore/lib/caps.js":{"#package":"/node_modules/hypercore/package.json","b4a":"/node_modules/b4a/index.js","compact-encoding":"/node_modules/compact-encoding/index.js","hypercore-crypto":"/node_modules/hypercore-crypto/index.js","sodium-universal":"/node_modules/sodium-universal/index.js"},"/node_modules/hypercore/lib/compat.js":{"#package":"/node_modules/hypercore/package.json","quickbit-universal":"/node_modules/quickbit-universal/index.js","quickbit-universal/fallback":"/node_modules/quickbit-universal/fallback.js"},"/node_modules/hypercore/lib/copy-prologue.js":{"#package":"/node_modules/hypercore/package.json","./bitfield":"/node_modules/hypercore/lib/bitfield.js","b4a":"/node_modules/b4a/index.js","flat-tree":"/node_modules/flat-tree/index.js","hypercore-crypto":"/node_modules/hypercore-crypto/index.js","quickbit-universal":"/node_modules/quickbit-universal/index.js"},"/node_modules/hypercore/lib/core.js":{"#package":"/node_modules/hypercore/package.json","./audit":"/node_modules/hypercore/lib/audit.js","./bit-interlude":"/node_modules/hypercore/lib/bit-interlude.js","./bitfield":"/node_modules/hypercore/lib/bitfield.js","./copy-prologue":"/node_modules/hypercore/lib/copy-prologue.js","./merkle-tree":"/node_modules/hypercore/lib/merkle-tree.js","./mutex":"/node_modules/hypercore/lib/mutex.js","./remote-bitfield":"/node_modules/hypercore/lib/remote-bitfield.js","./replicator":"/node_modules/hypercore/lib/replicator.js","./session-state":"/node_modules/hypercore/lib/session-state.js","./verifier":"/node_modules/hypercore/lib/verifier.js","b4a":"/node_modules/b4a/index.js","hypercore-crypto":"/node_modules/hypercore-crypto/index.js","hypercore-errors":"/node_modules/hypercore-errors/index.js","unslab":"/node_modules/unslab/index.js","z32":"/node_modules/z32/index.js"},"/node_modules/hypercore/lib/default-encryption.js":{"#package":"/node_modules/hypercore/package.json","./caps":"/node_modules/hypercore/lib/caps.js","b4a":"/node_modules/b4a/index.js","compact-encoding":"/node_modules/compact-encoding/index.js","sodium-universal":"/node_modules/sodium-universal/index.js"},"/node_modules/hypercore/lib/download.js":{"#package":"/node_modules/hypercore/package.json"},"/node_modules/hypercore/lib/hotswap-queue.js":{"#package":"/node_modules/hypercore/package.json"},"/node_modules/hypercore/lib/info.js":{"#package":"/node_modules/hypercore/package.json"},"/node_modules/hypercore/lib/inspect.js":{"#package":"/node_modules/hypercore/package.json","b4a":"/node_modules/b4a/index.js"},"/node_modules/hypercore/lib/merkle-tree.js":{"#package":"/node_modules/hypercore/package.json","./caps":"/node_modules/hypercore/lib/caps.js","b4a":"/node_modules/b4a/index.js","flat-tree":"/node_modules/flat-tree/index.js","hypercore-crypto":"/node_modules/hypercore-crypto/index.js","hypercore-errors":"/node_modules/hypercore-errors/index.js","unslab":"/node_modules/unslab/index.js"},"/node_modules/hypercore/lib/messages.js":{"#package":"/node_modules/hypercore/package.json","./caps":"/node_modules/hypercore/lib/caps.js","b4a":"/node_modules/b4a/index.js","compact-encoding":"/node_modules/compact-encoding/index.js","hypercore-errors":"/node_modules/hypercore-errors/index.js","unslab":"/node_modules/unslab/index.js"},"/node_modules/hypercore/lib/multisig.js":{"#package":"/node_modules/hypercore/package.json","./merkle-tree":"/node_modules/hypercore/lib/merkle-tree.js","./messages":"/node_modules/hypercore/lib/messages.js","b4a":"/node_modules/b4a/index.js","compact-encoding":"/node_modules/compact-encoding/index.js","flat-tree":"/node_modules/flat-tree/index.js"},"/node_modules/hypercore/lib/mutex.js":{"#package":"/node_modules/hypercore/package.json"},"/node_modules/hypercore/lib/receiver-queue.js":{"#package":"/node_modules/hypercore/package.json","fast-fifo":"/node_modules/fast-fifo/index.js"},"/node_modules/hypercore/lib/remote-bitfield.js":{"#package":"/node_modules/hypercore/package.json","./compat":"/node_modules/hypercore/lib/compat.js","big-sparse-array":"/node_modules/big-sparse-array/index.js"},"/node_modules/hypercore/lib/replicator.js":{"#package":"/node_modules/hypercore/package.json","./caps":"/node_modules/hypercore/lib/caps.js","./hotswap-queue":"/node_modules/hypercore/lib/hotswap-queue.js","./merkle-tree":"/node_modules/hypercore/lib/merkle-tree.js","./messages":"/node_modules/hypercore/lib/messages.js","./mutex":"/node_modules/hypercore/lib/mutex.js","./receiver-queue":"/node_modules/hypercore/lib/receiver-queue.js","./remote-bitfield":"/node_modules/hypercore/lib/remote-bitfield.js","b4a":"/node_modules/b4a/index.js","flat-tree":"/node_modules/flat-tree/index.js","hypercore-errors":"/node_modules/hypercore-errors/index.js","random-array-iterator":"/node_modules/random-array-iterator/index.js","safety-catch":"/node_modules/safety-catch/index.js"},"/node_modules/hypercore/lib/session-state.js":{"#package":"/node_modules/hypercore/package.json","./bitfield":"/node_modules/hypercore/lib/bitfield.js","./merkle-tree":"/node_modules/hypercore/lib/merkle-tree.js","./mutex":"/node_modules/hypercore/lib/mutex.js","b4a":"/node_modules/b4a/index.js","flat-tree":"/node_modules/flat-tree/index.js","hypercore-crypto":"/node_modules/hypercore-crypto/index.js","hypercore-errors":"/node_modules/hypercore-errors/index.js","nanoassert":"/node_modules/nanoassert/index.js","quickbit-universal":"/node_modules/quickbit-universal/index.js"},"/node_modules/hypercore/lib/streams.js":{"#package":"/node_modules/hypercore/package.json","streamx":"/node_modules/streamx/index.js"},"/node_modules/hypercore/lib/verifier.js":{"#package":"/node_modules/hypercore/package.json","./caps":"/node_modules/hypercore/lib/caps.js","./messages":"/node_modules/hypercore/lib/messages.js","./multisig":"/node_modules/hypercore/lib/multisig.js","b4a":"/node_modules/b4a/index.js","compact-encoding":"/node_modules/compact-encoding/index.js","flat-tree":"/node_modules/flat-tree/index.js","hypercore-crypto":"/node_modules/hypercore-crypto/index.js","hypercore-errors":"/node_modules/hypercore-errors/index.js","unslab":"/node_modules/unslab/index.js"},"/node_modules/hypercore/package.json":{},"/node_modules/hyperdht/index.js":{"#package":"/node_modules/hyperdht/package.json","./lib/connect":"/node_modules/hyperdht/lib/connect.js","./lib/connection-pool":"/node_modules/hyperdht/lib/connection-pool.js","./lib/constants":"/node_modules/hyperdht/lib/constants.js","./lib/crypto":"/node_modules/hyperdht/lib/crypto.js","./lib/errors":"/node_modules/hyperdht/lib/errors.js","./lib/messages":"/node_modules/hyperdht/lib/messages.js","./lib/persistent":"/node_modules/hyperdht/lib/persistent.js","./lib/raw-stream-set":"/node_modules/hyperdht/lib/raw-stream-set.js","./lib/router":"/node_modules/hyperdht/lib/router.js","./lib/server":"/node_modules/hyperdht/lib/server.js","./lib/socket-pool":"/node_modules/hyperdht/lib/socket-pool.js","b4a":"/node_modules/b4a/index.js","compact-encoding":"/node_modules/compact-encoding/index.js","dht-rpc":"/node_modules/dht-rpc/index.js","hypercore-id-encoding":"/node_modules/hypercore-id-encoding/index.js","safety-catch":"/node_modules/safety-catch/index.js","sodium-universal":"/node_modules/sodium-universal/index.js","xache":"/node_modules/xache/index.js"},"/node_modules/hyperdht/lib/announcer.js":{"#package":"/node_modules/hyperdht/package.json","./constants":"/node_modules/hyperdht/lib/constants.js","./encode":"/node_modules/hyperdht/lib/encode.js","./messages":"/node_modules/hyperdht/lib/messages.js","./persistent":"/node_modules/hyperdht/lib/persistent.js","./sleeper":"/node_modules/hyperdht/lib/sleeper.js","compact-encoding":"/node_modules/compact-encoding/index.js","safety-catch":"/node_modules/safety-catch/index.js","signal-promise":"/node_modules/signal-promise/index.js"},"/node_modules/hyperdht/lib/connect.js":{"#package":"/node_modules/hyperdht/package.json","./constants":"/node_modules/hyperdht/lib/constants.js","./crypto":"/node_modules/hyperdht/lib/crypto.js","./errors":"/node_modules/hyperdht/lib/errors.js","./holepuncher":"/node_modules/hyperdht/lib/holepuncher.js","./noise-wrap":"/node_modules/hyperdht/lib/noise-wrap.js","./secure-payload":"/node_modules/hyperdht/lib/secure-payload.js","./semaphore":"/node_modules/hyperdht/lib/semaphore.js","./sleeper":"/node_modules/hyperdht/lib/sleeper.js","@hyperswarm/secret-stream":"/node_modules/@hyperswarm/secret-stream/index.js","b4a":"/node_modules/b4a/index.js","blind-relay":"/node_modules/blind-relay/index.js","bogon":"/node_modules/bogon/index.js","safety-catch":"/node_modules/safety-catch/index.js","unslab":"/node_modules/unslab/index.js"},"/node_modules/hyperdht/lib/connection-pool.js":{"#package":"/node_modules/hyperdht/package.json","./errors":"/node_modules/hyperdht/lib/errors.js","b4a":"/node_modules/b4a/index.js","events":"/node_modules/bare-events/index.js"},"/node_modules/hyperdht/lib/constants.js":{"#package":"/node_modules/hyperdht/package.json","hypercore-crypto":"/node_modules/hypercore-crypto/index.js"},"/node_modules/hyperdht/lib/crypto.js":{"#package":"/node_modules/hyperdht/package.json","b4a":"/node_modules/b4a/index.js","sodium-universal":"/node_modules/sodium-universal/index.js"},"/node_modules/hyperdht/lib/encode.js":{"#package":"/node_modules/hyperdht/package.json","b4a":"/node_modules/b4a/index.js","compact-encoding":"/node_modules/compact-encoding/index.js"},"/node_modules/hyperdht/lib/errors.js":{"#package":"/node_modules/hyperdht/package.json"},"/node_modules/hyperdht/lib/holepuncher.js":{"#package":"/node_modules/hyperdht/package.json","./constants":"/node_modules/hyperdht/lib/constants.js","./nat":"/node_modules/hyperdht/lib/nat.js","./sleeper":"/node_modules/hyperdht/lib/sleeper.js","b4a":"/node_modules/b4a/index.js"},"/node_modules/hyperdht/lib/messages.js":{"#package":"/node_modules/hyperdht/package.json","compact-encoding":"/node_modules/compact-encoding/index.js","compact-encoding-net":"/node_modules/compact-encoding-net/index.js"},"/node_modules/hyperdht/lib/nat.js":{"#package":"/node_modules/hyperdht/package.json","../lib/constants":"/node_modules/hyperdht/lib/constants.js"},"/node_modules/hyperdht/lib/noise-wrap.js":{"#package":"/node_modules/hyperdht/package.json","./constants":"/node_modules/hyperdht/lib/constants.js","./errors":"/node_modules/hyperdht/lib/errors.js","./messages":"/node_modules/hyperdht/lib/messages.js","@hyperswarm/secret-stream":"/node_modules/@hyperswarm/secret-stream/index.js","b4a":"/node_modules/b4a/index.js","compact-encoding":"/node_modules/compact-encoding/index.js","noise-curve-ed":"/node_modules/noise-curve-ed/index.js","noise-handshake":"/node_modules/noise-handshake/noise.js","sodium-universal":"/node_modules/sodium-universal/index.js"},"/node_modules/hyperdht/lib/persistent.js":{"#package":"/node_modules/hyperdht/package.json","./constants":"/node_modules/hyperdht/lib/constants.js","./encode":"/node_modules/hyperdht/lib/encode.js","./messages":"/node_modules/hyperdht/lib/messages.js","b4a":"/node_modules/b4a/index.js","compact-encoding":"/node_modules/compact-encoding/index.js","record-cache":"/node_modules/record-cache/index.js","sodium-universal":"/node_modules/sodium-universal/index.js","unslab":"/node_modules/unslab/index.js","xache":"/node_modules/xache/index.js"},"/node_modules/hyperdht/lib/raw-stream-set.js":{"#package":"/node_modules/hyperdht/package.json"},"/node_modules/hyperdht/lib/router.js":{"#package":"/node_modules/hyperdht/package.json","./constants":"/node_modules/hyperdht/lib/constants.js","./errors":"/node_modules/hyperdht/lib/errors.js","./messages":"/node_modules/hyperdht/lib/messages.js","b4a":"/node_modules/b4a/index.js","compact-encoding":"/node_modules/compact-encoding/index.js","safety-catch":"/node_modules/safety-catch/index.js","xache":"/node_modules/xache/index.js"},"/node_modules/hyperdht/lib/secure-payload.js":{"#package":"/node_modules/hyperdht/package.json","./messages":"/node_modules/hyperdht/lib/messages.js","b4a":"/node_modules/b4a/index.js","sodium-universal":"/node_modules/sodium-universal/index.js"},"/node_modules/hyperdht/lib/semaphore.js":{"#package":"/node_modules/hyperdht/package.json"},"/node_modules/hyperdht/lib/server.js":{"#package":"/node_modules/hyperdht/package.json","./announcer":"/node_modules/hyperdht/lib/announcer.js","./constants":"/node_modules/hyperdht/lib/constants.js","./crypto":"/node_modules/hyperdht/lib/crypto.js","./errors":"/node_modules/hyperdht/lib/errors.js","./holepuncher":"/node_modules/hyperdht/lib/holepuncher.js","./noise-wrap":"/node_modules/hyperdht/lib/noise-wrap.js","./secure-payload":"/node_modules/hyperdht/lib/secure-payload.js","@hyperswarm/secret-stream":"/node_modules/@hyperswarm/secret-stream/index.js","b4a":"/node_modules/b4a/index.js","blind-relay":"/node_modules/blind-relay/index.js","bogon":"/node_modules/bogon/index.js","events":"/node_modules/bare-events/index.js","safety-catch":"/node_modules/safety-catch/index.js"},"/node_modules/hyperdht/lib/sleeper.js":{"#package":"/node_modules/hyperdht/package.json"},"/node_modules/hyperdht/lib/socket-pool.js":{"#package":"/node_modules/hyperdht/package.json","b4a":"/node_modules/b4a/index.js"},"/node_modules/hyperdht/package.json":{},"/node_modules/hyperschema/package.json":{},"/node_modules/hyperschema/runtime.cjs":{"#package":"/node_modules/hyperschema/package.json","compact-encoding":"/node_modules/compact-encoding/index.js"},"/node_modules/hyperswarm/index.js":{"#package":"/node_modules/hyperswarm/package.json","./lib/connection-set":"/node_modules/hyperswarm/lib/connection-set.js","./lib/peer-discovery":"/node_modules/hyperswarm/lib/peer-discovery.js","./lib/peer-info":"/node_modules/hyperswarm/lib/peer-info.js","./lib/retry-timer":"/node_modules/hyperswarm/lib/retry-timer.js","b4a":"/node_modules/b4a/index.js","events":"/node_modules/bare-events/index.js","hyperdht":"/node_modules/hyperdht/index.js","shuffled-priority-queue":"/node_modules/shuffled-priority-queue/index.js","streamx":"/node_modules/streamx/index.js","unslab":"/node_modules/unslab/index.js"},"/node_modules/hyperswarm/lib/bulk-timer.js":{"#package":"/node_modules/hyperswarm/package.json"},"/node_modules/hyperswarm/lib/connection-set.js":{"#package":"/node_modules/hyperswarm/package.json","b4a":"/node_modules/b4a/index.js"},"/node_modules/hyperswarm/lib/peer-discovery.js":{"#package":"/node_modules/hyperswarm/package.json","b4a":"/node_modules/b4a/index.js","safety-catch":"/node_modules/safety-catch/index.js"},"/node_modules/hyperswarm/lib/peer-info.js":{"#package":"/node_modules/hyperswarm/package.json","b4a":"/node_modules/b4a/index.js","events":"/node_modules/bare-events/index.js","unslab":"/node_modules/unslab/index.js"},"/node_modules/hyperswarm/lib/retry-timer.js":{"#package":"/node_modules/hyperswarm/package.json","./bulk-timer":"/node_modules/hyperswarm/lib/bulk-timer.js"},"/node_modules/hyperswarm/package.json":{},"/node_modules/index-encoder/index.js":{"#package":"/node_modules/index-encoder/package.json","b4a":"/node_modules/b4a/index.js"},"/node_modules/index-encoder/package.json":{},"/node_modules/is-options/index.js":{"#package":"/node_modules/is-options/package.json","b4a":"/node_modules/b4a/index.js"},"/node_modules/is-options/package.json":{},"/node_modules/kademlia-routing-table/index.js":{"#package":"/node_modules/kademlia-routing-table/package.json","events":"/node_modules/bare-events/index.js"},"/node_modules/kademlia-routing-table/package.json":{},"/node_modules/mutexify/index.js":{"#package":"/node_modules/mutexify/package.json","queue-tick":"/node_modules/queue-tick/process-next-tick.js"},"/node_modules/mutexify/package.json":{},"/node_modules/mutexify/promise.js":{"#package":"/node_modules/mutexify/package.json",".":"/node_modules/mutexify/index.js"},"/node_modules/nanoassert/index.js":{"#package":"/node_modules/nanoassert/package.json"},"/node_modules/nanoassert/package.json":{},"/node_modules/nat-sampler/index.js":{"#package":"/node_modules/nat-sampler/package.json"},"/node_modules/nat-sampler/package.json":{},"/node_modules/noise-curve-ed/index.js":{"#package":"/node_modules/noise-curve-ed/package.json","b4a":"/node_modules/b4a/index.js","nanoassert":"/node_modules/nanoassert/index.js","sodium-universal":"/node_modules/sodium-universal/index.js"},"/node_modules/noise-curve-ed/package.json":{},"/node_modules/noise-handshake/cipher.js":{"#package":"/node_modules/noise-handshake/package.json","b4a":"/node_modules/b4a/index.js","sodium-universal":"/node_modules/sodium-universal/index.js"},"/node_modules/noise-handshake/dh.js":{"#package":"/node_modules/noise-handshake/package.json","b4a":"/node_modules/b4a/index.js","nanoassert":"/node_modules/nanoassert/index.js","sodium-universal":"/node_modules/sodium-universal/index.js"},"/node_modules/noise-handshake/hkdf.js":{"#package":"/node_modules/noise-handshake/package.json","./hmac":"/node_modules/noise-handshake/hmac.js","b4a":"/node_modules/b4a/index.js"},"/node_modules/noise-handshake/hmac.js":{"#package":"/node_modules/noise-handshake/package.json","b4a":"/node_modules/b4a/index.js","sodium-universal":"/node_modules/sodium-universal/index.js"},"/node_modules/noise-handshake/noise.js":{"#package":"/node_modules/noise-handshake/package.json","./hkdf":"/node_modules/noise-handshake/hkdf.js","./symmetric-state":"/node_modules/noise-handshake/symmetric-state.js","b4a":"/node_modules/b4a/index.js","nanoassert":"/node_modules/nanoassert/index.js"},"/node_modules/noise-handshake/package.json":{},"/node_modules/noise-handshake/symmetric-state.js":{"#package":"/node_modules/noise-handshake/package.json","./cipher":"/node_modules/noise-handshake/cipher.js","./dh":"/node_modules/noise-handshake/dh.js","./hkdf":"/node_modules/noise-handshake/hkdf.js","b4a":"/node_modules/b4a/index.js","nanoassert":"/node_modules/nanoassert/index.js","sodium-universal":"/node_modules/sodium-universal/index.js"},"/node_modules/protocol-buffers-encodings/index.js":{"#package":"/node_modules/protocol-buffers-encodings/package.json","b4a":"/node_modules/b4a/index.js","signed-varint":"/node_modules/signed-varint/index.js","varint":"/node_modules/varint/index.js"},"/node_modules/protocol-buffers-encodings/package.json":{},"/node_modules/protomux-wakeup/index.js":{"#package":"/node_modules/protomux-wakeup/package.json","./spec/hyperschema":"/node_modules/protomux-wakeup/spec/hyperschema/index.js","b4a":"/node_modules/b4a/index.js","hypercore-crypto":"/node_modules/hypercore-crypto/index.js","protomux":"/node_modules/protomux/index.js"},"/node_modules/protomux-wakeup/package.json":{},"/node_modules/protomux-wakeup/spec/hyperschema/index.js":{"#package":"/node_modules/protomux-wakeup/package.json","hyperschema/runtime":"/node_modules/hyperschema/runtime.cjs"},"/node_modules/protomux/index.js":{"#package":"/node_modules/protomux/package.json","b4a":"/node_modules/b4a/index.js","compact-encoding":"/node_modules/compact-encoding/index.js","queue-tick":"/node_modules/queue-tick/process-next-tick.js","safety-catch":"/node_modules/safety-catch/index.js","unslab":"/node_modules/unslab/index.js"},"/node_modules/protomux/package.json":{},"/node_modules/queue-tick/package.json":{},"/node_modules/queue-tick/process-next-tick.js":{"#package":"/node_modules/queue-tick/package.json","./queue-microtask":"/node_modules/queue-tick/queue-microtask.js"},"/node_modules/queue-tick/queue-microtask.js":{"#package":"/node_modules/queue-tick/package.json"},"/node_modules/quickbit-native/binding.js":{"#package":"/node_modules/quickbit-native/package.json",".":"linked:libquickbit-native.2.4.8.so","require-addon":"/node_modules/require-addon/lib/bare.js"},"/node_modules/quickbit-native/index.js":{"#package":"/node_modules/quickbit-native/package.json","./binding":"/node_modules/quickbit-native/binding.js"},"/node_modules/quickbit-native/package.json":{},"/node_modules/quickbit-universal/fallback.js":{"#package":"/node_modules/quickbit-universal/package.json","simdle-universal":"/node_modules/simdle-universal/index.js"},"/node_modules/quickbit-universal/index.js":{"#package":"/node_modules/quickbit-universal/package.json","./fallback":"/node_modules/quickbit-universal/fallback.js","quickbit-native":"/node_modules/quickbit-native/index.js"},"/node_modules/quickbit-universal/package.json":{},"/node_modules/rache/index.js":{"#package":"/node_modules/rache/package.json"},"/node_modules/rache/package.json":{},"/node_modules/random-array-iterator/index.js":{"#package":"/node_modules/random-array-iterator/package.json"},"/node_modules/random-array-iterator/package.json":{},"/node_modules/ready-resource/index.js":{"#package":"/node_modules/ready-resource/package.json","events":"/node_modules/bare-events/index.js"},"/node_modules/ready-resource/package.json":{},"/node_modules/record-cache/index.js":{"#package":"/node_modules/record-cache/package.json","b4a":"/node_modules/b4a/index.js"},"/node_modules/record-cache/package.json":{},"/node_modules/refcounter/index.js":{"#package":"/node_modules/refcounter/package.json"},"/node_modules/refcounter/package.json":{},"/node_modules/require-addon/lib/bare.js":{"#package":"/node_modules/require-addon/package.json"},"/node_modules/require-addon/package.json":{},"/node_modules/resolve-reject-promise/index.js":{"#package":"/node_modules/resolve-reject-promise/package.json"},"/node_modules/resolve-reject-promise/package.json":{},"/node_modules/resource-on-exit/index.js":{"#package":"/node_modules/resource-on-exit/package.json"},"/node_modules/resource-on-exit/package.json":{},"/node_modules/rocksdb-native/binding.js":{"#package":"/node_modules/rocksdb-native/package.json",".":"linked:librocksdb-native.3.11.4.so","require-addon":"/node_modules/require-addon/lib/bare.js"},"/node_modules/rocksdb-native/index.js":{"#package":"/node_modules/rocksdb-native/package.json","./lib/column-family":"/node_modules/rocksdb-native/lib/column-family.js","./lib/constants":"/node_modules/rocksdb-native/lib/constants.js","./lib/filter-policy":"/node_modules/rocksdb-native/lib/filter-policy.js","./lib/iterator":"/node_modules/rocksdb-native/lib/iterator.js","./lib/snapshot":"/node_modules/rocksdb-native/lib/snapshot.js","./lib/state":"/node_modules/rocksdb-native/lib/state.js"},"/node_modules/rocksdb-native/lib/batch.js":{"#package":"/node_modules/rocksdb-native/package.json","../binding":"/node_modules/rocksdb-native/binding.js","compact-encoding":"/node_modules/compact-encoding/index.js"},"/node_modules/rocksdb-native/lib/column-family.js":{"#package":"/node_modules/rocksdb-native/package.json","../binding":"/node_modules/rocksdb-native/binding.js","./constants":"/node_modules/rocksdb-native/lib/constants.js","./filter-policy":"/node_modules/rocksdb-native/lib/filter-policy.js"},"/node_modules/rocksdb-native/lib/constants.js":{"#package":"/node_modules/rocksdb-native/package.json"},"/node_modules/rocksdb-native/lib/filter-policy.js":{"#package":"/node_modules/rocksdb-native/package.json"},"/node_modules/rocksdb-native/lib/iterator.js":{"#package":"/node_modules/rocksdb-native/package.json","../binding":"/node_modules/rocksdb-native/binding.js","compact-encoding":"/node_modules/compact-encoding/index.js","streamx":"/node_modules/streamx/index.js"},"/node_modules/rocksdb-native/lib/snapshot.js":{"#package":"/node_modules/rocksdb-native/package.json","../binding":"/node_modules/rocksdb-native/binding.js"},"/node_modules/rocksdb-native/lib/state.js":{"#package":"/node_modules/rocksdb-native/package.json","../binding":"/node_modules/rocksdb-native/binding.js","./batch":"/node_modules/rocksdb-native/lib/batch.js","./column-family":"/node_modules/rocksdb-native/lib/column-family.js","compact-encoding":"/node_modules/compact-encoding/index.js","ready-resource":"/node_modules/ready-resource/index.js","refcounter":"/node_modules/refcounter/index.js","resolve-reject-promise":"/node_modules/resolve-reject-promise/index.js","signal-promise":"/node_modules/signal-promise/index.js"},"/node_modules/rocksdb-native/package.json":{},"/node_modules/safety-catch/index.js":{"#package":"/node_modules/safety-catch/package.json"},"/node_modules/safety-catch/package.json":{},"/node_modules/scope-lock/index.js":{"#package":"/node_modules/scope-lock/package.json"},"/node_modules/scope-lock/package.json":{},"/node_modules/shuffled-priority-queue/index.js":{"#package":"/node_modules/shuffled-priority-queue/package.json","unordered-set":"/node_modules/unordered-set/index.js"},"/node_modules/shuffled-priority-queue/package.json":{},"/node_modules/signal-promise/index.js":{"#package":"/node_modules/signal-promise/package.json"},"/node_modules/signal-promise/package.json":{},"/node_modules/signed-varint/index.js":{"#package":"/node_modules/signed-varint/package.json","varint":"/node_modules/varint/index.js"},"/node_modules/signed-varint/package.json":{},"/node_modules/simdle-native/binding.js":{"#package":"/node_modules/simdle-native/package.json",".":"linked:libsimdle-native.1.3.9.so","require-addon":"/node_modules/require-addon/lib/bare.js"},"/node_modules/simdle-native/index.js":{"#package":"/node_modules/simdle-native/package.json","./binding":"/node_modules/simdle-native/binding.js","b4a":"/node_modules/b4a/index.js"},"/node_modules/simdle-native/package.json":{},"/node_modules/simdle-universal/fallback.js":{"#package":"/node_modules/simdle-universal/package.json","./scalar":"/node_modules/simdle-universal/scalar.js","b4a":"/node_modules/b4a/index.js"},"/node_modules/simdle-universal/index.js":{"#package":"/node_modules/simdle-universal/package.json","./fallback":"/node_modules/simdle-universal/fallback.js","simdle-native":"/node_modules/simdle-native/index.js"},"/node_modules/simdle-universal/package.json":{},"/node_modules/simdle-universal/scalar.js":{"#package":"/node_modules/simdle-universal/package.json"},"/node_modules/sodium-native/binding.js":{"#package":"/node_modules/sodium-native/package.json",".":"linked:libsodium-native.5.0.10.so","require-addon":"/node_modules/require-addon/lib/bare.js"},"/node_modules/sodium-native/index.js":{"#package":"/node_modules/sodium-native/package.json","./binding":"/node_modules/sodium-native/binding.js","which-runtime":"/node_modules/which-runtime/index.js"},"/node_modules/sodium-native/package.json":{},"/node_modules/sodium-secretstream/index.js":{"#package":"/node_modules/sodium-secretstream/package.json","b4a":"/node_modules/b4a/index.js","sodium-universal":"/node_modules/sodium-universal/index.js"},"/node_modules/sodium-secretstream/package.json":{},"/node_modules/sodium-universal/index.js":{"#package":"/node_modules/sodium-universal/package.json","sodium-native":"/node_modules/sodium-native/index.js"},"/node_modules/sodium-universal/package.json":{},"/node_modules/streamx/index.js":{"#package":"/node_modules/streamx/package.json","events-universal":"/node_modules/events-universal/bare.js","fast-fifo":"/node_modules/fast-fifo/index.js","text-decoder":"/node_modules/text-decoder/index.js"},"/node_modules/streamx/package.json":{},"/node_modules/sub-encoder/index.js":{"#package":"/node_modules/sub-encoder/package.json","b4a":"/node_modules/b4a/index.js","codecs":"/node_modules/codecs/index.js"},"/node_modules/sub-encoder/package.json":{},"/node_modules/text-decoder/index.js":{"#package":"/node_modules/text-decoder/package.json","./lib/pass-through-decoder":"/node_modules/text-decoder/lib/pass-through-decoder.js","./lib/utf8-decoder":"/node_modules/text-decoder/lib/utf8-decoder.js"},"/node_modules/text-decoder/lib/pass-through-decoder.js":{"#package":"/node_modules/text-decoder/package.json","b4a":"/node_modules/b4a/index.js"},"/node_modules/text-decoder/lib/utf8-decoder.js":{"#package":"/node_modules/text-decoder/package.json","b4a":"/node_modules/b4a/index.js"},"/node_modules/text-decoder/package.json":{},"/node_modules/time-ordered-set/index.js":{"#package":"/node_modules/time-ordered-set/package.json"},"/node_modules/time-ordered-set/package.json":{},"/node_modules/timeout-refresh/browser.js":{"#package":"/node_modules/timeout-refresh/package.json"},"/node_modules/timeout-refresh/index.js":{"#package":"/node_modules/timeout-refresh/package.json","./browser":"/node_modules/timeout-refresh/browser.js","./node":"/node_modules/timeout-refresh/node.js"},"/node_modules/timeout-refresh/node.js":{"#package":"/node_modules/timeout-refresh/package.json"},"/node_modules/timeout-refresh/package.json":{},"/node_modules/tiny-buffer-map/index.js":{"#package":"/node_modules/tiny-buffer-map/package.json","b4a":"/node_modules/b4a/index.js"},"/node_modules/tiny-buffer-map/package.json":{},"/node_modules/udx-native/binding.js":{"#package":"/node_modules/udx-native/package.json",".":"linked:libudx-native.1.19.2.so","require-addon":"/node_modules/require-addon/lib/bare.js"},"/node_modules/udx-native/lib/ip.js":{"#package":"/node_modules/udx-native/package.json"},"/node_modules/udx-native/lib/network-interfaces.js":{"#package":"/node_modules/udx-native/package.json","../binding":"/node_modules/udx-native/binding.js","b4a":"/node_modules/b4a/index.js","events":"/node_modules/bare-events/index.js"},"/node_modules/udx-native/lib/socket.js":{"#package":"/node_modules/udx-native/package.json","../binding":"/node_modules/udx-native/binding.js","./ip":"/node_modules/udx-native/lib/ip.js","b4a":"/node_modules/b4a/index.js","events":"/node_modules/bare-events/index.js"},"/node_modules/udx-native/lib/stream.js":{"#package":"/node_modules/udx-native/package.json","../binding":"/node_modules/udx-native/binding.js","./ip":"/node_modules/udx-native/lib/ip.js","b4a":"/node_modules/b4a/index.js","streamx":"/node_modules/streamx/index.js"},"/node_modules/udx-native/lib/udx.js":{"#package":"/node_modules/udx-native/package.json","../binding":"/node_modules/udx-native/binding.js","./ip":"/node_modules/udx-native/lib/ip.js","./network-interfaces":"/node_modules/udx-native/lib/network-interfaces.js","./socket":"/node_modules/udx-native/lib/socket.js","./stream":"/node_modules/udx-native/lib/stream.js","b4a":"/node_modules/b4a/index.js"},"/node_modules/udx-native/package.json":{},"/node_modules/unordered-set/index.js":{"#package":"/node_modules/unordered-set/package.json"},"/node_modules/unordered-set/package.json":{},"/node_modules/unslab/index.js":{"#package":"/node_modules/unslab/package.json","b4a":"/node_modules/b4a/index.js"},"/node_modules/unslab/package.json":{},"/node_modules/varint/decode.js":{"#package":"/node_modules/varint/package.json"},"/node_modules/varint/encode.js":{"#package":"/node_modules/varint/package.json"},"/node_modules/varint/index.js":{"#package":"/node_modules/varint/package.json","./decode.js":"/node_modules/varint/decode.js","./encode.js":"/node_modules/varint/encode.js","./length.js":"/node_modules/varint/length.js"},"/node_modules/varint/length.js":{"#package":"/node_modules/varint/package.json"},"/node_modules/varint/package.json":{},"/node_modules/which-runtime/index.js":{"#package":"/node_modules/which-runtime/package.json"},"/node_modules/which-runtime/package.json":{},"/node_modules/xache/index.js":{"#package":"/node_modules/xache/package.json"},"/node_modules/xache/package.json":{},"/node_modules/z32/index.js":{"#package":"/node_modules/z32/package.json","b4a":"/node_modules/b4a/index.js"},"/node_modules/z32/package.json":{},"/package.json":{},"/rpc-commands.mjs":{"#package":"/package.json"}},"addons":["linked:libbare-crypto.1.12.0.so","linked:libbare-fs.4.5.2.so","linked:libbare-os.3.6.2.so","linked:libbare-url.2.3.2.so","linked:libfs-native-extensions.1.4.5.so","linked:libquickbit-native.2.4.8.so","linked:librocksdb-native.3.11.4.so","linked:libsimdle-native.1.3.9.so","linked:libsodium-native.5.0.10.so","linked:libudx-native.1.19.2.so"],"assets":[],"files":{"/backend/backend.mjs":{"offset":0,"length":17167,"mode":420},"/node_modules/@hyperswarm/secret-stream/index.js":{"offset":17167,"length":16722,"mode":420},"/node_modules/@hyperswarm/secret-stream/lib/bridge.js":{"offset":33889,"length":1273,"mode":420},"/node_modules/@hyperswarm/secret-stream/lib/handshake.js":{"offset":35162,"length":1950,"mode":420},"/node_modules/@hyperswarm/secret-stream/package.json":{"offset":37112,"length":1132,"mode":420},"/node_modules/autobase/encoding/legacy.js":{"offset":38244,"length":8848,"mode":420},"/node_modules/autobase/encoding/spec/autobase/index.js":{"offset":47092,"length":18918,"mode":420},"/node_modules/autobase/index.js":{"offset":66010,"length":58148,"mode":420},"/node_modules/autobase/lib/active-writers.js":{"offset":124158,"length":736,"mode":420},"/node_modules/autobase/lib/append-batch.js":{"offset":124894,"length":1426,"mode":420},"/node_modules/autobase/lib/apply-calls.js":{"offset":126320,"length":2275,"mode":420},"/node_modules/autobase/lib/apply-state.js":{"offset":128595,"length":45236,"mode":420},"/node_modules/autobase/lib/boot.js":{"offset":173831,"length":3461,"mode":420},"/node_modules/autobase/lib/caps.js":{"offset":177292,"length":505,"mode":420},"/node_modules/autobase/lib/clock.js":{"offset":177797,"length":749,"mode":420},"/node_modules/autobase/lib/consensus.js":{"offset":178546,"length":11754,"mode":420},"/node_modules/autobase/lib/encryption.js":{"offset":190300,"length":9444,"mode":420},"/node_modules/autobase/lib/fast-forward.js":{"offset":199744,"length":5714,"mode":420},"/node_modules/autobase/lib/fork.js":{"offset":205458,"length":4230,"mode":420},"/node_modules/autobase/lib/linearizer.js":{"offset":209688,"length":9696,"mode":420},"/node_modules/autobase/lib/local-state.js":{"offset":219384,"length":2013,"mode":420},"/node_modules/autobase/lib/messages.js":{"offset":221397,"length":827,"mode":420},"/node_modules/autobase/lib/node-buffer.js":{"offset":222224,"length":1563,"mode":420},"/node_modules/autobase/lib/store.js":{"offset":223787,"length":14107,"mode":420},"/node_modules/autobase/lib/system.js":{"offset":237894,"length":20176,"mode":420},"/node_modules/autobase/lib/timer.js":{"offset":258070,"length":2937,"mode":420},"/node_modules/autobase/lib/topolist.js":{"offset":261007,"length":5108,"mode":420},"/node_modules/autobase/lib/updates.js":{"offset":266115,"length":1148,"mode":420},"/node_modules/autobase/lib/values.js":{"offset":267263,"length":1539,"mode":420},"/node_modules/autobase/lib/wakeup.js":{"offset":268802,"length":4034,"mode":420},"/node_modules/autobase/lib/writer.js":{"offset":272836,"length":8901,"mode":420},"/node_modules/autobase/package.json":{"offset":281737,"length":2249,"mode":420},"/node_modules/b4a/index.js":{"offset":283986,"length":4054,"mode":420},"/node_modules/b4a/package.json":{"offset":288040,"length":1140,"mode":420},"/node_modules/bare-crypto/binding.js":{"offset":289180,"length":33,"mode":420},"/node_modules/bare-crypto/index.js":{"offset":289213,"length":1611,"mode":420},"/node_modules/bare-crypto/lib/cipher.js":{"offset":290824,"length":7366,"mode":420},"/node_modules/bare-crypto/lib/constants.js":{"offset":298190,"length":2313,"mode":420},"/node_modules/bare-crypto/lib/errors.js":{"offset":300503,"length":957,"mode":420},"/node_modules/bare-crypto/lib/hash.js":{"offset":301460,"length":829,"mode":420},"/node_modules/bare-crypto/lib/hmac.js":{"offset":302289,"length":1015,"mode":420},"/node_modules/bare-crypto/lib/key.js":{"offset":303304,"length":1067,"mode":420},"/node_modules/bare-crypto/lib/pbkdf2.js":{"offset":304371,"length":713,"mode":420},"/node_modules/bare-crypto/lib/random.js":{"offset":305084,"length":1707,"mode":420},"/node_modules/bare-crypto/lib/signature.js":{"offset":306791,"length":1010,"mode":420},"/node_modules/bare-crypto/lib/web/algorithm/ed25519.js":{"offset":307801,"length":6918,"mode":420},"/node_modules/bare-crypto/lib/web/algorithm/hmac.js":{"offset":314719,"length":4925,"mode":420},"/node_modules/bare-crypto/lib/web/algorithm/pbkdf2.js":{"offset":319644,"length":1467,"mode":420},"/node_modules/bare-crypto/lib/web/algorithm/sha.js":{"offset":321111,"length":299,"mode":420},"/node_modules/bare-crypto/lib/web/crypto-key.js":{"offset":321410,"length":970,"mode":420},"/node_modules/bare-crypto/package.json":{"offset":322380,"length":1475,"mode":420},"/node_modules/bare-crypto/web.js":{"offset":323855,"length":7393,"mode":420},"/node_modules/bare-events/index.js":{"offset":331248,"length":8033,"mode":420},"/node_modules/bare-events/lib/errors.js":{"offset":339281,"length":671,"mode":420},"/node_modules/bare-events/package.json":{"offset":339952,"length":1399,"mode":420},"/node_modules/bare-fs/binding.js":{"offset":341351,"length":33,"mode":420},"/node_modules/bare-fs/index.js":{"offset":341384,"length":48267,"mode":420},"/node_modules/bare-fs/lib/constants.js":{"offset":389651,"length":1494,"mode":420},"/node_modules/bare-fs/lib/errors.js":{"offset":391145,"length":1163,"mode":420},"/node_modules/bare-fs/package.json":{"offset":392308,"length":1546,"mode":420},"/node_modules/bare-fs/promises.js":{"offset":393854,"length":1866,"mode":420},"/node_modules/bare-os/binding.js":{"offset":395720,"length":33,"mode":420},"/node_modules/bare-os/index.js":{"offset":395753,"length":2433,"mode":420},"/node_modules/bare-os/lib/constants.js":{"offset":398186,"length":113,"mode":420},"/node_modules/bare-os/lib/errors.js":{"offset":398299,"length":479,"mode":420},"/node_modules/bare-os/package.json":{"offset":398778,"length":1023,"mode":420},"/node_modules/bare-path/index.js":{"offset":399801,"length":306,"mode":420},"/node_modules/bare-path/lib/constants.js":{"offset":400107,"length":247,"mode":420},"/node_modules/bare-path/lib/posix.js":{"offset":400354,"length":5991,"mode":420},"/node_modules/bare-path/lib/shared.js":{"offset":406345,"length":1888,"mode":420},"/node_modules/bare-path/lib/win32.js":{"offset":408233,"length":13427,"mode":420},"/node_modules/bare-path/package.json":{"offset":421660,"length":796,"mode":420},"/node_modules/bare-rpc/index.js":{"offset":422456,"length":10199,"mode":420},"/node_modules/bare-rpc/lib/command-router.js":{"offset":432655,"length":1073,"mode":420},"/node_modules/bare-rpc/lib/constants.js":{"offset":433728,"length":270,"mode":420},"/node_modules/bare-rpc/lib/errors.js":{"offset":433998,"length":597,"mode":420},"/node_modules/bare-rpc/lib/incoming-request.js":{"offset":434595,"length":1241,"mode":420},"/node_modules/bare-rpc/lib/incoming-stream.js":{"offset":435836,"length":1263,"mode":420},"/node_modules/bare-rpc/lib/messages.js":{"offset":437099,"length":3934,"mode":420},"/node_modules/bare-rpc/lib/outgoing-request.js":{"offset":441033,"length":1670,"mode":420},"/node_modules/bare-rpc/lib/outgoing-stream.js":{"offset":442703,"length":2374,"mode":420},"/node_modules/bare-rpc/package.json":{"offset":445077,"length":1208,"mode":420},"/node_modules/bare-stream/index.js":{"offset":446285,"length":7658,"mode":420},"/node_modules/bare-stream/package.json":{"offset":453943,"length":1307,"mode":420},"/node_modules/bare-url/binding.js":{"offset":455250,"length":33,"mode":420},"/node_modules/bare-url/index.js":{"offset":455283,"length":9261,"mode":420},"/node_modules/bare-url/lib/errors.js":{"offset":464544,"length":778,"mode":420},"/node_modules/bare-url/lib/url-search-params.js":{"offset":465322,"length":3867,"mode":420},"/node_modules/bare-url/package.json":{"offset":469189,"length":1105,"mode":420},"/node_modules/big-sparse-array/index.js":{"offset":470294,"length":2471,"mode":420},"/node_modules/big-sparse-array/package.json":{"offset":472765,"length":636,"mode":420},"/node_modules/bits-to-bytes/index.js":{"offset":473401,"length":3083,"mode":420},"/node_modules/bits-to-bytes/package.json":{"offset":476484,"length":708,"mode":420},"/node_modules/blind-relay/index.js":{"offset":477192,"length":10851,"mode":420},"/node_modules/blind-relay/lib/errors.js":{"offset":488043,"length":1043,"mode":420},"/node_modules/blind-relay/package.json":{"offset":489086,"length":1046,"mode":420},"/node_modules/bogon/index.js":{"offset":490132,"length":3961,"mode":420},"/node_modules/bogon/package.json":{"offset":494093,"length":657,"mode":420},"/node_modules/codecs/index.js":{"offset":494750,"length":2416,"mode":420},"/node_modules/codecs/package.json":{"offset":497166,"length":655,"mode":420},"/node_modules/compact-encoding-bitfield/index.js":{"offset":497821,"length":1963,"mode":420},"/node_modules/compact-encoding-bitfield/package.json":{"offset":499784,"length":827,"mode":420},"/node_modules/compact-encoding-net/index.js":{"offset":500611,"length":4109,"mode":420},"/node_modules/compact-encoding-net/package.json":{"offset":504720,"length":734,"mode":420},"/node_modules/compact-encoding/endian.js":{"offset":505454,"length":105,"mode":420},"/node_modules/compact-encoding/index.js":{"offset":505559,"length":23634,"mode":420},"/node_modules/compact-encoding/lexint.js":{"offset":529193,"length":2851,"mode":420},"/node_modules/compact-encoding/package.json":{"offset":532044,"length":801,"mode":420},"/node_modules/compact-encoding/raw.js":{"offset":532845,"length":4093,"mode":420},"/node_modules/core-coupler/index.js":{"offset":536938,"length":2243,"mode":420},"/node_modules/core-coupler/package.json":{"offset":539181,"length":599,"mode":420},"/node_modules/corestore/index.js":{"offset":539780,"length":17862,"mode":420},"/node_modules/corestore/lib/audit.js":{"offset":557642,"length":475,"mode":420},"/node_modules/corestore/package.json":{"offset":558117,"length":1085,"mode":420},"/node_modules/debounceify/index.js":{"offset":559202,"length":585,"mode":420},"/node_modules/debounceify/package.json":{"offset":559787,"length":567,"mode":420},"/node_modules/device-file/index.js":{"offset":560354,"length":5900,"mode":420},"/node_modules/device-file/package.json":{"offset":566254,"length":1063,"mode":420},"/node_modules/dht-rpc/index.js":{"offset":567317,"length":25403,"mode":420},"/node_modules/dht-rpc/lib/commands.js":{"offset":592720,"length":82,"mode":420},"/node_modules/dht-rpc/lib/errors.js":{"offset":592802,"length":719,"mode":420},"/node_modules/dht-rpc/lib/io.js":{"offset":593521,"length":15926,"mode":420},"/node_modules/dht-rpc/lib/peer.js":{"offset":609447,"length":631,"mode":420},"/node_modules/dht-rpc/lib/query.js":{"offset":610078,"length":9913,"mode":420},"/node_modules/dht-rpc/lib/session.js":{"offset":619991,"length":1103,"mode":420},"/node_modules/dht-rpc/package.json":{"offset":621094,"length":1356,"mode":420},"/node_modules/events-universal/bare.js":{"offset":622450,"length":40,"mode":420},"/node_modules/events-universal/package.json":{"offset":622490,"length":908,"mode":420},"/node_modules/fast-fifo/fixed-size.js":{"offset":623398,"length":875,"mode":420},"/node_modules/fast-fifo/index.js":{"offset":624273,"length":972,"mode":420},"/node_modules/fast-fifo/package.json":{"offset":625245,"length":682,"mode":420},"/node_modules/fd-lock/index.js":{"offset":625927,"length":1661,"mode":420},"/node_modules/fd-lock/package.json":{"offset":627588,"length":1099,"mode":420},"/node_modules/flat-tree/index.js":{"offset":628687,"length":8164,"mode":420},"/node_modules/flat-tree/package.json":{"offset":636851,"length":631,"mode":420},"/node_modules/fs-native-extensions/binding.js":{"offset":637482,"length":90,"mode":420},"/node_modules/fs-native-extensions/index.js":{"offset":637572,"length":5718,"mode":420},"/node_modules/fs-native-extensions/package.json":{"offset":643290,"length":1699,"mode":420},"/node_modules/hyperbee/index.js":{"offset":644989,"length":46120,"mode":420},"/node_modules/hyperbee/iterators/diff.js":{"offset":691109,"length":5368,"mode":420},"/node_modules/hyperbee/iterators/history.js":{"offset":696477,"length":1642,"mode":420},"/node_modules/hyperbee/iterators/local.js":{"offset":698119,"length":1180,"mode":420},"/node_modules/hyperbee/iterators/range.js":{"offset":699299,"length":4734,"mode":420},"/node_modules/hyperbee/lib/extension.js":{"offset":704033,"length":3445,"mode":420},"/node_modules/hyperbee/lib/messages.js":{"offset":707478,"length":28162,"mode":420},"/node_modules/hyperbee/package.json":{"offset":735640,"length":1216,"mode":420},"/node_modules/hypercore-crypto/index.js":{"offset":736856,"length":5040,"mode":420},"/node_modules/hypercore-crypto/package.json":{"offset":741896,"length":771,"mode":420},"/node_modules/hypercore-errors/index.js":{"offset":742667,"length":4896,"mode":420},"/node_modules/hypercore-errors/package.json":{"offset":747563,"length":688,"mode":420},"/node_modules/hypercore-id-encoding/index.js":{"offset":748251,"length":923,"mode":420},"/node_modules/hypercore-id-encoding/package.json":{"offset":749174,"length":799,"mode":420},"/node_modules/hypercore-storage/index.js":{"offset":749973,"length":27551,"mode":420},"/node_modules/hypercore-storage/lib/block-dependency-stream.js":{"offset":777524,"length":2557,"mode":420},"/node_modules/hypercore-storage/lib/close-error-stream.js":{"offset":780081,"length":276,"mode":420},"/node_modules/hypercore-storage/lib/keys.js":{"offset":780357,"length":7454,"mode":420},"/node_modules/hypercore-storage/lib/streams.js":{"offset":787811,"length":4820,"mode":420},"/node_modules/hypercore-storage/lib/tx.js":{"offset":792631,"length":8416,"mode":420},"/node_modules/hypercore-storage/lib/view.js":{"offset":801047,"length":8378,"mode":420},"/node_modules/hypercore-storage/migrations/0/index.js":{"offset":809425,"length":20125,"mode":420},"/node_modules/hypercore-storage/migrations/0/messages.js":{"offset":829550,"length":26210,"mode":420},"/node_modules/hypercore-storage/package.json":{"offset":855760,"length":1248,"mode":420},"/node_modules/hypercore-storage/spec/hyperschema/index.js":{"offset":857008,"length":13108,"mode":420},"/node_modules/hypercore/index.js":{"offset":870116,"length":33855,"mode":420},"/node_modules/hypercore/lib/audit.js":{"offset":903971,"length":3834,"mode":420},"/node_modules/hypercore/lib/bit-interlude.js":{"offset":907805,"length":4257,"mode":420},"/node_modules/hypercore/lib/bitfield.js":{"offset":912062,"length":11854,"mode":420},"/node_modules/hypercore/lib/caps.js":{"offset":923916,"length":1537,"mode":420},"/node_modules/hypercore/lib/compat.js":{"offset":925453,"length":477,"mode":420},"/node_modules/hypercore/lib/copy-prologue.js":{"offset":925930,"length":5999,"mode":420},"/node_modules/hypercore/lib/core.js":{"offset":931929,"length":24419,"mode":420},"/node_modules/hypercore/lib/default-encryption.js":{"offset":956348,"length":3453,"mode":420},"/node_modules/hypercore/lib/download.js":{"offset":959801,"length":1278,"mode":420},"/node_modules/hypercore/lib/hotswap-queue.js":{"offset":961079,"length":1498,"mode":420},"/node_modules/hypercore/lib/info.js":{"offset":962577,"length":1517,"mode":420},"/node_modules/hypercore/lib/inspect.js":{"offset":964094,"length":1983,"mode":420},"/node_modules/hypercore/lib/merkle-tree.js":{"offset":966077,"length":33910,"mode":420},"/node_modules/hypercore/lib/messages.js":{"offset":999987,"length":27633,"mode":420},"/node_modules/hypercore/lib/multisig.js":{"offset":1027620,"length":2851,"mode":420},"/node_modules/hypercore/lib/mutex.js":{"offset":1030471,"length":1028,"mode":420},"/node_modules/hypercore/lib/receiver-queue.js":{"offset":1031499,"length":1413,"mode":420},"/node_modules/hypercore/lib/remote-bitfield.js":{"offset":1032912,"length":8079,"mode":420},"/node_modules/hypercore/lib/replicator.js":{"offset":1040991,"length":80781,"mode":420},"/node_modules/hypercore/lib/session-state.js":{"offset":1121772,"length":32225,"mode":420},"/node_modules/hypercore/lib/streams.js":{"offset":1153997,"length":3034,"mode":420},"/node_modules/hypercore/lib/verifier.js":{"offset":1157031,"length":9678,"mode":420},"/node_modules/hypercore/package.json":{"offset":1166709,"length":2197,"mode":420},"/node_modules/hyperdht/index.js":{"offset":1168906,"length":16099,"mode":420},"/node_modules/hyperdht/lib/announcer.js":{"offset":1185005,"length":7533,"mode":420},"/node_modules/hyperdht/lib/connect.js":{"offset":1192538,"length":23668,"mode":420},"/node_modules/hyperdht/lib/connection-pool.js":{"offset":1216206,"length":3050,"mode":420},"/node_modules/hyperdht/lib/constants.js":{"offset":1219256,"length":1211,"mode":420},"/node_modules/hyperdht/lib/crypto.js":{"offset":1220467,"length":632,"mode":420},"/node_modules/hyperdht/lib/encode.js":{"offset":1221099,"length":446,"mode":420},"/node_modules/hyperdht/lib/errors.js":{"offset":1221545,"length":3712,"mode":420},"/node_modules/hyperdht/lib/holepuncher.js":{"offset":1225257,"length":10003,"mode":420},"/node_modules/hyperdht/lib/messages.js":{"offset":1235260,"length":11266,"mode":420},"/node_modules/hyperdht/lib/nat.js":{"offset":1246526,"length":4714,"mode":420},"/node_modules/hyperdht/lib/noise-wrap.js":{"offset":1251240,"length":1669,"mode":420},"/node_modules/hyperdht/lib/persistent.js":{"offset":1252909,"length":8086,"mode":420},"/node_modules/hyperdht/lib/raw-stream-set.js":{"offset":1260995,"length":1511,"mode":420},"/node_modules/hyperdht/lib/router.js":{"offset":1262506,"length":6978,"mode":420},"/node_modules/hyperdht/lib/secure-payload.js":{"offset":1269484,"length":1491,"mode":420},"/node_modules/hyperdht/lib/semaphore.js":{"offset":1270975,"length":1577,"mode":420},"/node_modules/hyperdht/lib/server.js":{"offset":1272552,"length":21156,"mode":420},"/node_modules/hyperdht/lib/sleeper.js":{"offset":1293708,"length":690,"mode":420},"/node_modules/hyperdht/lib/socket-pool.js":{"offset":1294398,"length":4343,"mode":420},"/node_modules/hyperdht/package.json":{"offset":1298741,"length":2011,"mode":420},"/node_modules/hyperschema/package.json":{"offset":1300752,"length":1556,"mode":420},"/node_modules/hyperschema/runtime.cjs":{"offset":1302308,"length":54,"mode":420},"/node_modules/hyperswarm/index.js":{"offset":1302362,"length":18429,"mode":420},"/node_modules/hyperswarm/lib/bulk-timer.js":{"offset":1320791,"length":728,"mode":420},"/node_modules/hyperswarm/lib/connection-set.js":{"offset":1321519,"length":823,"mode":420},"/node_modules/hyperswarm/lib/peer-discovery.js":{"offset":1322342,"length":9286,"mode":420},"/node_modules/hyperswarm/lib/peer-info.js":{"offset":1331628,"length":2688,"mode":420},"/node_modules/hyperswarm/lib/retry-timer.js":{"offset":1334316,"length":1889,"mode":420},"/node_modules/hyperswarm/package.json":{"offset":1336205,"length":1228,"mode":420},"/node_modules/index-encoder/index.js":{"offset":1337433,"length":6762,"mode":420},"/node_modules/index-encoder/package.json":{"offset":1344195,"length":729,"mode":420},"/node_modules/is-options/index.js":{"offset":1344924,"length":140,"mode":420},"/node_modules/is-options/package.json":{"offset":1345064,"length":605,"mode":420},"/node_modules/kademlia-routing-table/index.js":{"offset":1345669,"length":4145,"mode":420},"/node_modules/kademlia-routing-table/package.json":{"offset":1349814,"length":967,"mode":420},"/node_modules/mutexify/index.js":{"offset":1350781,"length":536,"mode":420},"/node_modules/mutexify/package.json":{"offset":1351317,"length":679,"mode":420},"/node_modules/mutexify/promise.js":{"offset":1351996,"length":324,"mode":420},"/node_modules/nanoassert/index.js":{"offset":1352320,"length":438,"mode":420},"/node_modules/nanoassert/package.json":{"offset":1352758,"length":647,"mode":420},"/node_modules/nat-sampler/index.js":{"offset":1353405,"length":1550,"mode":420},"/node_modules/nat-sampler/package.json":{"offset":1354955,"length":608,"mode":420},"/node_modules/noise-curve-ed/index.js":{"offset":1355563,"length":1642,"mode":420},"/node_modules/noise-curve-ed/package.json":{"offset":1357205,"length":808,"mode":420},"/node_modules/noise-handshake/cipher.js":{"offset":1358013,"length":2817,"mode":420},"/node_modules/noise-handshake/dh.js":{"offset":1360830,"length":1439,"mode":420},"/node_modules/noise-handshake/hkdf.js":{"offset":1362269,"length":1092,"mode":420},"/node_modules/noise-handshake/hmac.js":{"offset":1363361,"length":1273,"mode":420},"/node_modules/noise-handshake/noise.js":{"offset":1364634,"length":6437,"mode":420},"/node_modules/noise-handshake/package.json":{"offset":1371071,"length":638,"mode":420},"/node_modules/noise-handshake/symmetric-state.js":{"offset":1371709,"length":2206,"mode":420},"/node_modules/protocol-buffers-encodings/index.js":{"offset":1373915,"length":6489,"mode":420},"/node_modules/protocol-buffers-encodings/package.json":{"offset":1380404,"length":719,"mode":420},"/node_modules/protomux-wakeup/index.js":{"offset":1381123,"length":16824,"mode":420},"/node_modules/protomux-wakeup/package.json":{"offset":1397947,"length":972,"mode":420},"/node_modules/protomux-wakeup/spec/hyperschema/index.js":{"offset":1398919,"length":3335,"mode":420},"/node_modules/protomux/index.js":{"offset":1402254,"length":18996,"mode":420},"/node_modules/protomux/package.json":{"offset":1421250,"length":816,"mode":420},"/node_modules/queue-tick/package.json":{"offset":1422066,"length":669,"mode":420},"/node_modules/queue-tick/process-next-tick.js":{"offset":1422735,"length":160,"mode":420},"/node_modules/queue-tick/queue-microtask.js":{"offset":1422895,"length":108,"mode":420},"/node_modules/quickbit-native/binding.js":{"offset":1423003,"length":90,"mode":420},"/node_modules/quickbit-native/index.js":{"offset":1423093,"length":4683,"mode":420},"/node_modules/quickbit-native/package.json":{"offset":1427776,"length":1104,"mode":420},"/node_modules/quickbit-universal/fallback.js":{"offset":1428880,"length":10204,"mode":420},"/node_modules/quickbit-universal/index.js":{"offset":1439084,"length":442,"mode":420},"/node_modules/quickbit-universal/package.json":{"offset":1439526,"length":908,"mode":420},"/node_modules/rache/index.js":{"offset":1440434,"length":2463,"mode":420},"/node_modules/rache/package.json":{"offset":1442897,"length":602,"mode":420},"/node_modules/random-array-iterator/index.js":{"offset":1443499,"length":1001,"mode":420},"/node_modules/random-array-iterator/package.json":{"offset":1444500,"length":700,"mode":420},"/node_modules/ready-resource/index.js":{"offset":1445200,"length":1091,"mode":420},"/node_modules/ready-resource/package.json":{"offset":1446291,"length":812,"mode":420},"/node_modules/record-cache/index.js":{"offset":1447103,"length":3668,"mode":420},"/node_modules/record-cache/package.json":{"offset":1450771,"length":612,"mode":420},"/node_modules/refcounter/index.js":{"offset":1451383,"length":611,"mode":420},"/node_modules/refcounter/package.json":{"offset":1451994,"length":451,"mode":420},"/node_modules/require-addon/lib/bare.js":{"offset":1452445,"length":45,"mode":420},"/node_modules/require-addon/package.json":{"offset":1452490,"length":1449,"mode":420},"/node_modules/resolve-reject-promise/index.js":{"offset":1453939,"length":443,"mode":420},"/node_modules/resolve-reject-promise/package.json":{"offset":1454382,"length":581,"mode":420},"/node_modules/resource-on-exit/index.js":{"offset":1454963,"length":361,"mode":420},"/node_modules/resource-on-exit/package.json":{"offset":1455324,"length":496,"mode":420},"/node_modules/rocksdb-native/binding.js":{"offset":1455820,"length":90,"mode":420},"/node_modules/rocksdb-native/index.js":{"offset":1455910,"length":4708,"mode":420},"/node_modules/rocksdb-native/lib/batch.js":{"offset":1460618,"length":8812,"mode":420},"/node_modules/rocksdb-native/lib/column-family.js":{"offset":1469430,"length":2674,"mode":420},"/node_modules/rocksdb-native/lib/constants.js":{"offset":1472104,"length":94,"mode":420},"/node_modules/rocksdb-native/lib/filter-policy.js":{"offset":1472198,"length":437,"mode":420},"/node_modules/rocksdb-native/lib/iterator.js":{"offset":1472635,"length":4311,"mode":420},"/node_modules/rocksdb-native/lib/snapshot.js":{"offset":1476946,"length":503,"mode":420},"/node_modules/rocksdb-native/lib/state.js":{"offset":1477449,"length":9762,"mode":420},"/node_modules/rocksdb-native/package.json":{"offset":1487211,"length":1539,"mode":420},"/node_modules/safety-catch/index.js":{"offset":1488750,"length":506,"mode":420},"/node_modules/safety-catch/package.json":{"offset":1489256,"length":547,"mode":420},"/node_modules/scope-lock/index.js":{"offset":1489803,"length":1821,"mode":420},"/node_modules/scope-lock/package.json":{"offset":1491624,"length":611,"mode":420},"/node_modules/shuffled-priority-queue/index.js":{"offset":1492235,"length":2607,"mode":420},"/node_modules/shuffled-priority-queue/package.json":{"offset":1494842,"length":691,"mode":420},"/node_modules/signal-promise/index.js":{"offset":1495533,"length":1252,"mode":420},"/node_modules/signal-promise/package.json":{"offset":1496785,"length":503,"mode":420},"/node_modules/signed-varint/index.js":{"offset":1497288,"length":435,"mode":420},"/node_modules/signed-varint/package.json":{"offset":1497723,"length":523,"mode":420},"/node_modules/simdle-native/binding.js":{"offset":1498246,"length":90,"mode":420},"/node_modules/simdle-native/index.js":{"offset":1498336,"length":3474,"mode":420},"/node_modules/simdle-native/package.json":{"offset":1501810,"length":1115,"mode":420},"/node_modules/simdle-universal/fallback.js":{"offset":1502925,"length":5137,"mode":420},"/node_modules/simdle-universal/index.js":{"offset":1508062,"length":103,"mode":420},"/node_modules/simdle-universal/package.json":{"offset":1508165,"length":879,"mode":420},"/node_modules/simdle-universal/scalar.js":{"offset":1509044,"length":469,"mode":420},"/node_modules/sodium-native/binding.js":{"offset":1509513,"length":89,"mode":420},"/node_modules/sodium-native/index.js":{"offset":1509602,"length":66328,"mode":420},"/node_modules/sodium-native/package.json":{"offset":1575930,"length":1356,"mode":420},"/node_modules/sodium-secretstream/index.js":{"offset":1577286,"length":2257,"mode":420},"/node_modules/sodium-secretstream/package.json":{"offset":1579543,"length":657,"mode":420},"/node_modules/sodium-universal/index.js":{"offset":1580200,"length":42,"mode":420},"/node_modules/sodium-universal/package.json":{"offset":1580242,"length":1217,"mode":420},"/node_modules/streamx/index.js":{"offset":1581459,"length":33350,"mode":420},"/node_modules/streamx/package.json":{"offset":1614809,"length":836,"mode":420},"/node_modules/sub-encoder/index.js":{"offset":1615645,"length":1968,"mode":420},"/node_modules/sub-encoder/package.json":{"offset":1617613,"length":908,"mode":420},"/node_modules/text-decoder/index.js":{"offset":1618521,"length":1378,"mode":420},"/node_modules/text-decoder/lib/pass-through-decoder.js":{"offset":1619899,"length":273,"mode":420},"/node_modules/text-decoder/lib/utf8-decoder.js":{"offset":1620172,"length":2529,"mode":420},"/node_modules/text-decoder/package.json":{"offset":1622701,"length":987,"mode":420},"/node_modules/time-ordered-set/index.js":{"offset":1623688,"length":1444,"mode":420},"/node_modules/time-ordered-set/package.json":{"offset":1625132,"length":666,"mode":420},"/node_modules/timeout-refresh/browser.js":{"offset":1625798,"length":1098,"mode":420},"/node_modules/timeout-refresh/index.js":{"offset":1626896,"length":184,"mode":420},"/node_modules/timeout-refresh/node.js":{"offset":1627080,"length":928,"mode":420},"/node_modules/timeout-refresh/package.json":{"offset":1628008,"length":619,"mode":420},"/node_modules/tiny-buffer-map/index.js":{"offset":1628627,"length":936,"mode":420},"/node_modules/tiny-buffer-map/package.json":{"offset":1629563,"length":650,"mode":420},"/node_modules/udx-native/binding.js":{"offset":1630213,"length":90,"mode":420},"/node_modules/udx-native/lib/ip.js":{"offset":1630303,"length":2204,"mode":420},"/node_modules/udx-native/lib/network-interfaces.js":{"offset":1632507,"length":1341,"mode":420},"/node_modules/udx-native/lib/socket.js":{"offset":1633848,"length":7557,"mode":420},"/node_modules/udx-native/lib/stream.js":{"offset":1641405,"length":12706,"mode":420},"/node_modules/udx-native/lib/udx.js":{"offset":1654111,"length":2868,"mode":420},"/node_modules/udx-native/package.json":{"offset":1656979,"length":1615,"mode":420},"/node_modules/unordered-set/index.js":{"offset":1658594,"length":677,"mode":420},"/node_modules/unordered-set/package.json":{"offset":1659271,"length":654,"mode":420},"/node_modules/unslab/index.js":{"offset":1659925,"length":913,"mode":420},"/node_modules/unslab/package.json":{"offset":1660838,"length":613,"mode":420},"/node_modules/varint/decode.js":{"offset":1661451,"length":508,"mode":420},"/node_modules/varint/encode.js":{"offset":1661959,"length":452,"mode":420},"/node_modules/varint/index.js":{"offset":1662411,"length":134,"mode":420},"/node_modules/varint/length.js":{"offset":1662545,"length":471,"mode":420},"/node_modules/varint/package.json":{"offset":1663016,"length":511,"mode":420},"/node_modules/which-runtime/index.js":{"offset":1663527,"length":1231,"mode":420},"/node_modules/which-runtime/package.json":{"offset":1664758,"length":602,"mode":420},"/node_modules/xache/index.js":{"offset":1665360,"length":2378,"mode":420},"/node_modules/xache/package.json":{"offset":1667738,"length":584,"mode":420},"/node_modules/z32/index.js":{"offset":1668322,"length":2654,"mode":420},"/node_modules/z32/package.json":{"offset":1670976,"length":701,"mode":420},"/package.json":{"offset":1671677,"length":1741,"mode":420},"/rpc-commands.mjs":{"offset":1673418,"length":344,"mode":420}}}
 // /* global Bare, BareKit */
 
 import RPC from 'bare-rpc'
@@ -3798,7 +3798,7 @@ module.exports = class Autobase extends ReadyResource {
 
   _updateAll() {
     const p = []
-    for (const w of this.activeWriters) p.push(w.update(null).catch(this._warn))
+    for (const w of this.activeWriters) p.push(w.update(null).catch(safetyCatch))
     return Promise.all(p)
   }
 
@@ -7716,9 +7716,11 @@ module.exports = class FastForward {
   static MINIMUM = DEFAULT_MIN_FF
 
   async upgrade() {
-    if (!this.upgrading) this.upgrading = this._upgrade()
     try {
+      if (!this.upgrading) this.upgrading = this._upgrade()
+
       if (!(await this.upgrading)) return null
+
       return {
         length: this.length,
         force: this.force,
@@ -10992,7 +10994,7 @@ function autoRecover(core) {
 }
 {
   "name": "autobase",
-  "version": "7.23.0",
+  "version": "7.24.0",
   "description": "A multiwriter data structure for Hypercore",
   "main": "index.js",
   "scripts": {
@@ -15302,8 +15304,8 @@ class Dir {
 }
 
 class Dirent {
-  constructor(path, name, type) {
-    this.path = path
+  constructor(parentPath, name, type) {
+    this.parentPath = parentPath
     this.name = name
     this.type = type
   }
@@ -15870,7 +15872,7 @@ function describe(operation, opts) {
 }
 {
   "name": "bare-fs",
-  "version": "4.5.1",
+  "version": "4.5.2",
   "description": "Native file system operations for Javascript",
   "exports": {
     "./package": "./package.json",
@@ -23779,8 +23781,9 @@ class DHT extends EventEmitter {
         oldest === null ||
         oldest.pinged > node.pinged ||
         (oldest.pinged === node.pinged && oldest.added > node.added)
-      )
+      ) {
         oldest = node
+      }
     }
 
     if (oldest === null) return
@@ -24128,8 +24131,9 @@ class DHT extends EventEmitter {
 
     // check that the local port of the server socket is the same as the remote port
     // TODO: we might want a flag to opt out of this heuristic for specific remapped port servers
-    if (natSampler.port === 0 || natSampler.port !== this.io.serverSocket.address().port)
+    if (natSampler.port === 0 || natSampler.port !== this.io.serverSocket.address().port) {
       return true
+    }
 
     return false
 
@@ -24694,8 +24698,9 @@ class Request {
     if (this.destroyed) return
 
     if (this.socket === null) return
-    if (this._buffer === null)
+    if (this._buffer === null) {
       this._buffer = this._encodeRequest(this.token, this.value, this.to, this.socket)
+    }
 
     if (!force && this._io.congestion.isFull()) {
       this._io._pending.push(this)
@@ -24910,7 +24915,7 @@ function id(host, port, out = b4a.allocUnsafeSlow(32)) {
   sodium.crypto_generichash(out, addr)
   return out
 }
-const { Readable } = require('streamx')
+const { Readable, getStreamError } = require('streamx')
 const b4a = require('b4a')
 const peer = require('./peer')
 const { DOWN_HINT } = require('./commands')
@@ -24994,6 +24999,13 @@ module.exports = class Query extends Readable {
 
   finished() {
     return new Promise((resolve, reject) => {
+      if (this.destroyed) {
+        const error = getStreamError(this)
+        if (error) reject(error)
+        else resolve()
+        return
+      }
+
       const self = this
       let error = null
 
@@ -25358,7 +25370,7 @@ module.exports = class Session {
 }
 {
   "name": "dht-rpc",
-  "version": "6.20.1",
+  "version": "6.20.2",
   "description": "Make RPC calls over a Kademlia based DHT",
   "main": "index.js",
   "files": [
@@ -25386,14 +25398,17 @@ module.exports = class Session {
   },
   "devDependencies": {
     "brittle": "^3.0.0",
+    "lunte": "^1.3.0",
     "prettier": "^3.6.2",
     "prettier-config-holepunch": "^2.0.0",
     "test-suspend": "^1.0.0"
   },
   "scripts": {
     "format": "prettier --write .",
-    "test": "prettier --check . && brittle test.js",
-    "test:bare": "bare test.js"
+    "test": "npm run test:node && npm run test:bare",
+    "test:bare": "brittle-bare --coverage test.js",
+    "lint": "prettier --check . && lunte",
+    "test:node": "brittle-node --coverage test.js"
   },
   "repository": {
     "type": "git",
@@ -35517,7 +35532,7 @@ class Hypercore extends EventEmitter {
     if (!noiseStream.userData) {
       const protocol = Protomux.from(noiseStream)
 
-      if (opts.keepAlive !== false) {
+      if (opts.keepAlive !== false && noiseStream.keepAlive === 0) {
         noiseStream.setKeepAlive(5000)
       }
       noiseStream.userData = protocol
@@ -36309,7 +36324,7 @@ class Hypercore extends EventEmitter {
     const isDefault = this.state === this.core.state
     const defaultKeyPair = this.state.name === null ? this.keyPair : null
 
-    const { keyPair = defaultKeyPair, signature = null, maxLength } = opts
+    const { keyPair = defaultKeyPair, signature = null, maxLength, postappend = null } = opts
     const writable =
       !isDefault || !!signature || !!(keyPair && keyPair.secretKey) || opts.writable === true
 
@@ -36337,7 +36352,7 @@ class Hypercore extends EventEmitter {
       }
     }
 
-    return this.state.append(buffers, { keyPair, signature, preappend, maxLength })
+    return this.state.append(buffers, { keyPair, signature, preappend, postappend, maxLength })
   }
 
   async signable(length = -1, fork = -1) {
@@ -36520,6 +36535,8 @@ function initOnce(session, storage, key, opts) {
     eagerUpgrade: opts.eagerUpgrade !== false,
     notDownloadingLinger: opts.notDownloadingLinger,
     allowFork: opts.allowFork !== false,
+    allowPush: !!opts.allowPush,
+    alwaysLatestBlock: !!opts.allowLatestBlock,
     inflightRange: opts.inflightRange,
     compat: opts.compat === true,
     force: opts.force,
@@ -37801,6 +37818,8 @@ module.exports = class Core {
     this.destroyed = false
     this.closed = false
 
+    this.hintsChanged = false
+
     this._bitfield = null
     this._verifies = null
     this._verifiesFlushed = null
@@ -38185,6 +38204,7 @@ module.exports = class Core {
     const verifier =
       this.verifier ||
       new Verifier(this.header.key, Verifier.createManifest(manifest), { legacy: this._legacy })
+
     if (!verifier.verify(batch, batch.signature)) {
       throw INVALID_SIGNATURE('Proof contains an invalid signature', this.discoveryKey)
     }
@@ -38194,10 +38214,6 @@ module.exports = class Core {
 
   async _verifyExclusive({ batch, bitfield, value, manifest }) {
     manifest = this._verifyBatchUpgrade(batch, manifest)
-
-    if (!batch.commitable()) return false
-
-    if (this.preupdate !== null) await this.preupdate(batch, this.header.key)
 
     if (
       !(await this.state._verifyBlock(
@@ -38277,12 +38293,28 @@ module.exports = class Core {
           this.replicator.onhave(bitfield.start, bitfield.length, bitfield.drop)
         }
       }
+
+      if (this.hintsChanged) await this.flushHints()
     } finally {
       this.state._clearActiveBatch()
       this.state.mutex.unlock()
     }
 
     return verifies[0] !== null
+  }
+
+  async flushHints() {
+    if (!this.hintsChanged) return
+    this.hintsChanged = false // we unset this immediately as a "debounce"
+
+    const tx = this.state.storage.write()
+
+    tx.setHints({
+      contiguousLength: this.header.hints.contiguousLength,
+      remoteContiguousLength: this.header.hints.remoteContiguousLength
+    })
+
+    await tx.flush()
   }
 
   async checkConflict(proof, from) {
@@ -38396,7 +38428,14 @@ module.exports = class Core {
     if (proof.fork !== this.state.fork) return false
 
     const batch = await MerkleTree.verify(this.state, proof)
-    if (!batch.commitable()) return false
+
+    if (batch.upgraded && batch.length <= this.state.length) {
+      await batch.downgrade()
+    }
+
+    if (!batch.commitable()) {
+      return false
+    }
 
     const value = (proof.block && proof.block.value) || null
     const op = {
@@ -38462,13 +38501,13 @@ module.exports = class Core {
 
     if (contig.length !== -1 && contig.length !== this.header.hints.contiguousLength) {
       this.header.hints.contiguousLength = contig.length
+      this.hintsChanged = true
     }
   }
 
-  async updateRemoteContiguousLength(length) {
+  updateRemoteContiguousLength(length) {
     this.header.hints.remoteContiguousLength = length
-    await this.state.flushHints()
-    if (this.header.hints.remoteContiguousLength !== length) return
+    this.hintsChanged = true
 
     for (let i = this.monitors.length - 1; i >= 0; i--) {
       this.monitors[i].emit('remote-contiguous-length', length)
@@ -39263,6 +39302,32 @@ class MerkleTreeBatch {
     return offset
   }
 
+  async downgrade() {
+    if (!this.upgraded) return true
+
+    const rx = this.storage.read()
+    const nodePromises = []
+
+    for (const r of this.roots) {
+      nodePromises.push(rx.getTreeNode(r.index))
+    }
+
+    rx.tryFlush()
+
+    const nodes = await Promise.all(nodePromises)
+
+    for (let i = 0; i < this.roots.length; i++) {
+      const root = this.roots[i]
+      const node = nodes[i]
+
+      if (!node) return false
+      if (!b4a.equals(node.hash, root.hash)) return false
+    }
+
+    this.upgraded = false
+    return true
+  }
+
   async restore(length) {
     if (length === this.length) return this
 
@@ -39652,6 +39717,28 @@ class MerkleTree {
 
   static proof(session, rx, { block, hash, seek, upgrade }) {
     return generateProof(session, rx, block, hash, seek, upgrade)
+  }
+
+  static maxMissingNodes(index, length) {
+    const head = 2 * length
+    const ite = flat.iterator(index)
+
+    // See iterator.rightSpan()
+    const iteRightSpan = ite.index + ite.factor / 2 - 1
+    // If the index is not in the current tree, we do not know how many missing nodes there are...
+    if (iteRightSpan >= head) return 0
+
+    for (const r of flat.fullRoots(head)) {
+      if (r === index) return 0
+    }
+
+    let cnt = 0
+    while (!ite.contains(head)) {
+      cnt++
+      ite.parent()
+    }
+
+    return cnt
   }
 
   static async missingNodes(session, index, length) {
@@ -40907,7 +40994,8 @@ wire.sync = {
       (m.canUpgrade ? 1 : 0) |
         (m.uploading ? 2 : 0) |
         (m.downloading ? 4 : 0) |
-        (m.hasManifest ? 8 : 0)
+        (m.hasManifest ? 8 : 0) |
+        (m.allowPush ? 16 : 0)
     )
     c.uint.encode(state, m.fork)
     c.uint.encode(state, m.length)
@@ -40923,7 +41011,8 @@ wire.sync = {
       canUpgrade: (flags & 1) !== 0,
       uploading: (flags & 2) !== 0,
       downloading: (flags & 4) !== 0,
-      hasManifest: (flags & 8) !== 0
+      hasManifest: (flags & 8) !== 0,
+      allowPush: (flags & 16) !== 0
     }
   }
 }
@@ -42041,6 +42130,7 @@ const b4a = require('b4a')
 const safetyCatch = require('safety-catch')
 const RandomIterator = require('random-array-iterator')
 const flatTree = require('flat-tree')
+const Mutex = require('./mutex')
 const ReceiverQueue = require('./receiver-queue')
 const HotswapQueue = require('./hotswap-queue')
 const RemoteBitfield = require('./remote-bitfield')
@@ -42202,6 +42292,11 @@ class RangeRequest extends Attachable {
     this.ifAvailable = ifAvailable
     this.blocks = blocks
     this.ranges = ranges
+    ranges.push(this)
+
+    if (this.end === -1) {
+      this.replicator._alwaysLatestBlock++
+    }
 
     // As passed by the user, immut
     this.userStart = start
@@ -42209,10 +42304,17 @@ class RangeRequest extends Attachable {
   }
 
   _unref() {
-    const i = this.ranges.indexOf(this)
-    if (i === -1) return
+    const rangeIndex = this.ranges.indexOf(this)
+    if (rangeIndex === -1) return
+
     const h = this.ranges.pop()
-    if (i < this.ranges.length) this.ranges[i] = h
+    if (h !== this) {
+      this.ranges[rangeIndex] = h
+    }
+
+    if (this.end === -1) {
+      this.replicator._alwaysLatestBlock--
+    }
   }
 
   _cancel(r) {
@@ -42386,7 +42488,6 @@ class ProofRequest {
     const [proof, block] = await Promise.all([this.proof.settle(), this.block])
 
     if (this.manifest) proof.manifest = this.manifest
-
     if (!block && proof.block) return null
 
     if (block) proof.block.value = block
@@ -42465,6 +42566,8 @@ class Peer {
     this.remoteBitfield = new RemoteBitfield()
     this.missingBlocks = new RemoteBitfield()
 
+    this.pushedLength = 0
+
     this.remoteFork = 0
     this.remoteLength = 0
     this.remoteCanUpgrade = false
@@ -42472,6 +42575,7 @@ class Peer {
     this.remoteDownloading = true
     this.remoteSynced = false
     this.remoteHasManifest = false
+    this.remoteAllowPush = false
     this.remoteRequests = new Map()
 
     this.segmentsWanted = new Set()
@@ -42607,7 +42711,8 @@ class Peer {
       canUpgrade: this.canUpgrade,
       uploading: true,
       downloading: this.replicator.isDownloading(),
-      hasManifest: !!this.core.header.manifest && this.core.compat === false
+      hasManifest: !!this.core.header.manifest && this.core.compat === false,
+      allowPush: this.replicator.allowPush
     })
     incrementTx(this.stats.wireSync, this.replicator.stats.wireSync)
   }
@@ -42692,7 +42797,18 @@ class Peer {
     return false
   }
 
-  async onsync({ fork, length, remoteLength, canUpgrade, uploading, downloading, hasManifest }) {
+  async onsync(msg) {
+    const {
+      fork,
+      length,
+      remoteLength,
+      canUpgrade,
+      uploading,
+      downloading,
+      hasManifest,
+      allowPush
+    } = msg
+
     const lengthChanged = length !== this.remoteLength
     const sameFork = fork === this.core.state.fork
 
@@ -42703,6 +42819,7 @@ class Peer {
     this.remoteUploading = uploading
     this.remoteDownloading = downloading
     this.remoteHasManifest = hasManifest
+    this.remoteAllowPush = allowPush
 
     if (this.closeIfIdle()) return
 
@@ -42798,13 +42915,13 @@ class Peer {
     }
   }
 
-  async _getProof(batch, msg) {
+  async _getProof(batch, msg, pushing) {
     let block = null
 
     if (msg.block) {
       const index = msg.block.index
 
-      if (msg.fork !== this.core.state.fork || !this.core.bitfield.get(index)) {
+      if (!pushing && (msg.fork !== this.core.state.fork || !this.core.bitfield.get(index))) {
         return new ProofRequest(msg, null, null, null)
       }
 
@@ -42881,13 +42998,57 @@ class Peer {
     this.receiverBusy = false
   }
 
+  async push(index) {
+    if (!this.remoteAllowPush) return
+    if (this.core.state.fork !== this.remoteFork) return
+    if (this.remoteBitfield.get(index)) return
+
+    const msg = {
+      id: 0,
+      fork: this.core.state.fork,
+      block: null,
+      hash: null,
+      seek: null,
+      upgrade: null,
+      manifest: this.remoteLength === 0,
+      priority: 0
+    }
+
+    const remoteLength = Math.max(this.remoteLength, this.pushedLength)
+
+    msg.block = {
+      index,
+      nodes: MerkleTree.maxMissingNodes(2 * index, remoteLength)
+    }
+
+    if (index >= this.remoteLength) {
+      msg.upgrade = {
+        start: remoteLength,
+        length: this.core.state.length - remoteLength
+      }
+    }
+
+    let req = null
+    const batch = this.core.storage.read()
+    try {
+      req = await this._getProof(batch, msg, true)
+    } catch {
+      return
+    }
+
+    if (req === null) return
+    batch.tryFlush()
+
+    await this._fulfillRequest(req, true)
+  }
+
   async _handleRequest(msg) {
     const batch = this.core.storage.read()
 
     // TODO: could still be answerable if (index, fork) is an ancestor of the current fork
     const req =
       msg.fork === this.core.state.fork
-        ? await this._getProof(batch, msg)
+        ? await this._getProof(batch, msg, false)
         : new ProofRequest(msg, null, null, null)
 
     if (req === null) {
@@ -42897,19 +43058,24 @@ class Peer {
 
     batch.tryFlush()
 
-    await this._fulfillRequest(req)
+    await this._fulfillRequest(req, false)
   }
 
-  async _fulfillRequest(req) {
+  async _fulfillRequest(req, pushing) {
     const proof = await req.fulfill()
 
-    // if cancelled do not reply
-    if (this.remoteRequests.get(req.msg.id) !== req.msg) {
+    if (!pushing) {
+      // if cancelled do not reply
+      if (this.remoteRequests.get(req.msg.id) !== req.msg) {
+        return
+      }
+
+      // sync from now on, so safe to delete from the map
+      this.remoteRequests.delete(req.msg.id)
+    } else if (!this.remoteAllowPush) {
+      // if pushing but remote disabled it, just drop it
       return
     }
-
-    // sync from now on, so safe to delete from the map
-    this.remoteRequests.delete(req.msg.id)
 
     if (!this.isActive() && proof.block !== null) {
       return
@@ -42937,6 +43103,11 @@ class Peer {
 
     if (proof.block !== null) {
       this.replicator._onupload(proof.block.index, proof.block.value.byteLength, this)
+    }
+
+    if (proof.upgrade) {
+      const remoteLength = proof.upgrade.start + proof.upgrade.length
+      if (remoteLength > this.pushedLength) this.pushedLength = remoteLength
     }
 
     this.wireData.send({
@@ -42990,7 +43161,23 @@ class Peer {
     incrementTx(this.stats.wireRequest, this.replicator.stats.wireRequest)
   }
 
+  _unmarkInflightBlockRequest(req, data) {
+    if (isBlockRequest(req)) this.replicator._unmarkInflight(req.block.index)
+    else if (data.block && !req) this.replicator._unmarkInflight(data.block.index)
+  }
+
   async ondata(data) {
+    if (data.request !== 0) return this._handleData(data)
+
+    await this.replicator._pushLock.lock()
+    try {
+      await this._handleData(data)
+    } finally {
+      this.replicator._pushLock.unlock()
+    }
+  }
+
+  async _handleData(data) {
     // always allow a fork conflict proof to be sent
     if (data.request === 0 && data.upgrade && data.upgrade.start === 0) {
       if (await this.core.checkConflict(data, this)) return
@@ -43002,7 +43189,14 @@ class Peer {
 
     // no push atm, TODO: check if this satisfies another pending request
     // allow reorg pushes tho as those are not written to storage so we'll take all the help we can get
-    if (req === null && reorg === false) return
+    if (req === null && reorg === false && !this.replicator.allowPush) {
+      return
+    }
+
+    if (req === null && reorg === false && data.block) {
+      // mark this as inflight to avoid parallel requests
+      this.replicator._markInflight(data.block.index)
+    }
 
     if (req !== null) {
       if (req.peer !== this) return
@@ -43013,7 +43207,7 @@ class Peer {
       if (reorg === true) return await this.replicator._onreorgdata(this, req, data)
     } catch (err) {
       safetyCatch(err)
-      if (isBlockRequest(req)) this.replicator._unmarkInflight(req.block.index)
+      this._unmarkInflightBlockRequest(req, data)
 
       this.paused = true
       this.replicator._oninvaliddata(err, req, data, this)
@@ -43024,13 +43218,13 @@ class Peer {
     if (isBlockRequest(req)) this.replicator._markProcessing(req.block.index)
 
     try {
-      if (!matchingRequest(req, data) || !(await this.core.verify(data, this))) {
+      if (!this.replicator._matchingRequest(req, data) || !(await this.core.verify(data, this))) {
         this.replicator._onnodata(this, req, 0)
         return
       }
     } catch (err) {
       safetyCatch(err)
-      if (isBlockRequest(req)) this.replicator._unmarkInflight(req.block.index)
+      this._unmarkInflightBlockRequest(req, data)
 
       if (err.code === 'WRITE_FAILED') {
         // For example, we don't want to keep pulling data when storage is full
@@ -43046,7 +43240,12 @@ class Peer {
         this._checkIfConflict()
       }
 
-      this.paused = true
+      // if push mode, we MIGHT get an occasional bad message
+      // no need to mega bail for that. TODO: rate limit instead as a general thing
+      if (!this.replicator.allowPush) {
+        this.paused = true
+      }
+
       this.replicator._onnodata(this, req, 0)
       this.replicator._oninvaliddata(err, req, data, this)
       return
@@ -43064,7 +43263,11 @@ class Peer {
 
   onnodata({ request, reason }) {
     const req = request > 0 ? this.replicator._inflight.get(request) : null
-    if (req === null || req.peer !== this) return
+
+    if (req === null || req.peer !== this) {
+      this.replicator.updateAll()
+      return
+    }
 
     this._onrequestroundtrip(req)
     this.replicator._onnodata(this, req, reason)
@@ -43181,7 +43384,7 @@ class Peer {
           this.remoteFork === this.core.state.fork &&
           length > this.core.header.hints.remoteContiguousLength
         ) {
-          await this.core.updateRemoteContiguousLength(length)
+          this.core.updateRemoteContiguousLength(length)
         }
       }
     } else if (length === 1) {
@@ -43199,6 +43402,7 @@ class Peer {
       }
     }
 
+    if (this.core.hintsChanged) await this.core.flushHints()
     if (drop === false) this._update()
   }
 
@@ -43270,11 +43474,32 @@ class Peer {
     this._send(req)
   }
 
+  _includeLastBlock() {
+    if (this.replicator._alwaysLatestBlock === 0) return null
+
+    const index = this.remoteLength - 1
+
+    // only valid if its an OOB get
+    if (index < this.core.state.length) return null
+
+    // do the normal checks
+    if (!this._remoteHasBlock(index)) return null
+    if (!this._canRequest(index)) return null
+
+    // atm we only ever do one upgrade request in parallel, if that changes
+    // then we should add some check here for inflights to avoid over requesting
+    const b = this.replicator._blocks.add(index, PRIORITY.NORMAL)
+    return b
+  }
+
   _requestUpgrade(u) {
     const req = this._makeRequest(true, 0, 0)
     if (req === null) return false
 
-    this._send(req)
+    const b = this._includeLastBlock()
+
+    if (b) this._sendBlockRequest(req, b)
+    else this._send(req)
 
     return true
   }
@@ -43611,12 +43836,15 @@ module.exports = class Replicator {
       notDownloadingLinger = NOT_DOWNLOADING_SLACK,
       eagerUpgrade = true,
       allowFork = true,
+      allowPush = false,
+      alwaysLatestBlock = false,
       inflightRange = null
     } = {}
   ) {
     this.core = core
     this.eagerUpgrade = eagerUpgrade
     this.allowFork = allowFork
+    this.allowPush = allowPush
     this.ondownloading = null // optional external hook for monitoring downloading status
     this.peers = []
     this.findingPeers = 0 // updatable from the outside
@@ -43649,6 +43877,7 @@ module.exports = class Replicator {
     this._blocks = new BlockTracker(this)
     this._hashes = new BlockTracker(this)
 
+    this._alwaysLatestBlock = alwaysLatestBlock ? 1 : 0
     this._queued = []
 
     this._seeks = []
@@ -43656,6 +43885,7 @@ module.exports = class Replicator {
     this._reorgs = []
     this._ranges = []
 
+    this._pushLock = new Mutex()
     this._hadPeers = false
     this._active = 0
     this._ifAvailable = 0
@@ -43680,6 +43910,20 @@ module.exports = class Replicator {
 
   isDownloading() {
     return this.downloading || !this._inflight.idle
+  }
+
+  async push(index) {
+    const all = []
+    for (const peer of this.peers) {
+      all.push(peer.push(index))
+    }
+    await Promise.all(all)
+  }
+
+  setAllowPush(allowPush) {
+    if (allowPush === this.allowPush) return
+    this.allowPush = allowPush
+    for (const peer of this.peers) peer.sendSync()
   }
 
   setDownloading(downloading) {
@@ -43857,10 +44101,8 @@ module.exports = class Replicator {
     // Also auto compresses the range based on local bitfield
     clampRange(this.core, r)
 
-    this._ranges.push(r)
-
     if (r.end !== -1 && r.start >= r.end) {
-      this._resolveRangeRequest(r, this._ranges.length - 1)
+      this._resolveRangeRequest(r)
       return ref
     }
 
@@ -43898,6 +44140,25 @@ module.exports = class Replicator {
     }
 
     if (cleared) this.updateAll()
+  }
+
+  _matchingRequest(req, data) {
+    if (this.allowPush) {
+      return true
+    }
+    if (data.block !== null && (req.block === null || req.block.index !== data.block.index)) {
+      return false
+    }
+    if (data.hash !== null && (req.hash === null || req.hash.index !== data.hash.index)) {
+      return false
+    }
+    if (data.seek !== null && (req.seek === null || req.seek.bytes !== data.seek.bytes)) {
+      return false
+    }
+    if (data.upgrade !== null && req.upgrade === null) {
+      return false
+    }
+    return req.fork === data.fork
   }
 
   _addUpgradeMaybe() {
@@ -44129,12 +44390,9 @@ module.exports = class Replicator {
     return true
   }
 
-  _resolveRangeRequest(req, index) {
-    const head = this._ranges.pop()
-
-    if (index < this._ranges.length) this._ranges[index] = head
-
+  _resolveRangeRequest(req) {
     req.resolve(true)
+    req.gc()
   }
 
   _clearInflightBlock(tracker, req) {
@@ -44157,7 +44415,7 @@ module.exports = class Replicator {
   }
 
   _clearInflightUpgrade(req) {
-    if (removeInflight(this._upgrade.inflight, req) === false) return
+    if (this._upgrade === null || removeInflight(this._upgrade.inflight, req) === false) return
     this._upgrade.gc()
   }
 
@@ -44196,7 +44454,8 @@ module.exports = class Replicator {
         clampRange(this.core, r)
 
         if (r.end !== -1 && r.start >= r.end) {
-          this._resolveRangeRequest(r, i--)
+          this._resolveRangeRequest(r)
+          i--
           if (len > this._ranges.length) len--
           if (this._ranges.length === MAX_RANGES) updateAll = true
         }
@@ -44245,7 +44504,8 @@ module.exports = class Replicator {
       const r = this._ranges[i]
 
       if (r.ifAvailable) {
-        this._resolveRangeRequest(r, i--)
+        this._resolveRangeRequest(r)
+        i--
       }
     }
   }
@@ -44283,7 +44543,10 @@ module.exports = class Replicator {
       }
     }
 
-    this._clearRequest(peer, req)
+    if (req) {
+      this._clearRequest(peer, req)
+    }
+
     this.updateAll()
   }
 
@@ -44336,7 +44599,10 @@ module.exports = class Replicator {
   }
 
   _ondata(peer, req, data) {
-    req.elapsed = Date.now() - req.timestamp
+    if (req) {
+      req.elapsed = Date.now() - req.timestamp
+    }
+
     if (data.block !== null) {
       this._resolveBlockRequest(this._blocks, data.block.index, data.block.value, req)
       this._ondownload(data.block.index, data.block.value.byteLength, peer, req)
@@ -44782,16 +45048,6 @@ module.exports = class Replicator {
       sessions[i].emit('invalid-request', err, req, from)
     }
   }
-}
-
-function matchingRequest(req, data) {
-  if (data.block !== null && (req.block === null || req.block.index !== data.block.index)) {
-    return false
-  }
-  if (data.hash !== null && (req.hash === null || req.hash.index !== data.hash.index)) return false
-  if (data.seek !== null && (req.seek === null || req.seek.bytes !== data.seek.bytes)) return false
-  if (data.upgrade !== null && req.upgrade === null) return false
-  return req.fork === data.fork
 }
 
 function removeHotswap(block) {
@@ -45242,6 +45498,8 @@ module.exports = class SessionState {
       const append = b ? { start: b.start, length: b.appends, drop: false } : null
 
       this.onappend(tree, append, true)
+
+      if (this.core.hintsChanged && this.isDefault()) await this.core.flushHints()
     } finally {
       this.mutex.unlock()
       this.core.checkIfIdle()
@@ -45265,7 +45523,18 @@ module.exports = class SessionState {
     await this.mutex.lock()
 
     try {
-      if (!batch.commitable()) return false
+      if (batch.upgraded && batch.length <= this.length) {
+        await batch.downgrade()
+      }
+
+      if (!batch.commitable()) {
+        return false
+      }
+
+      if (this.core.preupdate !== null) {
+        await this.core.preupdate(batch, this.core.header.key)
+      }
+
       const tx = this.createWriteBatch()
       this.updating = true
 
@@ -45302,6 +45571,8 @@ module.exports = class SessionState {
 
         this.onappend(head, bitfield, flushed)
       }
+
+      if (this.core.hintsChanged && this.isDefault()) await this.core.flushHints()
     } finally {
       this._clearActiveBatch()
       this.updating = false
@@ -45361,6 +45632,8 @@ module.exports = class SessionState {
       if (dependency) this.storage.setDependencyHead(dependency)
 
       this.ontruncate(tree, tree.length, batch.treeLength, flushed)
+
+      if (this.core.hintsChanged && this.isDefault()) await this.core.flushHints()
     } finally {
       this._unlock()
     }
@@ -45387,6 +45660,8 @@ module.exports = class SessionState {
       if (dependency) this.storage.setDependencyHead(dependency)
 
       this.ontruncate(tree, batch.ancestors, batch.treeLength, flushed)
+
+      if (this.core.hintsChanged && this.isDefault()) await this.core.flushHints()
     } finally {
       this._unlock()
     }
@@ -45427,23 +45702,6 @@ module.exports = class SessionState {
     }
 
     return { dependency, tree, roots: batch.roots }
-  }
-
-  async flushHints() {
-    await this.mutex.lock()
-
-    try {
-      const tx = this.createWriteBatch()
-
-      tx.setHints({
-        contiguousLength: this.core.header.hints.contiguousLength,
-        remoteContiguousLength: this.core.header.hints.remoteContiguousLength
-      })
-
-      await tx.flush()
-    } finally {
-      this._unlock()
-    }
   }
 
   async clear(start, end, cleared) {
@@ -45490,16 +45748,19 @@ module.exports = class SessionState {
       // todo: atomic event handle
       if (this.isDefault() && flushed) {
         const length = end - start
+
         this.core.updateContiguousLength({ start, length, drop: true })
         this.core._setBitfieldRanges(start, end, false)
         this.core.replicator.onhave(start, length, true)
+
+        if (this.core.hintsChanged) await this.core.flushHints()
       }
     } finally {
       this._unlock()
     }
   }
 
-  async append(values, { signature, keyPair, preappend, maxLength = -1 } = {}) {
+  async append(values, { signature, keyPair, preappend, postappend, maxLength = -1 } = {}) {
     if (!keyPair && this.isDefault()) keyPair = this.core.header.keyPair
 
     await this.mutex.lock()
@@ -45571,7 +45832,11 @@ module.exports = class SessionState {
       this.byteLength = batch.byteLength
       this.signature = batch.signature
 
+      if (postappend) await postappend(values)
+
       this.onappend(tree, bitfield, flushed)
+
+      if (this.core.hintsChanged && this.isDefault()) await this.core.flushHints()
 
       return { length: this.length, byteLength: this.byteLength }
     } finally {
@@ -45722,6 +45987,8 @@ module.exports = class SessionState {
 
       if (truncating) this.ontruncate(tree, sharedLength, origLength, flushed)
       if (sharedLength < length) this.onappend(tree, null, flushed)
+
+      if (this.core.hintsChanged && this.isDefault()) await this.core.flushHints()
     } finally {
       this.mutex.unlock()
     }
@@ -46668,7 +46935,7 @@ function getManifestVersion(inp) {
 }
 {
   "name": "hypercore",
-  "version": "11.20.1",
+  "version": "11.21.5",
   "description": "Hypercore is a secure, distributed append-only log",
   "main": "index.js",
   "scripts": {
@@ -50884,7 +51151,7 @@ module.exports = class Server extends EventEmitter {
   }
 
   refresh() {
-    if (this._announcer) this._announcer.refresh()
+    if (this._announcer && !this.suspended) this._announcer.refresh()
   }
 
   notifyOnline() {
@@ -51676,7 +51943,7 @@ class SocketRef {
 function noop() {}
 {
   "name": "hyperdht",
-  "version": "6.27.0",
+  "version": "6.27.1",
   "description": "The DHT powering Hyperswarm",
   "main": "index.js",
   "browser": "browser.js",
@@ -51755,7 +52022,7 @@ function noop() {}
 }
 {
   "name": "hyperschema",
-  "version": "1.17.1",
+  "version": "1.18.0",
   "description": "Create registries of declarative compact-encoding schemas",
   "files": [
     "lib/*.js",
@@ -51924,6 +52191,7 @@ module.exports = class Hyperswarm extends EventEmitter {
     this._firewall = firewall
 
     this.dht.on('network-change', this._handleNetworkChange.bind(this))
+    this.dht.on('network-update', this._handleNetworkUpdate.bind(this))
     this.on('update', this._handleUpdate)
   }
 
@@ -52272,7 +52540,14 @@ module.exports = class Hyperswarm extends EventEmitter {
     }
   }
 
+  async _handleNetworkUpdate() {
+    if (!this.online) return
+    this._handleNetworkChange()
+  }
+
   async _handleNetworkChange() {
+    if (this.suspended) return
+
     // prioritize figuring out if existing connections are dead
     for (const conn of this._allConnections) {
       conn.sendKeepAlive()
@@ -52699,7 +52974,7 @@ module.exports = class PeerDiscovery {
 
             // there is a chance it has updated a connection during discovery and we go over
             // the limit - thats acceptable to avoid a complexity spiral here.
-            if (!this.connections.has(id)) limit--
+            if (!this.swarm.connections.has(id)) limit--
           }
 
           this._onpeer(peer, data)
@@ -53108,7 +53383,7 @@ module.exports = class RetryTimer {
 }
 {
   "name": "hyperswarm",
-  "version": "4.15.2",
+  "version": "4.16.0",
   "description": "A distributed networking stack for connecting peers",
   "files": [
     "index.js",
@@ -53138,7 +53413,7 @@ module.exports = class RetryTimer {
   "scripts": {
     "format": "prettier --write .",
     "lint": "prettier --check .",
-    "test": "npm run lint && node test/all.js",
+    "test": "node test/all.js",
     "test:generate": "brittle -r test/all.js test/*.js"
   },
   "repository": {
@@ -54374,6 +54649,12 @@ const HANDSHAKES = Object.freeze({
     PRESHARE_RS,
     [TOK_E, TOK_ES, TOK_S, TOK_SS],
     [TOK_E, TOK_EE, TOK_SE]
+  ],
+  XK: [
+    PRESHARE_RS,
+    [TOK_E, TOK_ES],
+    [TOK_E, TOK_EE],
+    [TOK_S, TOK_SE]
   ]
 })
 
@@ -54629,7 +54910,7 @@ function hasPskToken (handshake) {
 }
 {
   "name": "noise-handshake",
-  "version": "4.1.0",
+  "version": "4.2.0",
   "description": "Noise protocol handshake",
   "main": "noise.js",
   "files": [
@@ -66754,14 +67035,14 @@ function quintet (s, i) {
   "main": "expo-router/entry",
   "scripts": {
     "start": "expo start",
-    "android": "npm run bundle:backend:ios && expo run:android",
+    "android": "npm run bundle:backend:android && expo run:android",
     "ios": "npm run bundle:backend:ios && expo run:ios --device",
     "bundle:backend:ios": "npx bare-pack --target ios --linked --out app/app.bundle.ios.mjs backend/backend.mjs",
-    "bundle:backend:android": "npx bare-pack --target android --linked --out app/app.bundle.android.mjs backend/backend.mjs"
+    "bundle:backend:android": "npx bare-pack --target android --linked --out app/app.android.mjs backend/backend.mjs"
   },
   "dependencies": {
     "@inquirer/prompts": "^7.8.1",
-    "@react-native-clipboard/clipboard": "^1.16.3",
+    "@react-native-clipboard/clipboard": "1.16.3",
     "autobase": "^7.20.0",
     "autopass": "^2.2.1",
     "b4a": "^1.7.1",
@@ -66770,12 +67051,12 @@ function quintet (s, i) {
     "bare-rpc": "^0.2.12",
     "blind-peering": "^1.13.0",
     "corestore": "^7.5.0",
-    "expo": "^53.0.9",
-    "expo-build-properties": "^0.14.6",
-    "expo-constants": "^17.1.6",
-    "expo-linking": "^7.1.5",
-    "expo-router": "^5.0.6",
-    "expo-system-ui": "^5.0.7",
+    "expo": "54.0.30",
+    "expo-build-properties": "1.0.10",
+    "expo-constants": "18.0.12",
+    "expo-linking": "8.0.11",
+    "expo-router": "6.0.21",
+    "expo-system-ui": "6.0.9",
     "hypercore-crypto": "^3.6.1",
     "hyperdb": "^4.19.0",
     "hyperdispatch": "^1.4.4",
@@ -66784,21 +67065,21 @@ function quintet (s, i) {
     "lucide-react-native": "^0.553.0",
     "make-dir": "^5.1.0",
     "protomux-wakeup": "^2.6.1",
-    "react": "~19.0.0",
-    "react-dom": "~19.0.0",
-    "react-native": "^0.79.2",
-    "react-native-b4a": "^0.0.1",
-    "react-native-bare-kit": "^0.9.2",
-    "react-native-safe-area-context": "^5.4.0"
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "react-native": "0.83.0",
+    "react-native-b4a": "0.0.4",
+    "react-native-bare-kit": "0.11.5",
+    "react-native-safe-area-context": "5.6.2"
   },
   "devDependencies": {
     "@react-native-community/cli": "latest",
-    "@types/b4a": "^1.6.5",
-    "@types/react": "^19.1.3",
-    "bare-pack": "^1.4.8",
-    "prettier": "^3.3.3",
+    "@types/b4a": "1.6.5",
+    "@types/react": "19.2.7",
+    "bare-pack": "1.5.1",
+    "prettier": "3.7.4",
     "prettier-config-standard": "^7.0.0",
-    "typescript": "^5.3.3"
+    "typescript": "5.9.3"
   }
 }
 export const RPC_RESET = 0
