@@ -19,8 +19,12 @@ import b4a from 'b4a'
 import Autobase from 'autobase'
 import Corestore from 'corestore'
 import Hyperswarm from 'hyperswarm'
+import {syncListToFrontend, validateItem, addItem, updateItem, deleteItem} from './lib/item.mjs'
 const { IPC } = BareKit
 import { randomBytes } from 'bare-crypto'
+import {loadAutobaseKey, loadLocalWriterKey, saveAutobaseKey, saveLocalWriterKey} from "./lib/key.mjs";
+import {generateId} from "./lib/util.mjs";
+import {setupChatSwarm} from "./lib/network.mjs";
 console.error('bare backend is rocking.')
 const argv0 = typeof Bare?.argv?.[0] === 'string' ? Bare.argv[0] : '';
 let baseDir = '';
@@ -34,15 +38,15 @@ if (argv0) {
 const storagePath = baseDir ? join(baseDir, 'lista') : './data';
 const peerKeysString = Bare.argv[1] || '' // Comma-separated peer keys
 const baseKeyHex = Bare.argv[2] || '' // Optional Autobase key (to join an existing base)
-let store
+export let store
 let swarm = null
-let autobase = null
+export let autobase = null
 let discovery = null
-let chatSwarm = null
+export let chatSwarm = null
 const knownWriters = new Set()
 let addedStaticPeers = false
 let peerCount = 0
-let rpc = null
+export let rpc = null
 let currentList = []
 const keyFilePath = baseDir ? join(baseDir, 'lista-autobase-key.txt') : './autobase-key.txt';
 const localWriterKeyFilePath = baseDir ? join(baseDir, 'lista-local-writer-key.txt') : './local-writer-key.txt';
@@ -51,18 +55,6 @@ const DEFAULT_LIST = [
     { text: 'Double tap to add new', isDone: false, timeOfCompletion: 0 },
     { text: 'Slide right slowly to delete', isDone: false, timeOfCompletion: 0 },
 ]
-
-// Send current list to frontend
-function syncListToFrontend () {
-    if (!rpc) return
-    try {
-        const req = rpc.request(SYNC_LIST)
-        req.send(JSON.stringify(currentList))
-        console.error('Synced list to frontend:', currentList.length, 'items')
-    } catch (e) {
-        console.error('Failed to sync list to frontend:', e)
-    }
-}
 
 // Optional Autobase key from argv (initial base) or loaded from file
 let baseKey = null
@@ -78,136 +70,7 @@ if (baseKeyHex) {
 
 // If no key from argv, try loading from file (for restart persistence)
 if (!baseKey) {
-    baseKey = loadAutobaseKey()
-}
-
-// Generate unique ID (used only for addItem)
-function generateId () {
-    return randomBytes(16).toString('hex')
-}
-// Persist and verify that an operation was written to disk
-// Returns true if flush succeeded and length is correct, false otherwise
-async function persistAndVerify (expectedLength, operationType) {
-    if (!autobase || !autobase.local || !store) {
-        console.error(`persistAndVerify (${operationType}): autobase, local core, or store not available`)
-        return false
-    }
-
-    try {
-        // Force write to disk via Corestore - this flushes all cores to storage
-        // Corestore.flush() ensures all pending writes are persisted
-        if (typeof store.flush === 'function') {
-            await store.flush()
-        }
-
-        const actualLength = autobase.local.length
-        const keyHex = autobase.local.key.toString('hex').slice(0, 16)
-
-        if (actualLength >= expectedLength) {
-            console.error(`persistAndVerify (${operationType}): SUCCESS - flushed to disk, core ${keyHex}... length=${actualLength}`)
-            return true
-        } else {
-            console.error(`persistAndVerify (${operationType}): LENGTH MISMATCH - core ${keyHex}... length=${actualLength}, expected >= ${expectedLength}`)
-            return false
-        }
-    } catch (e) {
-        console.error(`persistAndVerify (${operationType}): FLUSH FAILED -`, e.message)
-        return false
-    }
-}
-
-function sendHandshakeMessage (conn, msg) {
-    const line = JSON.stringify(msg) + '\n'
-    conn.write(line)
-}
-
-async function handleHandshakeMessage (msg) {
-    if (!autobase) return
-    if (!msg || msg.type !== 'writer-key') return
-
-    const remoteKeyHex = msg.key
-    if (!remoteKeyHex || typeof remoteKeyHex !== 'string') return
-
-    if (knownWriters.has(remoteKeyHex)) return
-    knownWriters.add(remoteKeyHex)
-
-    // Only a writer can add other writers.
-    if (!autobase.writable) {
-        console.error('Not writable here, cannot add remote writer yet')
-        return
-    }
-
-    console.error('Adding remote writer via autobase:', remoteKeyHex)
-
-    await autobase.append({
-        type: 'add-writer',
-        key: remoteKeyHex
-    })
-}
-
-async function setupHandshakeChannel (conn) {
-    if (!autobase) {
-        console.error('setupHandshakeChannel called before Autobase is initialized')
-        return
-    }
-
-    // Send our writer key immediately
-    await autobase.ready()
-    const myWriterKeyHex = autobase.local.key.toString('hex')
-    sendHandshakeMessage(conn, {
-        type: 'writer-key',
-        key: myWriterKeyHex
-    })
-
-    let buffer = ''
-    conn.on('data', (chunk) => {
-        buffer += chunk.toString()
-        let idx
-        while ((idx = buffer.indexOf('\n')) !== -1) {
-            const line = buffer.slice(0, idx)
-            buffer = buffer.slice(idx + 1)
-            if (!line.trim()) continue
-
-            // Fast-path: hypercore protocol frames and other binary garbage
-            // are not going to start with '{', so just ignore them.
-            if (line[0] !== '{') {
-                continue
-            }
-
-            let msg
-            try {
-                msg = JSON.parse(line)
-            } catch (e) {
-                console.warn('invalid JSON from peer (handshake, ignored):', line)
-                continue
-            }
-
-            handleHandshakeMessage(msg)
-        }
-    })
-}
-
-function setupChatSwarm (chatTopic) {
-    if (!autobase) {
-        console.error('setupChatSwarm called before Autobase is initialized')
-        return
-    }
-    chatSwarm = new Hyperswarm()
-    console.error('setting up chat swarm with topic:', chatTopic.toString('hex'))
-    chatSwarm.on('connection', (conn, info) => {
-        console.error('Handshake connection (chat swarm) with peer', info?.peer, info?.publicKey?.toString('hex'), info?.topics, info?.prioritized)
-        conn.on('error', (err) => {
-            console.error('Chat swarm connection error:', err)
-        })
-        setupHandshakeChannel(conn)
-    })
-
-    chatSwarm.on('error', (err) => {
-        console.error('Chat swarm error:', err)
-    })
-
-    chatSwarm.join(chatTopic, { server: true, client: true })
-    console.error('Handshake chat swarm joined on topic:', chatTopic.toString('hex'))
+    baseKey = loadAutobaseKey(keyFilePath)
 }
 
 function broadcastPeerCount () {
@@ -268,7 +131,7 @@ async function initAutobase (newBaseKey) {
 
     // Try to load existing local writer for persistence
     let localInput = null
-    const savedLocalWriterKey = loadLocalWriterKey()
+    const savedLocalWriterKey = loadLocalWriterKey(localWriterKeyFilePath)
     if (savedLocalWriterKey) {
         try {
             localInput = store.get({ key: savedLocalWriterKey })
@@ -305,10 +168,10 @@ async function initAutobase (newBaseKey) {
 
     // Save both keys for persistence across restarts
     if (autobase.key) {
-        saveAutobaseKey(autobase.key)
+        saveAutobaseKey(autobase.key, keyFilePath)
     }
     if (autobase.local?.key) {
-        saveLocalWriterKey(autobase.local.key)
+        saveLocalWriterKey(autobase.local.key, localWriterKeyFilePath)
     }
 
     if (autobase) {

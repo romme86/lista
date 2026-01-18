@@ -1,7 +1,7 @@
 import fs from 'bare-fs'
 
 
-function saveAutobaseKey(key, keyFilePath) {
+export function saveAutobaseKey(key, keyFilePath) {
     try {
         const keyHex = key.toString('hex')
         fs.writeFileSync(keyFilePath, keyHex)
@@ -12,7 +12,7 @@ function saveAutobaseKey(key, keyFilePath) {
 }
 
 // Load autobase key from file if it exists
-function loadAutobaseKey(keyFilePath) {
+export function loadAutobaseKey(keyFilePath) {
     try {
         if (fs.existsSync(keyFilePath)) {
             const keyHex = fs.readFileSync(keyFilePath, 'utf8').trim()
@@ -28,7 +28,7 @@ function loadAutobaseKey(keyFilePath) {
 }
 
 // Save local writer key to file for persistence
-function saveLocalWriterKey(key, localWriterKeyFilePath) {
+export function saveLocalWriterKey(key, localWriterKeyFilePath) {
     try {
         const keyHex = key.toString('hex')
         fs.writeFileSync(localWriterKeyFilePath, keyHex)
@@ -39,7 +39,7 @@ function saveLocalWriterKey(key, localWriterKeyFilePath) {
 }
 
 // Load local writer key from file if it exists
-function loadLocalWriterKey(localWriterKeyFilePath) {
+export function loadLocalWriterKey(localWriterKeyFilePath) {
     try {
         if (fs.existsSync(localWriterKeyFilePath)) {
             const keyHex = fs.readFileSync(localWriterKeyFilePath, 'utf8').trim()

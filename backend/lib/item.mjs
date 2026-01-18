@@ -1,8 +1,11 @@
 
 // Add item operation (backend creates the canonical item)
 import {RPC_MESSAGE} from "../../rpc-commands.mjs";
+import {generateId} from "./util.mjs";
+import { autobase, store, rpc } from '../backend.mjs'
+import {SYNC_LIST} from "../../app.android.js";
 
-async function addItem (text, listId) {
+export async function addItem (text, listId) {
     if (!autobase) {
         console.error('addItem called before Autobase is initialized')
         return false
@@ -53,7 +56,7 @@ async function addItem (text, listId) {
 }
 
 // Update item operation: AUTONOMOUS, NO BACKEND MEMORY
-async function updateItem (item) {
+export async function updateItem (item) {
     if (!autobase) {
         console.error('updateItem called before Autobase is initialized')
         return false
@@ -93,7 +96,7 @@ async function updateItem (item) {
 }
 
 // Delete item operation: AUTONOMOUS, NO BACKEND MEMORY
-async function deleteItem (item) {
+export async function deleteItem (item) {
     if (!autobase) {
         console.error('deleteItem called before Autobase is initialized')
         return false
@@ -133,10 +136,53 @@ async function deleteItem (item) {
 }
 
 // Simple inline schema validation matching the mobile ListEntry
-function validateItem (item) {
+export function validateItem (item) {
     if (typeof item !== 'object' || item === null) return false
     if (typeof item.text !== 'string') return false
     if (typeof item.isDone !== 'boolean') return false
     if (typeof item.timeOfCompletion !== 'number') return false
     return true
+}
+
+// Send current list to frontend
+export function syncListToFrontend (currentList) {
+    if (!rpc) return
+    try {
+        const req = rpc.request(SYNC_LIST)
+        req.send(JSON.stringify(currentList))
+        console.error('Synced list to frontend:', currentList.length, 'items')
+    } catch (e) {
+        console.error('Failed to sync list to frontend:', e)
+    }
+}
+
+// Persist and verify that an operation was written to disk
+// Returns true if flush succeeded and length is correct, false otherwise
+async function persistAndVerify (expectedLength, operationType) {
+    if (!autobase || !autobase.local || !store) {
+        console.error(`persistAndVerify (${operationType}): autobase, local core, or store not available`)
+        return false
+    }
+
+    try {
+        // Force write to disk via Corestore - this flushes all cores to storage
+        // Corestore.flush() ensures all pending writes are persisted
+        if (typeof store.flush === 'function') {
+            await store.flush()
+        }
+
+        const actualLength = autobase.local.length
+        const keyHex = autobase.local.key.toString('hex').slice(0, 16)
+
+        if (actualLength >= expectedLength) {
+            console.error(`persistAndVerify (${operationType}): SUCCESS - flushed to disk, core ${keyHex}... length=${actualLength}`)
+            return true
+        } else {
+            console.error(`persistAndVerify (${operationType}): LENGTH MISMATCH - core ${keyHex}... length=${actualLength}, expected >= ${expectedLength}`)
+            return false
+        }
+    } catch (e) {
+        console.error(`persistAndVerify (${operationType}): FLUSH FAILED -`, e.message)
+        return false
+    }
 }
