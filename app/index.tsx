@@ -1,10 +1,9 @@
-import React, {useEffect, useRef, useState, useCallback} from 'react'
-import {Platform, StyleSheet, View, TouchableOpacity, SafeAreaView, Share, Modal, TextInput, Text, Alert, ActivityIndicator, Animated} from 'react-native'
+import React, {useEffect, useRef, useState} from 'react'
+import {Platform, StyleSheet, View, TouchableOpacity, Share, Modal, TextInput, Text, Alert, ActivityIndicator, Animated} from 'react-native'
+import { SafeAreaView, SafeAreaProvider } from 'react-native-safe-area-context'
 import * as FileSystemExpo from 'expo-file-system';
 import { toByteArray } from 'base64-js';
 import {Worklet} from 'react-native-bare-kit'
-// import bundle from './assets/backend.android.bundle.mjs'
-// import backendBundleB64 from './assets/backend.android.bundle.mjs';
 import backendBundleB64 from './app.ios.bundle.mjs';
 import RPC from 'bare-rpc'
 import b4a from 'b4a'
@@ -24,6 +23,15 @@ import {
     RPC_REQUEST_SYNC
 } from '../rpc-commands.mjs'
 import InertialElasticList from './components/intertial_scroll'
+
+// Simple console logging
+function log(...args: any[]) {
+    console.log(...args);
+}
+
+// Log startup info
+log('=== FRONTEND STARTED ===');
+log('Platform:', Platform.OS);
 
 export type ListEntry = {
     text: string,
@@ -77,7 +85,6 @@ export default function App() {
     // List state is initialized empty - backend will send persisted data (including defaults on first run)
     const [dataList, setDataList] = useState<ListEntry[]>([])
 
-    const [pairingInvite, setPairingInvite] = useState('')
     const [isWorkletStarted, setIsWorkletStarted] = useState(false)
     const [autobaseInviteKey, setAutobaseInviteKey] = useState('')
     const rpcRef = useRef<any>(null)
@@ -171,7 +178,7 @@ export default function App() {
 
     const startWorklet = () => {
 
-        console.log('Starting worklet')
+        log('Starting worklet')
         const worklet = new Worklet()
         workletRef.current = worklet
         // IMPORTANT: BareKit needs the RAW .bundle bytes.
@@ -182,17 +189,17 @@ export default function App() {
             FileSystemExpo.Paths.document.uri ??
             FileSystemExpo.Paths.cache.uri ??
               '';
-        console.log('documentDirectory', baseDir, pairingInvite);
+        log('documentDirectory', baseDir);
         const worklet_start = worklet.start('/app.bundle', bundleBytes, [String(baseDir)])
-        console.log('worklet_start', worklet_start)
+        log('worklet_start', worklet_start)
         const { IPC } = worklet
 
         rpcRef.current = new RPC(IPC, (reqFromBackend) => {
             if (reqFromBackend.command === RPC_MESSAGE) {
-                console.log('RPC MESSAGE req', reqFromBackend)
+                log('RPC_MESSAGE received')
                 if (reqFromBackend.data) {
                     const dataStr = b4a.toString(reqFromBackend.data)
-                    console.log('data from bare', dataStr)
+                    log('data from bare', dataStr)
                     try {
                         const payload = JSON.parse(dataStr)
                         if (payload.type === 'peer-count') {
@@ -206,67 +213,71 @@ export default function App() {
                             }
                         } else if (payload.type === 'not-writable') {
                             Alert.alert('Please wait', payload.message || 'You are not yet authorized to modify the list. Please wait a moment.')
+                        } else if (payload.type === 'error-notification') {
+                            // Show error notification from backend (e.g., state corruption reset)
+                            Alert.alert(
+                                payload.title || 'Error',
+                                payload.message || 'An error occurred in the backend.',
+                                [{ text: 'OK' }]
+                            )
                         } else {
-                            console.log('RPC_MESSAGE payload (unhandled type):', payload)
+                            log('RPC_MESSAGE payload (unhandled type):', payload)
                         }
                     } catch (e) {
                         console.warn('Invalid RPC_MESSAGE payload', dataStr)
                     }
                 } else {
-                    console.log('RPC_MESSAGE without data')
+                    log('RPC_MESSAGE without data')
                 }
             }
             if (reqFromBackend.command === RPC_RESET) {
-                console.log('RPC RESET')
+                log('RPC RESET')
                 setDataList(() => [])
             }
             if (reqFromBackend.command === SYNC_LIST) {
-                console.log('SYNC_LIST')
+                log('SYNC_LIST')
                 if(reqFromBackend.data) {
-                    console.log('data from bare', b4a.toString(reqFromBackend.data))
+                    log('data from bare', b4a.toString(reqFromBackend.data))
                     const listToSync = JSON.parse(b4a.toString(reqFromBackend.data))
                     // Backend is the source of truth - display whatever it sends
                     setDataList(listToSync)
                 }
             }
             if (reqFromBackend.command === RPC_DELETE_FROM_BACKEND) {
-                console.log('RPC_DELETE_FROM_BACKEND')
+                log('RPC_DELETE_FROM_BACKEND')
                 if(reqFromBackend.data) {
-                    console.log('data from bare', b4a.toString(reqFromBackend.data))
+                    log('data from bare', b4a.toString(reqFromBackend.data))
                     const itemToDelete = JSON.parse(b4a.toString(reqFromBackend.data))
                     setDataList((prevList) => prevList.filter((item) => item.text !== itemToDelete.text))
                 }
 
             }
             if (reqFromBackend.command === RPC_UPDATE_FROM_BACKEND) {
-                console.log('RPC_UPDATE_FROM_BACKEND')
+                log('RPC_UPDATE_FROM_BACKEND')
                 if(reqFromBackend.data) {
-                    console.log('data from bare', b4a.toString(reqFromBackend.data))
+                    log('data from bare', b4a.toString(reqFromBackend.data))
                     const itemToUpdate = JSON.parse(b4a.toString(reqFromBackend.data))
-                    setDataList((prevList) => {
-                        const newList = prevList.map((item) =>
-                            item.text === itemToUpdate.text ? { ...item, isDone: itemToUpdate.isDone, timeOfCompletion: itemToUpdate.timeOfCompletion } : item
-                        )
-                        return newList
-                    })
+                    setDataList((prevList) => prevList.map((item) =>
+                        item.text === itemToUpdate.text ? { ...item, isDone: itemToUpdate.isDone, timeOfCompletion: itemToUpdate.timeOfCompletion } : item
+                    ))
                 }
             }
             if (reqFromBackend.command === RPC_ADD_FROM_BACKEND) {
-                console.log('RPC_ADD_FROM_BACKEND')
+                log('RPC_ADD_FROM_BACKEND')
                 if(reqFromBackend.data) {
-                    console.log('data from bare', b4a.toString(reqFromBackend.data))
+                    log('data from bare', b4a.toString(reqFromBackend.data))
                     const itemToAdd = JSON.parse(b4a.toString(reqFromBackend.data))
                     setDataList((prevList) => [itemToAdd, ...prevList])
                 }
             }
             if (reqFromBackend.command === RPC_GET_KEY) {
-                console.log('RPC_GET_KEY', )
+                log('RPC_GET_KEY', )
                 if (reqFromBackend.data) {
-                    console.log('data from bare', b4a.toString(reqFromBackend.data))
+                    log('data from bare', b4a.toString(reqFromBackend.data))
                     const data = b4a.toString(reqFromBackend.data)
                     setAutobaseInviteKey(data)
                 } else {
-                    console.log('data from bare is null, empty or undefined')
+                    log('data from bare is null, empty or undefined')
                 }
             }
         })
@@ -276,7 +287,7 @@ export default function App() {
         // Retry multiple times to handle timing issues
         const requestSync = () => {
             if (rpcRef.current) {
-                console.log('Requesting sync from backend...')
+                log('Requesting sync from backend...')
                 const req = rpcRef.current.request(RPC_REQUEST_SYNC)
                 req.send('')
             }
@@ -314,12 +325,12 @@ export default function App() {
                 newList.unshift(updatedItem)
             }
 
-            console.log('sending RPC request update')
+            log('sending RPC request update')
 
             if (rpcRef.current) {
                 sendRPC(RPC_UPDATE, JSON.stringify({ item: updatedItem }))
             } else {
-                console.warn('RPC not ready, ignoring UPDATE')
+                log('RPC not ready, ignoring UPDATE')
             }
 
             return newList
@@ -332,9 +343,9 @@ export default function App() {
         sendRPC(RPC_DELETE, JSON.stringify({ item: deletedItem }))
     }
 
-    const handleInsert = (index: number, text: string) => {
+    const handleInsert = (_index: number, text: string) => {
         if (!rpcRef.current) {
-            console.warn('RPC not ready, ignoring ADD')
+            log('RPC not ready, ignoring ADD')
             return
         }
 
@@ -342,7 +353,7 @@ export default function App() {
     }
 
     const handleShare = async () => {
-        console.log('Share pressed, key:', autobaseInviteKey);
+        log('Share pressed, key:', autobaseInviteKey);
         if (!autobaseInviteKey) {
             Alert.alert('Connection in progress', 'Invite key is not available yet. Please wait a moment and try again.');
             return;
@@ -356,20 +367,20 @@ export default function App() {
 
             if (result.action === Share.sharedAction) {
                 if (result.activityType) {
-                    console.log('Shared with activity type:', result.activityType);
+                    log('Shared with activity type:', result.activityType);
                 } else {
-                    console.log('Shared successfully');
+                    log('Shared successfully');
                 }
             } else if (result.action === Share.dismissedAction) {
-                console.log('Share dismissed');
+                log('Share dismissed');
             }
         } catch (error) {
-            console.error('Error sharing:', error);
+            log('Error sharing:', error);
         }
     };
 
     const handleJoin = () => {
-        console.log('Join pressed');
+        log('Join pressed');
         setJoinDialogVisible(true);
     };
 
@@ -379,7 +390,12 @@ export default function App() {
             return;
         }
 
-        console.log('Submitting join key:', joinKeyInput);
+        if (!rpcRef.current) {
+            Alert.alert('Please wait', 'The app is still initializing. Please try again in a moment.');
+            return;
+        }
+
+        log('Submitting join key:', joinKeyInput);
 
         // Show joining overlay
         setIsJoining(true);
@@ -426,9 +442,9 @@ export default function App() {
     const peerCountLabel = peerCount > 99 ? '99+' : String(peerCount)
 
     return (
-        <View style={styles.container}>
-            <>
-                <SafeAreaView style={styles_safe_area.safeArea}>
+        <SafeAreaProvider>
+            <View style={styles.container}>
+                <SafeAreaView style={styles_safe_area.safeArea} edges={['top']}>
                     <View style={styles_safe_area.container}>
                         <View style={styles_safe_area.leftSection}>
                             <AnimatedIconButton
@@ -541,8 +557,8 @@ export default function App() {
                     onDelete={handleDelete}
                     onInsert={handleInsert}
                 />
-            </>
-        </View>
+            </View>
+        </SafeAreaProvider>
     )
 }
 
