@@ -16,7 +16,15 @@ import {
     discovery,
     knownWriters,
     peerCount,
-    setAutobase, setAddedStaticPeers, setChatSwarm, setSwarm, setDiscovery, setPeerCount, DEFAULT_LIST, setStore
+    setAutobase,
+    setAddedStaticPeers,
+    setChatSwarm,
+    setSwarm,
+    setDiscovery,
+    setPeerCount,
+    DEFAULT_LIST,
+    setStore,
+    setBaseKey
 } from "./state.mjs"
 import { generateId } from "./util.mjs"
 
@@ -162,9 +170,14 @@ async function tearDownAutobaseSwarmStore() {
 
 export async function initAutobase (newBaseKey) {
     await tearDownAutobaseSwarmStore();
-    setStore(new Corestore(storagePath))
+
+    // Use per-base storage path to avoid conflicts when joining different bases
+    const keyPrefix = newBaseKey ? newBaseKey.toString('hex').slice(0, 8) : 'local'
+    const baseStoragePath = `${storagePath}-${keyPrefix}`
+
+    setStore(new Corestore(baseStoragePath))
     await store.ready()
-    baseKey = newBaseKey || null
+    setBaseKey(newBaseKey || null)
     console.error(
         'initializing a new autobase with key:',
         baseKey ? baseKey.toString('hex') : '(new base)'

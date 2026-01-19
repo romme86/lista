@@ -17,7 +17,7 @@ import b4a from 'b4a'
 import {syncListToFrontend, validateItem, addItem, updateItem, deleteItem} from './lib/item.mjs'
 const { IPC } = BareKit
 import {loadAutobaseKey} from "./lib/key.mjs";
-import {initAutobase} from "./lib/network.mjs";
+import {initAutobase, joinNewBase} from "./lib/network.mjs";
 import {
     autobase,
     store,

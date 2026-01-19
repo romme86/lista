@@ -270,24 +270,6 @@ export default function App() {
                 }
             }
         })
-
-        // Request the current list from the backend after RPC is ready
-        // This ensures we get the persisted list state on app restart
-        // Retry multiple times to handle timing issues
-        const requestSync = () => {
-            if (rpcRef.current) {
-                console.log('Requesting sync from backend...')
-                const req = rpcRef.current.request(RPC_REQUEST_SYNC)
-                req.send('')
-            }
-        }
-
-        // Try at different intervals to catch the backend when it's ready
-        setTimeout(requestSync, 100)
-        setTimeout(requestSync, 500)
-        setTimeout(requestSync, 1000)
-        setTimeout(requestSync, 2000)
-
         setIsWorkletStarted(true)
     }
 
