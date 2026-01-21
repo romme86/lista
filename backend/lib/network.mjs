@@ -1,5 +1,6 @@
 import Hyperswarm from "hyperswarm";
-import {apply, open, storagePath, peerKeysString} from "../backend.mjs";
+import {apply, open, storagePath, peerKeysString, keyFilePath} from "../backend.mjs";
+import {saveAutobaseKey} from "./key.mjs";
 import {RPC_MESSAGE, RPC_GET_KEY, RPC_RESET, SYNC_LIST} from "../../rpc-commands.mjs";
 import Corestore from "corestore";
 import Autobase from "autobase";
@@ -23,12 +24,9 @@ import {
     setSwarm,
     setDiscovery,
     setPeerCount,
-    DEFAULT_LIST,
     setStore,
-    setBaseKey,
-    setCurrentList
+    setBaseKey
 } from "./state.mjs"
-import { generateId } from "./util.mjs"
 import {rebuildListFromPersistedOps, syncListToFrontend} from "./item.mjs"
 
 let _initPromise = null
@@ -205,6 +203,12 @@ export async function initAutobase (newBaseKey) {
             ' key:',
             autobase.key?.toString('hex'),
         )
+
+        // Save the autobase key for persistence across restarts
+        if (autobase.key) {
+            saveAutobaseKey(autobase.key, keyFilePath)
+        }
+
         if (autobase) {
             const req = rpc.request(RPC_GET_KEY)
             req.send(autobase.key?.toString('hex'))
@@ -212,9 +216,6 @@ export async function initAutobase (newBaseKey) {
         autobase.on('append', async () => {
             console.error('New data appended, updating view...')
         })
-        // Seed DEFAULT_LIST if autobase is empty (apply() will update the UI)
-        await ensureDefaultListIfEmpty()
-
         // Load existing items from view and sync to frontend
         await autobase.update()
         const rebuiltList = await rebuildListFromPersistedOps()
@@ -352,41 +353,4 @@ function broadcastPeerCount () {
     } catch (e) {
         console.error('Failed to broadcast peer count', e)
     }
-}
-
-async function ensureDefaultListIfEmpty () {
-    // Make sure indexing has run at least once
-    await autobase.update()
-
-    const viewLen = autobase.view?.length ?? 0
-    const localLen = autobase.local?.length ?? 0
-
-    console.error('ensureDefaultListIfEmpty: viewLen=', viewLen, 'localLen=', localLen, 'writable=', autobase.writable)
-
-    // Empty = nothing in the applied output
-    const isEmpty = viewLen === 0
-
-    // Only the host/owner should seed defaults
-    if (!isEmpty) return
-    if (!autobase.writable) return
-
-    console.error('Autobase view is empty, seeding DEFAULT_LIST...')
-
-    for (const item of DEFAULT_LIST) {
-        await autobase.append({
-            type: 'add',
-            value: {
-                id: generateId(),
-                text: item.text,
-                isDone: item.isDone,
-                listId: null,
-                timeOfCompletion: item.timeOfCompletion,
-                updatedAt: Date.now(),
-                timestamp: Date.now(),
-            }
-        })
-    }
-
-    // Apply what we just appended
-    await autobase.update()
 }

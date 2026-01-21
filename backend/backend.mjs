@@ -46,7 +46,7 @@ if (argv0) {
 export const storagePath = baseDir ? join(baseDir, 'lista') : './data';
 export const peerKeysString = Bare.argv[1] || '' // Comma-separated peer keys
 const baseKeyHex = Bare.argv[2] || '' // Optional Autobase key (to join an existing base)
-const keyFilePath = baseDir ? join(baseDir, 'lista-autobase-key.txt') : './autobase-key.txt';
+export const keyFilePath = baseDir ? join(baseDir, 'lista-autobase-key.txt') : './autobase-key.txt';
 const localWriterKeyFilePath = baseDir ? join(baseDir, 'lista-local-writer-key.txt') : './local-writer-key.txt';
 
 
