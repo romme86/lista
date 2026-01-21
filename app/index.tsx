@@ -1,5 +1,6 @@
 import React, {useEffect, useRef, useState, useCallback} from 'react'
-import {View, TouchableOpacity, SafeAreaView, Share, Modal, TextInput, Text, Alert, ActivityIndicator, Animated} from 'react-native'
+import {View, TouchableOpacity, Share, Modal, TextInput, Text, Alert, ActivityIndicator, Animated} from 'react-native'
+import { SafeAreaView, SafeAreaProvider } from 'react-native-safe-area-context'
 import * as FileSystemExpo from 'expo-file-system';
 import { toByteArray } from 'base64-js';
 import {Worklet} from 'react-native-bare-kit'
@@ -24,7 +25,7 @@ import {
     RPC_REQUEST_SYNC
 } from '../rpc-commands.mjs'
 import InertialElasticList from './components/intertial_scroll'
-import { styles, headerStyles, dialogStyles, joiningStyles } from './styles'
+import { styles, headerStyles, dialogStyles, joiningStyles } from './components/styles'
 
 export type ListEntry = {
     text: string,
@@ -141,8 +142,6 @@ export default function App() {
     useEffect(() => {
         if (!isWorkletStarted) {
             setIsWorkletStarted(true)
-
-
             startWorklet()
         }
 
@@ -276,7 +275,6 @@ export default function App() {
                     }
                 }
             })
-
             setIsWorkletStarted(true)
         })()
     }
@@ -429,9 +427,9 @@ export default function App() {
     const peerCountLabel = peerCount > 99 ? '99+' : String(peerCount)
 
     return (
-        <View style={styles.container}>
-            <>
-                <SafeAreaView style={headerStyles.safeArea}>
+        <SafeAreaProvider>
+            <View style={styles.container}>
+                <SafeAreaView style={headerStyles.safeArea} edges={['top']}>
                     <View style={headerStyles.container}>
                         <View style={headerStyles.leftSection}>
                             <AnimatedIconButton
@@ -544,7 +542,7 @@ export default function App() {
                     onDelete={handleDelete}
                     onInsert={handleInsert}
                 />
-            </>
-        </View>
+            </View>
+        </SafeAreaProvider>
     )
 }
