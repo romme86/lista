@@ -2,8 +2,17 @@
 // Add item operation (backend creates the canonical item)
 import {RPC_MESSAGE} from "../../rpc-commands.mjs";
 import {generateId} from "./util.mjs";
-import { autobase, store, rpc } from './state.mjs'
+import {autobase, store, rpc, currentList} from './state.mjs'
 import {SYNC_LIST} from "../../rpc-commands.mjs";
+
+// --- WRITE SERIALIZATION (prevents concurrent autobase.append / flush races) ---
+let _writeChain = Promise.resolve()
+
+function enqueueWrite (fn) {
+    // ensures writes run one-at-a-time even if RPC calls arrive concurrently
+    _writeChain = _writeChain.then(fn, fn)
+    return _writeChain
+}
 
 export async function addItem (text, listId) {
     if (!autobase) {
@@ -40,19 +49,26 @@ export async function addItem (text, listId) {
         value: item
     }
 
-    // Get length before append to verify it increases
-    const lengthBefore = autobase.local.length
+    return enqueueWrite(async () => {
+        if (!autobase) return false
+        if (autobase.closing) {
+            console.error('Mutation requested while Autobase is closing; ignoring.')
+            return false
+        }
+        // Get length before append to verify it increases
+        // const lengthBefore = autobase.local.length
 
-    await autobase.append(op)
+        await autobase.append(op)
 
-    // Flush to disk and verify persistence
-    const persisted = await persistAndVerify(lengthBefore + 1, 'ADD')
-    if (!persisted) {
-        console.error('WARNING: Add operation may not have been persisted to disk!')
-    }
+        // Flush to disk and verify persistence
+        // const persisted = await persistAndVerify(lengthBefore + 1, 'ADD')
+        // if (!persisted) {
+        //     console.error('WARNING: Add operation may not have been persisted to disk!')
+        // }
 
-    console.error('Added item:', text, '- persisted:', persisted)
-    return persisted
+        console.error('Added item:', text)
+        return true
+    })
 }
 
 // Update item operation: AUTONOMOUS, NO BACKEND MEMORY
@@ -80,19 +96,24 @@ export async function updateItem (item) {
         value: item
     }
 
-    // Get length before append to verify it increases
-    const lengthBefore = autobase.local.length
+    return enqueueWrite(async () => {
+        if (!autobase) return false
+        if (autobase.closing) {
+            console.error('Mutation requested while Autobase is closing; ignoring.')
+            return false
+        }
+        const lengthBefore = autobase.local.length
 
-    await autobase.append(op)
+        await autobase.append(op)
 
-    // Flush to disk and verify persistence
-    const persisted = await persistAndVerify(lengthBefore + 1, 'UPDATE')
-    if (!persisted) {
-        console.error('WARNING: Update operation may not have been persisted to disk!')
-    }
+        // const persisted = await persistAndVerify(lengthBefore + 1, 'UPDATE')
+        // if (!persisted) {
+        //     console.error('WARNING: Update operation may not have been persisted to disk!')
+        // }
 
-    console.error('Updated item:', item.text, '- persisted:', persisted)
-    return persisted
+        console.error('Updated item:', item.text)
+        return true
+    })
 }
 
 // Delete item operation: AUTONOMOUS, NO BACKEND MEMORY
@@ -120,19 +141,24 @@ export async function deleteItem (item) {
         value: item
     }
 
-    // Get length before append to verify it increases
-    const lengthBefore = autobase.local.length
+    return enqueueWrite(async () => {
+        if (!autobase) return false
+        if (autobase.closing) {
+            console.error('Mutation requested while Autobase is closing; ignoring.')
+            return false
+        }
+        const lengthBefore = autobase.local.length
 
-    await autobase.append(op)
+        await autobase.append(op)
 
-    // Flush to disk and verify persistence
-    const persisted = await persistAndVerify(lengthBefore + 1, 'DELETE')
-    if (!persisted) {
-        console.error('WARNING: Delete operation may not have been persisted to disk!')
-    }
+        // const persisted = await persistAndVerify(lengthBefore + 1, 'DELETE')
+        // if (!persisted) {
+        //     console.error('WARNING: Delete operation may not have been persisted to disk!')
+        // }
 
-    console.error('Deleted item:', item.text, '- persisted:', persisted)
-    return persisted
+        console.error('Deleted item:', item.text)
+        return true
+    })
 }
 
 // Simple inline schema validation matching the mobile ListEntry
@@ -185,6 +211,42 @@ async function persistAndVerify (expectedLength, operationType) {
         console.error(`persistAndVerify (${operationType}): FLUSH FAILED -`, e.message)
         return false
     }
+}
+
+export async function rebuildListFromPersistedOps() {
+    await autobase.update()
+    if (!autobase || !autobase.view) {
+        console.error('rebuildListFromPersistedOps: autobase or view not available')
+        return []
+    }
+
+    const rebuiltList = []
+    const view = autobase.view
+    const length = view.length
+
+    console.error(`rebuildListFromPersistedOps: reading ${length} entries from merged view...`)
+
+    for (let i = 0; i < length; i++) {
+        try {
+            const item = await view.get(i)
+            if (!item) {
+                console.error(`  entry ${i}: null/undefined`)
+                continue
+            }
+
+            if (item.text !== undefined && validateItem(item)) {
+                rebuiltList.push(item)
+                console.error(`  entry ${i}: "${item.text}"`)
+            } else {
+                console.error(`  entry ${i}: unknown format`)
+            }
+        } catch (e) {
+            console.error(`rebuildListFromPersistedOps: error reading entry ${i}:`, e.message)
+        }
+    }
+
+    console.error(`rebuildListFromPersistedOps: rebuilt list with ${rebuiltList.length} items`)
+    return rebuiltList
 }
 
 

@@ -1,6 +1,6 @@
 import Hyperswarm from "hyperswarm";
 import {apply, open, storagePath, peerKeysString} from "../backend.mjs";
-import {RPC_MESSAGE, RPC_GET_KEY} from "../../rpc-commands.mjs";
+import {RPC_MESSAGE, RPC_GET_KEY, RPC_RESET, SYNC_LIST} from "../../rpc-commands.mjs";
 import Corestore from "corestore";
 import Autobase from "autobase";
 import b4a from "b4a";
@@ -16,6 +16,7 @@ import {
     discovery,
     knownWriters,
     peerCount,
+    currentList,
     setAutobase,
     setAddedStaticPeers,
     setChatSwarm,
@@ -24,9 +25,13 @@ import {
     setPeerCount,
     DEFAULT_LIST,
     setStore,
-    setBaseKey
+    setBaseKey,
+    setCurrentList
 } from "./state.mjs"
 import { generateId } from "./util.mjs"
+import {rebuildListFromPersistedOps, syncListToFrontend} from "./item.mjs"
+
+let _initPromise = null
 
 export function sendHandshakeMessage (conn, msg) {
     const line = JSON.stringify(msg) + '\n'
@@ -107,7 +112,7 @@ export function setupChatSwarm (chatTopic) {
     setChatSwarm(new Hyperswarm())
     console.error('setting up chat swarm with topic:', chatTopic.toString('hex'))
     chatSwarm.on('connection', (conn, info) => {
-        console.error('Handshake connection (chat swarm) with peer', info?.peer, info?.publicKey?.toString('hex'), info?.topics, info?.prioritized)
+        console.error('Handshake connection (chat swarm) with peer', info?.publicKey?.toString('hex'),'prioritized', info?.prioritized)
         conn.on('error', (err) => {
             console.error('Chat swarm connection error:', err)
         })
@@ -169,128 +174,174 @@ async function tearDownAutobaseSwarmStore() {
 }
 
 export async function initAutobase (newBaseKey) {
-    await tearDownAutobaseSwarmStore();
-
-    // Use per-base storage path to avoid conflicts when joining different bases
-    const keyPrefix = newBaseKey ? newBaseKey.toString('hex').slice(0, 8) : 'local'
-    const baseStoragePath = `${storagePath}-${keyPrefix}`
-
-    setStore(new Corestore(baseStoragePath))
-    await store.ready()
-    setBaseKey(newBaseKey || null)
-    console.error(
-        'initializing a new autobase with key:',
-        baseKey ? baseKey.toString('hex') : '(new base)'
-    )
-    const autobaseOpts = { apply, open, valueEncoding: 'json' }
-    setAutobase(new Autobase(store, baseKey, autobaseOpts))
-    console.error('Calling autobase.ready()...')
-    await autobase.ready()
-    console.error(
-        'autobase.ready() resolved. Autobase ready, writable?',
-        autobase.writable,
-        ' key:',
-        autobase.key?.toString('hex'),
-        ' local writer key:',
-        autobase.local?.key?.toString('hex')
-    )
-    if (autobase) {
-        const req = rpc.request(RPC_GET_KEY)
-        req.send(autobase.key?.toString('hex'))
+    if (_initPromise) {
+        console.error('initAutobase already running — returning existing init promise')
+        return _initPromise
     }
-    autobase.on('append', async () => {
-        console.error('New data appended, updating view...')
-    })
-    // Seed DEFAULT_LIST if autobase is empty (apply() will update the UI)
-    await ensureDefaultListIfEmpty()
-    // Add static peers only once
-    if (!addedStaticPeers && peerKeysString) {
-        const peerKeys = peerKeysString.split(',').filter(k => k.trim())
-        for (const keyHex of peerKeys) {
+
+    _initPromise = (async () => {
+
+
+        await tearDownAutobaseSwarmStore();
+
+        // Use per-base storage path to avoid conflicts when joining different bases
+        const keyPrefix = newBaseKey ? newBaseKey.toString('hex').slice(0, 8) : 'local'
+        const baseStoragePath = `${storagePath}-${keyPrefix}`
+
+        setStore(new Corestore(baseStoragePath))
+        await store.ready()
+        setBaseKey(newBaseKey || null)
+        console.error(
+            'initializing a new autobase with key:',
+            baseKey ? baseKey.toString('hex') : '(new base)'
+        )
+        const autobaseOpts = { apply, open, valueEncoding: 'json' }
+        setAutobase(new Autobase(store, baseKey, autobaseOpts))
+        console.error('Calling autobase.ready()...')
+        await autobase.ready()
+        console.error(
+            'autobase.ready() resolved. Autobase ready, writable?',
+            autobase.writable,
+            ' key:',
+            autobase.key?.toString('hex'),
+        )
+        if (autobase) {
+            const req = rpc.request(RPC_GET_KEY)
+            req.send(autobase.key?.toString('hex'))
+        }
+        autobase.on('append', async () => {
+            console.error('New data appended, updating view...')
+        })
+        // Seed DEFAULT_LIST if autobase is empty (apply() will update the UI)
+        await ensureDefaultListIfEmpty()
+
+        // Load existing items from view and sync to frontend
+        await autobase.update()
+        const rebuiltList = await rebuildListFromPersistedOps()
+        syncListToFrontend(rebuiltList)
+        // Add static peers only once
+        if (!addedStaticPeers && peerKeysString) {
+            const peerKeys = peerKeysString.split(',').filter(k => k.trim())
+            for (const keyHex of peerKeys) {
+                try {
+                    const peerKey = Buffer.from(keyHex.trim(), 'hex')
+                    const peerCore = store.get({ key: peerKey })
+                    await peerCore.ready()
+                    await autobase.addInput(peerCore)
+                    console.error('Added peer writer from argv[1]:', keyHex.trim())
+                } catch (err) {
+                    console.error('Failed to add peer from argv[1]:', keyHex, err.message)
+                }
+            }
+            setAddedStaticPeers(true)
+        }
+        // Reset peer count on new base
+        setPeerCount(0)
+        broadcastPeerCount()
+        // --- Update replication swarm topic for this base ---
+        const firstLocalAutobaseKey = randomBytes(32)
+        const topic = autobase.key || firstLocalAutobaseKey
+        console.error('Discovery topic (replication swarm):', topic.toString('hex'))
+        // Switch discovery to new topic
+        if (discovery) {
             try {
-                const peerKey = Buffer.from(keyHex.trim(), 'hex')
-                const peerCore = store.get({ key: peerKey })
-                await peerCore.ready()
-                await autobase.addInput(peerCore)
-                console.error('Added peer writer from argv[1]:', keyHex.trim())
-            } catch (err) {
-                console.error('Failed to add peer from argv[1]:', keyHex, err.message)
+                await discovery.destroy()
+            } catch (e) {
+                console.error('Error destroying previous discovery:', e)
             }
         }
-        setAddedStaticPeers(true)
-    }
-    // Reset peer count on new base
-    setPeerCount(0)
-    broadcastPeerCount()
-    // --- Update replication swarm topic for this base ---
-    const firstLocalAutobaseKey = randomBytes(32)
-    const topic = autobase.key || firstLocalAutobaseKey
-    console.error('Discovery topic (replication swarm):', topic.toString('hex'))
-    // Switch discovery to new topic
-    if (discovery) {
-        try {
-            await discovery.destroy()
-        } catch (e) {
-            console.error('Error destroying previous discovery:', e)
-        }
-    }
-    setSwarm(new Hyperswarm())
-    swarm.on('error', (err) => {
-        console.error('Replication swarm error:', err)
-    })
-    swarm.on('connection', (conn) => {
-        console.error('New peer connected (replication swarm)', b4a.from(conn.publicKey), conn.publicKey)
-        conn.on('error', (err) => {
-            console.error('Replication connection error:', err)
+        setSwarm(new Hyperswarm())
+        swarm.on('error', (err) => {
+            console.error('Replication swarm error:', err)
         })
-        setPeerCount(peerCount+1)
-        broadcastPeerCount()
-        conn.on('close', () => {
-            setPeerCount(Math.max(0, peerCount - 1))
+        swarm.on('connection', (conn) => {
+            console.error('New peer connected (replication swarm)', b4a.from(conn.publicKey).toString('hex'))
+            conn.on('error', (err) => {
+                console.error('Replication connection error:', err)
+            })
+            setPeerCount(peerCount+1)
             broadcastPeerCount()
+            conn.on('close', () => {
+                setPeerCount(Math.max(0, peerCount - 1))
+                broadcastPeerCount()
+            })
+            if (autobase) {
+                autobase.replicate(conn)
+            } else {
+                console.error('No Autobase yet to replicate with')
+            }
         })
-        if (autobase) {
-            autobase.replicate(conn)
-        } else {
-            console.error('No Autobase yet to replicate with')
+        setDiscovery(swarm.join(topic, { server: true, client: true }))
+        await discovery.flushed()
+        console.error('Joined replication swarm for current base')
+        // Restart chat swarm with new topic
+        if (chatSwarm) {
+            try {
+                await chatSwarm.destroy()
+            } catch (e) {
+                console.error('Error destroying previous chat swarm:', e)
+            }
+            setChatSwarm(null)
         }
-    })
-    setDiscovery(swarm.join(topic, { server: true, client: true }))
-    await discovery.flushed()
-    console.error('Joined replication swarm for current base')
-    // Restart chat swarm with new topic
-    if (chatSwarm) {
-        try {
-            await chatSwarm.destroy()
-        } catch (e) {
-            console.error('Error destroying previous chat swarm:', e)
-        }
-        setChatSwarm(null)
-    }
-    setupChatSwarm(baseKey != null ? baseKey : autobase.key)
-}
-
-export async function joinNewBase (baseKeyHexStr) {
-    if (!baseKeyHexStr || typeof baseKeyHexStr !== 'string') {
-        console.error('joinNewBase: invalid baseKey', baseKeyHexStr)
-        return
-    }
+        setupChatSwarm(baseKey != null ? baseKey : autobase.key)
+    })()
 
     try {
-        const newKey = Buffer.from(baseKeyHexStr.trim(), 'hex')
-        if (newKey.length !== 32) {
-            console.error('joinNewBase: baseKey must be 32 bytes, got', newKey.length)
+        return await _initPromise
+    } finally {
+        _initPromise = null
+    }
+}
+
+let _joinPromise = null
+
+export async function joinNewBase (baseKeyHexStr) {
+
+    if (_joinPromise) {
+        console.error('initAutobase already running — returning existing init promise')
+        return _joinPromise
+    }
+
+    _joinPromise = (async () => {
+
+        if (!baseKeyHexStr || typeof baseKeyHexStr !== 'string') {
+            console.error('joinNewBase: invalid baseKey', baseKeyHexStr)
             return
         }
-        console.error('Joining new Autobase key at runtime:', baseKeyHexStr.trim())
-        await initAutobase(newKey).then(() => {
-            console.error('Backend ready')
-        }).catch((err) => {
-            console.error('initAutobase failed at startup:', err)
-        })
-    } catch (e) {
-        console.error('joinNewBase failed:', e)
+
+        // Save current list to restore on failure
+        const previousList = [...currentList]
+
+        try {
+            const newKey = Buffer.from(baseKeyHexStr.trim(), 'hex')
+            if (newKey.length !== 32) {
+                console.error('joinNewBase: baseKey must be 32 bytes, got', newKey.length)
+                return
+            }
+            console.error('Joining new Autobase key at runtime:', baseKeyHexStr.trim())
+            // Clear frontend list before joining new base
+            if (rpc) {
+                const resetReq = rpc.request(RPC_RESET)
+                resetReq.send('')
+            }
+            await initAutobase(newKey)
+            console.error('Autobase ready 320')
+        } catch (e) {
+            console.error('joinNewBase failed:', e)
+            // Restore previous list on failure
+            if (rpc && previousList.length > 0) {
+                const syncReq = rpc.request(SYNC_LIST)
+                syncReq.send(JSON.stringify(previousList))
+            }
+        }
+    })()
+
+    try {
+        return await _joinPromise
+    } finally {
+        _joinPromise = null
     }
+
 }
 
 function broadcastPeerCount () {
@@ -309,6 +360,8 @@ async function ensureDefaultListIfEmpty () {
 
     const viewLen = autobase.view?.length ?? 0
     const localLen = autobase.local?.length ?? 0
+
+    console.error('ensureDefaultListIfEmpty: viewLen=', viewLen, 'localLen=', localLen, 'writable=', autobase.writable)
 
     // Empty = nothing in the applied output
     const isEmpty = viewLen === 0

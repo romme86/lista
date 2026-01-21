@@ -120,7 +120,7 @@ setRpc(rpcGenerated)
 
 // Initialize Autobase for the initial baseKey (from argv or new)
 await initAutobase(baseKey).then(() => {
-    console.error('Backend ready')
+    console.error('Autobase ready 123')
 }).catch((err) => {
     console.error('initAutobase failed at startup:', err)
 })
@@ -151,6 +151,7 @@ Bare.on('teardown', async () => {
         }
     }
     try {
+        await store.flush()
         await store.close()
     } catch (e) {
         console.error('Error closing store:', e)
@@ -190,6 +191,8 @@ export async function apply (nodes, view, host) {
                 continue
             }
             console.error('Applying add operation for item:', value.value)
+            // Persist item to view
+            await view.append(value.value)
             // Update in-memory list
             setCurrentList([value.value, ...currentList.filter(i => i.text !== value.value.text)])
             const addReq = rpc.request(RPC_ADD_FROM_BACKEND)

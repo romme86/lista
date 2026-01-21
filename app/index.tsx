@@ -1,5 +1,5 @@
 import React, {useEffect, useRef, useState, useCallback} from 'react'
-import {Platform, StyleSheet, View, TouchableOpacity, SafeAreaView, Share, Modal, TextInput, Text, Alert, ActivityIndicator, Animated} from 'react-native'
+import {View, TouchableOpacity, SafeAreaView, Share, Modal, TextInput, Text, Alert, ActivityIndicator, Animated} from 'react-native'
 import * as FileSystemExpo from 'expo-file-system';
 import { toByteArray } from 'base64-js';
 import {Worklet} from 'react-native-bare-kit'
@@ -24,6 +24,7 @@ import {
     RPC_REQUEST_SYNC
 } from '../rpc-commands.mjs'
 import InertialElasticList from './components/intertial_scroll'
+import { styles, headerStyles, dialogStyles, joiningStyles } from './styles'
 
 export type ListEntry = {
     text: string,
@@ -72,6 +73,9 @@ function AnimatedIconButton({ onPress, children, style }: AnimatedIconButtonProp
         </TouchableOpacity>
     );
 }
+
+let workletSingleton: Worklet | null = null
+let workletStartPromise: Promise<void> | null = null
 
 export default function App() {
     // List state is initialized empty - backend will send persisted data (including defaults on first run)
@@ -151,6 +155,11 @@ export default function App() {
                     console.warn('Error stopping worklet', e)
                 }
             }
+            if (workletSingleton && typeof (workletSingleton as any).stop === 'function') {
+                try { (workletSingleton as any).stop() } catch (e) {}
+            }
+            workletSingleton = null
+            workletStartPromise = null
             workletRef.current = null
             rpcRef.current = null
         }
@@ -166,111 +175,110 @@ export default function App() {
             req.send(payload)
         }
     }
-
-
-
     const startWorklet = () => {
+        if (workletStartPromise) return workletStartPromise
+        workletStartPromise = (async () => {
+            console.log('Starting worklet (singleton)')
+            const worklet = new Worklet()
+            workletSingleton = worklet
+            workletRef.current = worklet
 
-        console.log('Starting worklet')
-        const worklet = new Worklet()
-        workletRef.current = worklet
-        // IMPORTANT: BareKit needs the RAW .bundle bytes.
-        const bundleBytes = toByteArray(backendBundleB64);
-        // If you need a path argument, prefer FileSystem.documentDirectory (your log shows the named export was undefined).
+            const bundleBytes = toByteArray(backendBundleB64)
 
-        const baseDir =
-            FileSystemExpo.Paths.document.uri ??
-            FileSystemExpo.Paths.cache.uri ??
-              '';
-        console.log('documentDirectory', baseDir, pairingInvite);
-        const worklet_start = worklet.start('/app.bundle', bundleBytes, [String(baseDir)])
-        console.log('worklet_start', worklet_start)
-        const { IPC } = worklet
+            const baseDir =
+                FileSystemExpo.Paths.document.uri ??
+                FileSystemExpo.Paths.cache.uri ??
+                ''
 
-        rpcRef.current = new RPC(IPC, (reqFromBackend) => {
-            if (reqFromBackend.command === RPC_MESSAGE) {
-                console.log('RPC MESSAGE req', reqFromBackend)
-                if (reqFromBackend.data) {
-                    const dataStr = b4a.toString(reqFromBackend.data)
-                    console.log('data from bare', dataStr)
-                    try {
-                        const payload = JSON.parse(dataStr)
-                        if (payload.type === 'peer-count') {
-                            const count = typeof payload.count === 'number' ? payload.count : 0
-                            setPeerCount(count)
-                            // If we're joining and got a peer, we're connected!
-                            if (isJoiningRef.current && count > 0) {
-                                isJoiningRef.current = false
-                                setIsJoining(false)
-                                Alert.alert('Success!', 'Connected to peer successfully. Your lists are now synced.')
+            worklet.start('/app.bundle', bundleBytes, [String(baseDir)])
+
+            const { IPC } = worklet
+            rpcRef.current = new RPC(IPC, (reqFromBackend) => {
+                if (reqFromBackend.command === RPC_MESSAGE) {
+                    console.log('RPC MESSAGE req', reqFromBackend)
+                    if (reqFromBackend.data) {
+                        const dataStr = b4a.toString(reqFromBackend.data)
+                        console.log('data from bare', dataStr)
+                        try {
+                            const payload = JSON.parse(dataStr)
+                            if (payload.type === 'peer-count') {
+                                const count = typeof payload.count === 'number' ? payload.count : 0
+                                setPeerCount(count)
+                                // If we're joining and got a peer, we're connected!
+                                if (isJoiningRef.current && count > 0) {
+                                    isJoiningRef.current = false
+                                    setIsJoining(false)
+                                    Alert.alert('Success!', 'Connected to peer successfully. Your lists are now synced.')
+                                }
+                            } else if (payload.type === 'not-writable') {
+                                Alert.alert('Please wait', payload.message || 'You are not yet authorized to modify the list. Please wait a moment.')
+                            } else {
+                                console.log('RPC_MESSAGE payload (unhandled type):', payload)
                             }
-                        } else if (payload.type === 'not-writable') {
-                            Alert.alert('Please wait', payload.message || 'You are not yet authorized to modify the list. Please wait a moment.')
-                        } else {
-                            console.log('RPC_MESSAGE payload (unhandled type):', payload)
+                        } catch (e) {
+                            console.warn('Invalid RPC_MESSAGE payload', dataStr)
                         }
-                    } catch (e) {
-                        console.warn('Invalid RPC_MESSAGE payload', dataStr)
+                    } else {
+                        console.log('RPC_MESSAGE without data')
                     }
-                } else {
-                    console.log('RPC_MESSAGE without data')
                 }
-            }
-            if (reqFromBackend.command === RPC_RESET) {
-                console.log('RPC RESET')
-                setDataList(() => [])
-            }
-            if (reqFromBackend.command === SYNC_LIST) {
-                console.log('SYNC_LIST')
-                if(reqFromBackend.data) {
-                    console.log('data from bare', b4a.toString(reqFromBackend.data))
-                    const listToSync = JSON.parse(b4a.toString(reqFromBackend.data))
-                    // Backend is the source of truth - display whatever it sends
-                    setDataList(listToSync)
+                if (reqFromBackend.command === RPC_RESET) {
+                    console.log('RPC RESET')
+                    setDataList(() => [])
                 }
-            }
-            if (reqFromBackend.command === RPC_DELETE_FROM_BACKEND) {
-                console.log('RPC_DELETE_FROM_BACKEND')
-                if(reqFromBackend.data) {
-                    console.log('data from bare', b4a.toString(reqFromBackend.data))
-                    const itemToDelete = JSON.parse(b4a.toString(reqFromBackend.data))
-                    setDataList((prevList) => prevList.filter((item) => item.text !== itemToDelete.text))
+                if (reqFromBackend.command === SYNC_LIST) {
+                    console.log('SYNC_LIST')
+                    if(reqFromBackend.data) {
+                        console.log('data from bare', b4a.toString(reqFromBackend.data))
+                        const listToSync = JSON.parse(b4a.toString(reqFromBackend.data))
+                        // Backend is the source of truth - display whatever it sends
+                        setDataList(listToSync)
+                    }
                 }
+                if (reqFromBackend.command === RPC_DELETE_FROM_BACKEND) {
+                    console.log('RPC_DELETE_FROM_BACKEND')
+                    if(reqFromBackend.data) {
+                        console.log('data from bare', b4a.toString(reqFromBackend.data))
+                        const itemToDelete = JSON.parse(b4a.toString(reqFromBackend.data))
+                        setDataList((prevList) => prevList.filter((item) => item.text !== itemToDelete.text))
+                    }
 
-            }
-            if (reqFromBackend.command === RPC_UPDATE_FROM_BACKEND) {
-                console.log('RPC_UPDATE_FROM_BACKEND')
-                if(reqFromBackend.data) {
-                    console.log('data from bare', b4a.toString(reqFromBackend.data))
-                    const itemToUpdate = JSON.parse(b4a.toString(reqFromBackend.data))
-                    setDataList((prevList) => {
-                        const newList = prevList.map((item) =>
-                            item.text === itemToUpdate.text ? { ...item, isDone: itemToUpdate.isDone, timeOfCompletion: itemToUpdate.timeOfCompletion } : item
-                        )
-                        return newList
-                    })
                 }
-            }
-            if (reqFromBackend.command === RPC_ADD_FROM_BACKEND) {
-                console.log('RPC_ADD_FROM_BACKEND')
-                if(reqFromBackend.data) {
-                    console.log('data from bare', b4a.toString(reqFromBackend.data))
-                    const itemToAdd = JSON.parse(b4a.toString(reqFromBackend.data))
-                    setDataList((prevList) => [itemToAdd, ...prevList])
+                if (reqFromBackend.command === RPC_UPDATE_FROM_BACKEND) {
+                    console.log('RPC_UPDATE_FROM_BACKEND')
+                    if(reqFromBackend.data) {
+                        console.log('data from bare', b4a.toString(reqFromBackend.data))
+                        const itemToUpdate = JSON.parse(b4a.toString(reqFromBackend.data))
+                        setDataList((prevList) => {
+                            const newList = prevList.map((item) =>
+                                item.text === itemToUpdate.text ? { ...item, isDone: itemToUpdate.isDone, timeOfCompletion: itemToUpdate.timeOfCompletion } : item
+                            )
+                            return newList
+                        })
+                    }
                 }
-            }
-            if (reqFromBackend.command === RPC_GET_KEY) {
-                console.log('RPC_GET_KEY', )
-                if (reqFromBackend.data) {
-                    console.log('data from bare', b4a.toString(reqFromBackend.data))
-                    const data = b4a.toString(reqFromBackend.data)
-                    setAutobaseInviteKey(data)
-                } else {
-                    console.log('data from bare is null, empty or undefined')
+                if (reqFromBackend.command === RPC_ADD_FROM_BACKEND) {
+                    console.log('RPC_ADD_FROM_BACKEND')
+                    if(reqFromBackend.data) {
+                        console.log('data from bare', b4a.toString(reqFromBackend.data))
+                        const itemToAdd = JSON.parse(b4a.toString(reqFromBackend.data))
+                        setDataList((prevList) => [itemToAdd, ...prevList])
+                    }
                 }
-            }
-        })
-        setIsWorkletStarted(true)
+                if (reqFromBackend.command === RPC_GET_KEY) {
+                    console.log('RPC_GET_KEY', )
+                    if (reqFromBackend.data) {
+                        console.log('data from bare', b4a.toString(reqFromBackend.data))
+                        const data = b4a.toString(reqFromBackend.data)
+                        setAutobaseInviteKey(data)
+                    } else {
+                        console.log('data from bare is null, empty or undefined')
+                    }
+                }
+            })
+
+            setIsWorkletStarted(true)
+        })()
     }
 
     const handleToggleDone = (index: number) => {
@@ -318,6 +326,19 @@ export default function App() {
         if (!rpcRef.current) {
             console.warn('RPC not ready, ignoring ADD')
             return
+        }
+
+        // Delete default entries only if they exist
+        const defaultTexts = [
+            'Tap to mark as done',
+            'Double tap to add new',
+            'Slide right slowly to delete'
+        ]
+        const defaultEntries = dataList.filter(item => defaultTexts.includes(item.text))
+        if (defaultEntries.length > 0) {
+            for (const entry of defaultEntries) {
+                sendRPC(RPC_DELETE, JSON.stringify({ item: entry }))
+            }
         }
 
         sendRPC(RPC_ADD, JSON.stringify(text))
@@ -410,40 +431,40 @@ export default function App() {
     return (
         <View style={styles.container}>
             <>
-                <SafeAreaView style={styles_safe_area.safeArea}>
-                    <View style={styles_safe_area.container}>
-                        <View style={styles_safe_area.leftSection}>
+                <SafeAreaView style={headerStyles.safeArea}>
+                    <View style={headerStyles.container}>
+                        <View style={headerStyles.leftSection}>
                             <AnimatedIconButton
-                                style={styles_safe_area.iconButton}
+                                style={headerStyles.iconButton}
                                 onPress={handleDeleteAll}
                             >
                                 <Ionicons name="trash-outline" size={24} color="#333" />
                             </AnimatedIconButton>
                         </View>
 
-                        <View style={styles_safe_area.rightSection}>
-                            <View style={styles_safe_area.iconWithBadge}>
+                        <View style={headerStyles.rightSection}>
+                            <View style={headerStyles.iconWithBadge}>
                                 <AnimatedIconButton
-                                    style={styles_safe_area.iconButton}
+                                    style={headerStyles.iconButton}
                                     onPress={handleShare}
                                 >
                                     <Ionicons name="share-outline" size={24} color="#333" />
                                 </AnimatedIconButton>
                                 {!autobaseInviteKey ? (
-                                    <Animated.View style={[styles_safe_area.badge, styles_safe_area.orangeBadge, { opacity: blinkAnim }]} />
+                                    <Animated.View style={[headerStyles.badge, headerStyles.orangeBadge, { opacity: blinkAnim }]} />
                                 ) : peerCount > 0 ? (
-                                    <View style={styles_safe_area.pearBadge}>
-                                        <View style={styles_safe_area.pearStalk} />
-                                        <View style={styles_safe_area.pearTop} />
-                                        <View style={styles_safe_area.pearBottom}>
-                                            <Text style={styles_safe_area.pearBadgeText}>{peerCountLabel}</Text>
+                                    <View style={headerStyles.pearBadge}>
+                                        <View style={headerStyles.pearStalk} />
+                                        <View style={headerStyles.pearTop} />
+                                        <View style={headerStyles.pearBottom}>
+                                            <Text style={headerStyles.pearBadgeText}>{peerCountLabel}</Text>
                                         </View>
                                     </View>
                                 ) : null}
                             </View>
 
                             <AnimatedIconButton
-                                style={styles_safe_area.iconButton}
+                                style={headerStyles.iconButton}
                                 onPress={handleJoin}
                             >
                                 <Ionicons name="person-add-outline" size={24} color="#333" />
@@ -457,13 +478,13 @@ export default function App() {
                     animationType="fade"
                     onRequestClose={handleJoinCancel}
                 >
-                    <View style={dialog_styles.overlay}>
-                        <View style={dialog_styles.dialog}>
-                            <Text style={dialog_styles.title}>Join with Invite Key</Text>
-                            <Text style={dialog_styles.subtitle}>Paste the invite key below</Text>
+                    <View style={dialogStyles.overlay}>
+                        <View style={dialogStyles.dialog}>
+                            <Text style={dialogStyles.title}>Join with Invite Key</Text>
+                            <Text style={dialogStyles.subtitle}>Paste the invite key below</Text>
 
                             <TextInput
-                                style={dialog_styles.input}
+                                style={dialogStyles.input}
                                 value={joinKeyInput}
                                 onChangeText={setJoinKeyInput}
                                 placeholder="Enter invite key..."
@@ -472,19 +493,19 @@ export default function App() {
                                 autoFocus={true}
                             />
 
-                            <View style={dialog_styles.buttonContainer}>
+                            <View style={dialogStyles.buttonContainer}>
                                 <TouchableOpacity
-                                    style={[dialog_styles.button, dialog_styles.cancelButton]}
+                                    style={[dialogStyles.button, dialogStyles.cancelButton]}
                                     onPress={handleJoinCancel}
                                 >
-                                    <Text style={dialog_styles.cancelButtonText}>Cancel</Text>
+                                    <Text style={dialogStyles.cancelButtonText}>Cancel</Text>
                                 </TouchableOpacity>
 
                                 <TouchableOpacity
-                                    style={[dialog_styles.button, dialog_styles.submitButton]}
+                                    style={[dialogStyles.button, dialogStyles.submitButton]}
                                     onPress={handleJoinSubmit}
                                 >
-                                    <Text style={dialog_styles.submitButtonText}>Join</Text>
+                                    <Text style={dialogStyles.submitButtonText}>Join</Text>
                                 </TouchableOpacity>
                             </View>
                         </View>
@@ -495,24 +516,24 @@ export default function App() {
                     transparent={true}
                     animationType="fade"
                 >
-                    <View style={joining_styles.overlay}>
-                        <View style={joining_styles.content}>
+                    <View style={joiningStyles.overlay}>
+                        <View style={joiningStyles.content}>
                             <ActivityIndicator size="large" color="#333" />
-                            <Text style={joining_styles.title}>Connecting to peer...</Text>
-                            <Text style={joining_styles.subtitle}>
+                            <Text style={joiningStyles.title}>Connecting to peer...</Text>
+                            <Text style={joiningStyles.subtitle}>
                                 Please keep the app open while we establish a secure connection.
                             </Text>
-                            <Text style={joining_styles.p2pMessage}>
+                            <Text style={joiningStyles.p2pMessage}>
                                 {p2pMessages[currentP2PMessage]}
                             </Text>
                             <TouchableOpacity
-                                style={joining_styles.cancelButton}
+                                style={joiningStyles.cancelButton}
                                 onPress={() => {
                                     setIsJoining(false);
                                     isJoiningRef.current = false;
                                 }}
                             >
-                                <Text style={joining_styles.cancelButtonText}>Cancel</Text>
+                                <Text style={joiningStyles.cancelButtonText}>Cancel</Text>
                             </TouchableOpacity>
                         </View>
                     </View>
@@ -527,238 +548,3 @@ export default function App() {
         </View>
     )
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        padding: 20
-    },
-    input: {
-        height: 20,
-        borderColor: '#ccc',
-        borderWidth: 0,
-        marginBottom: 10,
-        paddingHorizontal: 10,
-        color: '#333'
-    },
-    dataItem: {
-        padding: 10,
-        backgroundColor: '#f0f0f0',
-        marginVertical: 5,
-        borderRadius: 5
-    },
-    itemText: {
-        fontSize: 16,
-        color: '#333'
-    }
-})
-
-const styles_safe_area = StyleSheet.create({
-    safeArea: {
-        backgroundColor: '#fff',
-    },
-    container: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        backgroundColor: '#fff',
-        paddingHorizontal: 16,
-        paddingVertical: 12,
-        height: 60,
-    },
-    leftSection: {
-        flex: 1,
-    },
-    rightSection: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        gap: 16,
-    },
-    iconButton: {
-        padding: 8,
-    },
-    iconWithBadge: {
-        position: 'relative',
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    badge: {
-        position: 'absolute',
-        top: 4,
-        right: 2,
-        minWidth: 16,
-        height: 16,
-        borderRadius: 999,
-        backgroundColor: '#ff3b30',
-        justifyContent: 'center',
-        alignItems: 'center',
-        paddingHorizontal: 3,
-    },
-    badgeText: {
-        color: '#fff',
-        fontSize: 10,
-        fontWeight: '600',
-    },
-    orangeBadge: {
-        backgroundColor: '#ff9500',
-        width: 10,
-        height: 10,
-        minWidth: 10,
-    },
-    pearBadge: {
-        position: 'absolute',
-        top: -2,
-        right: 0,
-        alignItems: 'center',
-    },
-    pearStalk: {
-        width: 2,
-        height: 5,
-        backgroundColor: '#8B4513',
-        borderRadius: 1,
-        marginBottom: -1,
-    },
-    pearTop: {
-        width: 6,
-        height: 6,
-        borderRadius: 3,
-        backgroundColor: '#34c759',
-        marginBottom: -3,
-        zIndex: 1,
-    },
-    pearBottom: {
-        minWidth: 16,
-        height: 16,
-        borderRadius: 8,
-        backgroundColor: '#34c759',
-        justifyContent: 'center',
-        alignItems: 'center',
-        paddingHorizontal: 4,
-    },
-    pearBadgeText: {
-        color: '#fff',
-        fontSize: 9,
-        fontWeight: '700',
-    },
-});
-
-
-const dialog_styles = StyleSheet.create({
-    overlay: {
-        flex: 1,
-        backgroundColor: 'rgba(0, 0, 0, 0.5)',
-        justifyContent: 'center',
-        alignItems: 'center',
-        padding: 20,
-    },
-    dialog: {
-        backgroundColor: '#fff',
-        borderRadius: 12,
-        padding: 24,
-        width: '100%',
-        maxWidth: 400,
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.25,
-        shadowRadius: 4,
-        elevation: 5,
-    },
-    title: {
-        fontSize: 20,
-        fontWeight: '600',
-        color: '#333',
-        marginBottom: 8,
-    },
-    subtitle: {
-        fontSize: 14,
-        color: '#666',
-        marginBottom: 20,
-    },
-    input: {
-        borderWidth: 1,
-        borderColor: '#ddd',
-        borderRadius: 8,
-        padding: 12,
-        fontSize: 14,
-        color: '#333',
-        minHeight: 80,
-        textAlignVertical: 'top',
-        marginBottom: 20,
-    },
-    buttonContainer: {
-        flexDirection: 'row',
-        gap: 12,
-    },
-    button: {
-        flex: 1,
-        paddingVertical: 12,
-        paddingHorizontal: 20,
-        borderRadius: 8,
-        alignItems: 'center',
-    },
-    cancelButton: {
-        backgroundColor: '#f0f0f0',
-    },
-    submitButton: {
-        backgroundColor: '#333',
-    },
-    cancelButtonText: {
-        color: '#333',
-        fontSize: 16,
-        fontWeight: '600',
-    },
-    submitButtonText: {
-        color: '#fff',
-        fontSize: 16,
-        fontWeight: '600',
-    },
-});
-
-const joining_styles = StyleSheet.create({
-    overlay: {
-        flex: 1,
-        backgroundColor: 'rgba(255, 255, 255, 0.95)',
-        justifyContent: 'center',
-        alignItems: 'center',
-        padding: 40,
-    },
-    content: {
-        alignItems: 'center',
-        maxWidth: 300,
-    },
-    title: {
-        fontSize: 20,
-        fontWeight: '600',
-        color: '#333',
-        marginTop: 24,
-        marginBottom: 12,
-        textAlign: 'center',
-    },
-    subtitle: {
-        fontSize: 14,
-        color: '#666',
-        textAlign: 'center',
-        marginBottom: 32,
-        lineHeight: 20,
-    },
-    p2pMessage: {
-        fontSize: 14,
-        color: '#888',
-        textAlign: 'center',
-        fontStyle: 'italic',
-        minHeight: 40,
-    },
-    cancelButton: {
-        marginTop: 32,
-        paddingVertical: 12,
-        paddingHorizontal: 32,
-        borderRadius: 8,
-        backgroundColor: '#f0f0f0',
-    },
-    cancelButtonText: {
-        fontSize: 16,
-        fontWeight: '600',
-        color: '#666',
-    },
-});
