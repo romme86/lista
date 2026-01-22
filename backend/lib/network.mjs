@@ -1,4 +1,5 @@
 import Hyperswarm from "hyperswarm";
+import fs from "bare-fs";
 import {apply, open, storagePath, peerKeysString, keyFilePath} from "../backend.mjs";
 import {saveAutobaseKey} from "./key.mjs";
 import {RPC_MESSAGE, RPC_GET_KEY, RPC_RESET, SYNC_LIST} from "../../rpc-commands.mjs";
@@ -48,11 +49,11 @@ export async function handleHandshakeMessage (msg) {
 
     // Only a writer can add other writers.
     if (!autobase.writable) {
-        console.error('Not writable here, cannot add remote writer yet')
+        console.error('[WARNING] Not writable here, cannot add remote writer yet')
         return
     }
 
-    console.error('Adding remote writer via autobase:', remoteKeyHex)
+    console.error('[INFO] Adding remote writer via autobase:', remoteKeyHex)
 
     await autobase.append({
         type: 'add-writer',
@@ -62,7 +63,7 @@ export async function handleHandshakeMessage (msg) {
 
 export async function setupHandshakeChannel (conn) {
     if (!autobase) {
-        console.error('setupHandshakeChannel called before Autobase is initialized')
+        console.error('[WARNING] setupHandshakeChannel called before Autobase is initialized')
         return
     }
 
@@ -93,7 +94,7 @@ export async function setupHandshakeChannel (conn) {
             try {
                 msg = JSON.parse(line)
             } catch (e) {
-                console.warn('invalid JSON from peer (handshake, ignored):', line)
+                console.error('[WARNING] Invalid JSON from peer (handshake, ignored):', line)
                 continue
             }
 
@@ -104,25 +105,25 @@ export async function setupHandshakeChannel (conn) {
 
 export function setupChatSwarm (chatTopic) {
     if (!autobase) {
-        console.error('setupChatSwarm called before Autobase is initialized')
+        console.error('[WARNING] setupChatSwarm called before Autobase is initialized')
         return
     }
     setChatSwarm(new Hyperswarm())
-    console.error('setting up chat swarm with topic:', chatTopic.toString('hex'))
+    console.error('[INFO] Setting up chat swarm with topic:', chatTopic.toString('hex'))
     chatSwarm.on('connection', (conn, info) => {
-        console.error('Handshake connection (chat swarm) with peer', info?.publicKey?.toString('hex'),'prioritized', info?.prioritized)
+        console.error('[INFO] Handshake connection (chat swarm) with peer', info?.publicKey?.toString('hex'),'prioritized', info?.prioritized)
         conn.on('error', (err) => {
-            console.error('Chat swarm connection error:', err)
+            console.error('[ERROR] Chat swarm connection error:', err)
         })
         setupHandshakeChannel(conn)
     })
 
     chatSwarm.on('error', (err) => {
-        console.error('Chat swarm error:', err)
+        console.error('[ERROR] Chat swarm error:', err)
     })
 
     chatSwarm.join(chatTopic, { server: true, client: true })
-    console.error('Handshake chat swarm joined on topic:', chatTopic.toString('hex'))
+    console.error('[INFO] Handshake chat swarm joined on topic:', chatTopic.toString('hex'))
 }
 
 
@@ -132,13 +133,13 @@ async function tearDownAutobaseSwarmStore() {
         try {
             autobase.removeAllListeners('append')
             if (typeof autobase.close === 'function') {
-                console.error('Closing previous Autobase instance...')
+                console.error('[INFO] Closing previous Autobase instance...')
                 await autobase.close()
             } else {
-                console.error('Previous Autobase has no close() method, skipping close')
+                console.error('[WARNING] Previous Autobase has no close() method, skipping close')
             }
         } catch (e) {
-            console.error('Error while closing previous Autobase:', e)
+            console.error('[ERROR] Error while closing previous Autobase:', e)
         }
         setAutobase(null)
     }
@@ -148,7 +149,7 @@ async function tearDownAutobaseSwarmStore() {
         try {
             await discovery.destroy()
         } catch (e) {
-            console.error(e)
+            console.error('[ERROR] Error destroying discovery:', e)
         }
         setDiscovery(null)
     }
@@ -156,7 +157,7 @@ async function tearDownAutobaseSwarmStore() {
         try {
             await chatSwarm.destroy()
         } catch (e) {
-            console.error(e)
+            console.error('[ERROR] Error destroying chat swarm:', e)
         }
         setChatSwarm(null)
     }
@@ -166,14 +167,14 @@ async function tearDownAutobaseSwarmStore() {
         try {
             await store.close()
         } catch (e) {
-            console.error('Error closing Corestore:', e)
+            console.error('[ERROR] Error closing Corestore:', e)
         }
     }
 }
 
 export async function initAutobase (newBaseKey) {
     if (_initPromise) {
-        console.error('initAutobase already running — returning existing init promise')
+        console.error('[WARNING] initAutobase already running — returning existing init promise')
         return _initPromise
     }
 
@@ -190,22 +191,36 @@ export async function initAutobase (newBaseKey) {
         await store.ready()
         setBaseKey(newBaseKey || null)
         console.error(
-            'initializing a new autobase with key:',
+            '[INFO] Initializing a new autobase with key:',
             baseKey ? baseKey.toString('hex') : '(new base)'
         )
         const autobaseOpts = { apply, open, valueEncoding: 'json' }
         setAutobase(new Autobase(store, baseKey, autobaseOpts))
-        console.error('Calling autobase.ready()...')
-        await autobase.ready()
+        console.error('[INFO] Calling autobase.ready()...')
+        try{
+            await autobase.ready()
+        } catch(e){
+            const msg = String(e?.stack || e?.message || e)
+            if (msg.includes("reading 'signers'") || msg.includes('autobase/lib/store.js')) {
+                console.error('[ERROR] Autobase appears corrupted. Wiping local state and recreating a new base...')
+                rmrfSafe(keyFilePath)
+                rmrfSafe(baseStoragePath)
+                // Clear the promise so recursive call can start fresh
+                _initPromise = null
+                return initAutobase(null)
+            }
+            throw e;
+        }
         console.error(
-            'autobase.ready() resolved. Autobase ready, writable?',
+            '[INFO] autobase.ready() resolved. Autobase ready, writable?',
             autobase.writable,
             ' key:',
             autobase.key?.toString('hex'),
         )
 
         // Save the autobase key for persistence across restarts
-        if (autobase.key) {
+        // Only save if we're the creator (writable) - guests should rejoin manually
+        if (autobase.key && autobase.writable) {
             saveAutobaseKey(autobase.key, keyFilePath)
         }
 
@@ -214,7 +229,7 @@ export async function initAutobase (newBaseKey) {
             req.send(autobase.key?.toString('hex'))
         }
         autobase.on('append', async () => {
-            console.error('New data appended, updating view...')
+            console.error('[INFO] New data appended, updating view...')
         })
         // Load existing items from view and sync to frontend
         await autobase.update()
@@ -229,9 +244,9 @@ export async function initAutobase (newBaseKey) {
                     const peerCore = store.get({ key: peerKey })
                     await peerCore.ready()
                     await autobase.addInput(peerCore)
-                    console.error('Added peer writer from argv[1]:', keyHex.trim())
+                    console.error('[INFO] Added peer writer from argv[1]:', keyHex.trim())
                 } catch (err) {
-                    console.error('Failed to add peer from argv[1]:', keyHex, err.message)
+                    console.error('[ERROR] Failed to add peer from argv[1]:', keyHex, err.message)
                 }
             }
             setAddedStaticPeers(true)
@@ -242,23 +257,23 @@ export async function initAutobase (newBaseKey) {
         // --- Update replication swarm topic for this base ---
         const firstLocalAutobaseKey = randomBytes(32)
         const topic = autobase.key || firstLocalAutobaseKey
-        console.error('Discovery topic (replication swarm):', topic.toString('hex'))
+        console.error('[INFO] Discovery topic (replication swarm):', topic.toString('hex'))
         // Switch discovery to new topic
         if (discovery) {
             try {
                 await discovery.destroy()
             } catch (e) {
-                console.error('Error destroying previous discovery:', e)
+                console.error('[ERROR] Error destroying previous discovery:', e)
             }
         }
         setSwarm(new Hyperswarm())
         swarm.on('error', (err) => {
-            console.error('Replication swarm error:', err)
+            console.error('[ERROR] Replication swarm error:', err)
         })
         swarm.on('connection', (conn) => {
-            console.error('New peer connected (replication swarm)', b4a.from(conn.publicKey).toString('hex'))
+            console.error('[INFO] New peer connected (replication swarm)', b4a.from(conn.publicKey).toString('hex'))
             conn.on('error', (err) => {
-                console.error('Replication connection error:', err)
+                console.error('[ERROR] Replication connection error:', err)
             })
             setPeerCount(peerCount+1)
             broadcastPeerCount()
@@ -269,18 +284,18 @@ export async function initAutobase (newBaseKey) {
             if (autobase) {
                 autobase.replicate(conn)
             } else {
-                console.error('No Autobase yet to replicate with')
+                console.error('[WARNING] No Autobase yet to replicate with')
             }
         })
         setDiscovery(swarm.join(topic, { server: true, client: true }))
         await discovery.flushed()
-        console.error('Joined replication swarm for current base')
+        console.error('[INFO] Joined replication swarm for current base')
         // Restart chat swarm with new topic
         if (chatSwarm) {
             try {
                 await chatSwarm.destroy()
             } catch (e) {
-                console.error('Error destroying previous chat swarm:', e)
+                console.error('[ERROR] Error destroying previous chat swarm:', e)
             }
             setChatSwarm(null)
         }
@@ -299,14 +314,14 @@ let _joinPromise = null
 export async function joinNewBase (baseKeyHexStr) {
 
     if (_joinPromise) {
-        console.error('initAutobase already running — returning existing init promise')
+        console.error('[WARNING] joinNewBase already running — returning existing join promise')
         return _joinPromise
     }
 
     _joinPromise = (async () => {
 
         if (!baseKeyHexStr || typeof baseKeyHexStr !== 'string') {
-            console.error('joinNewBase: invalid baseKey', baseKeyHexStr)
+            console.error('[ERROR] joinNewBase: invalid baseKey', baseKeyHexStr)
             return
         }
 
@@ -316,19 +331,19 @@ export async function joinNewBase (baseKeyHexStr) {
         try {
             const newKey = Buffer.from(baseKeyHexStr.trim(), 'hex')
             if (newKey.length !== 32) {
-                console.error('joinNewBase: baseKey must be 32 bytes, got', newKey.length)
+                console.error('[ERROR] joinNewBase: baseKey must be 32 bytes, got', newKey.length)
                 return
             }
-            console.error('Joining new Autobase key at runtime:', baseKeyHexStr.trim())
+            console.error('[INFO] Joining new Autobase key at runtime:', baseKeyHexStr.trim())
             // Clear frontend list before joining new base
             if (rpc) {
                 const resetReq = rpc.request(RPC_RESET)
                 resetReq.send('')
             }
             await initAutobase(newKey)
-            console.error('Autobase ready 320')
+            console.error('[INFO] Autobase ready 320')
         } catch (e) {
-            console.error('joinNewBase failed:', e)
+            console.error('[ERROR] joinNewBase failed:', e)
             // Restore previous list on failure
             if (rpc && previousList.length > 0) {
                 const syncReq = rpc.request(SYNC_LIST)
@@ -351,6 +366,14 @@ function broadcastPeerCount () {
         const req = rpc.request(RPC_MESSAGE)
         req.send(JSON.stringify({ type: 'peer-count', count: peerCount }))
     } catch (e) {
-        console.error('Failed to broadcast peer count', e)
+        console.error('[ERROR] Failed to broadcast peer count', e)
+    }
+}
+
+function rmrfSafe (p) {
+    try {
+        if (fs.existsSync(p)) fs.rmSync(p, { recursive: true, force: true })
+    } catch (e) {
+        console.error('[ERROR] rmrfSafe failed for', p, e)
     }
 }

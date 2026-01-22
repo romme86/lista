@@ -21,9 +21,22 @@ import {
 } from '../../rpc-commands.mjs'
 import type { ListEntry } from '@/app/components/_types'
 
+const GLOBAL_KEY = '__LISTAM_WORKLET_SINGLETON__' as const
+
 // Module-level singleton - persists across component remounts
 let workletSingleton: Worklet | null = null
 let workletStarted = false
+
+type GlobalWorkletState = {
+    started: boolean
+    worklet: Worklet | null
+}
+
+function getGlobalState(): GlobalWorkletState {
+    const g = globalThis as any
+    if (!g[GLOBAL_KEY]) g[GLOBAL_KEY] = { started: false, worklet: null }
+    return g[GLOBAL_KEY] as GlobalWorkletState
+}
 
 type UseWorkletResult = {
     dataList: ListEntry[]
@@ -159,11 +172,20 @@ export function useWorklet(): UseWorkletResult {
     }, [])
 
     useEffect(() => {
-        if (!workletStarted) {
+        const g = getGlobalState()
+
+        if (!workletStarted && !g.started) {
+            g.started = true
             workletStarted = true
             startWorklet()
-        } else if (workletSingleton) {
-            workletRef.current = workletSingleton
+            g.worklet = workletRef.current
+        } else if (workletSingleton || g.worklet) {
+            if (workletSingleton)
+            {
+                workletRef.current = workletSingleton
+            } else if (g.worklet)     {
+                workletRef.current = g.worklet
+            }
             setIsWorkletReady(true)
         }
 

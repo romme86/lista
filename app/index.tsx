@@ -125,7 +125,7 @@ export default function App() {
                 title: 'Share Invite Key'
             })
         } catch (error) {
-            console.error('Error sharing:', error)
+            console.log('Error sharing:', error)
         }
     }, [autobaseInviteKey])
 

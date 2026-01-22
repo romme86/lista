@@ -16,7 +16,7 @@ import {
 import b4a from 'b4a'
 import {syncListToFrontend, validateItem, addItem, updateItem, deleteItem} from './lib/item.mjs'
 const { IPC } = BareKit
-import {loadAutobaseKey} from "./lib/key.mjs";
+import {loadAutobaseKey, saveAutobaseKey} from "./lib/key.mjs";
 import {initAutobase, joinNewBase} from "./lib/network.mjs";
 import {
     autobase,
@@ -30,9 +30,10 @@ import {
     setRpc,
     setCurrentList, setBaseKey
 } from "./lib/state.mjs";
+import fs from "bare-fs";
 
-
-
+const INSTANCE_ID = Math.random().toString(36).slice(2, 8)
+console.error('[INFO] BACKEND INSTANCE:', INSTANCE_ID)
 
 const argv0 = typeof Bare?.argv?.[0] === 'string' ? Bare.argv[0] : '';
 let baseDir = '';
@@ -49,14 +50,37 @@ const baseKeyHex = Bare.argv[2] || '' // Optional Autobase key (to join an exist
 export const keyFilePath = baseDir ? join(baseDir, 'lista-autobase-key.txt') : './autobase-key.txt';
 const localWriterKeyFilePath = baseDir ? join(baseDir, 'lista-local-writer-key.txt') : './local-writer-key.txt';
 
+const LOCK_PATH = baseDir ? join(baseDir, 'lista.lock') : './lista.lock'
+
+// Stagger lock acquisition with random delay to detect duplicate instances
+const lockDelay = Math.floor(Math.random() * 500) + 100 // 100-600ms
+console.error(`[INFO] [${INSTANCE_ID}] Waiting ${lockDelay}ms before acquiring lock...`)
+await new Promise(resolve => setTimeout(resolve, lockDelay))
+
+let lockFd = null
+try {
+    // 'wx' => create exclusively, fail if exists
+    lockFd = fs.openSync(LOCK_PATH, 'wx')
+    fs.writeSync(lockFd, INSTANCE_ID + '\n')
+    console.error(`[INFO] [${INSTANCE_ID}] Acquired lock:`, LOCK_PATH)
+} catch (e) {
+    // Check who owns the lock
+    try {
+        const owner = fs.readFileSync(LOCK_PATH, 'utf-8').trim()
+        console.error(`[WARNING] [${INSTANCE_ID}] Lock owned by instance: ${owner}`)
+    } catch {}
+    console.error(`[ERROR] [${INSTANCE_ID}] Another backend instance is already running (lock exists):`, LOCK_PATH)
+    // Hard-exit this backend instance so it can't touch storage
+    throw e
+}
 
 // Optional Autobase key from argv (initial base) or loaded from file
 if (baseKeyHex) {
     try {
         setBaseKey(Buffer.from(baseKeyHex.trim(), 'hex'))
-        console.error('Using existing Autobase key from argv[2]:', baseKeyHex.trim())
+        console.error('[INFO] Using existing Autobase key from argv[2]:', baseKeyHex.trim())
     } catch (err) {
-        console.error('Invalid base key hex, creating new base instead:', err.message)
+        console.error('[ERROR] Invalid base key hex, creating new base instead:', err.message)
         setBaseKey(null)
     }
 }
@@ -68,9 +92,9 @@ if (!baseKey) {
 
 // Create RPC server
 let rpcGenerated = new RPC(IPC, async (req, error) => {
-    console.error('got a request from react', req)
+    console.error('[INFO] Got a request from react', req)
     if (error) {
-        console.error('got an error from react', error)
+        console.error('[ERROR] Got an error from react', error)
     }
     try {
         switch (req.command) {
@@ -90,9 +114,9 @@ let rpcGenerated = new RPC(IPC, async (req, error) => {
                 break
             }
             case RPC_GET_KEY: {
-                console.error('command RPC_GET_KEY')
+                console.error('[INFO] Command RPC_GET_KEY')
                 if (!autobase) {
-                    console.error('RPC_GET_KEY requested before Autobase is ready')
+                    console.error('[WARNING] RPC_GET_KEY requested before Autobase is ready')
                     break
                 }
                 const keyReq = rpc.request(RPC_GET_KEY)
@@ -100,63 +124,82 @@ let rpcGenerated = new RPC(IPC, async (req, error) => {
                 break
             }
             case RPC_JOIN_KEY: {
-                console.error('command RPC_JOIN_KEY')
+                console.error('[INFO] Command RPC_JOIN_KEY')
                 const data = JSON.parse(req.data.toString())
-                console.error('Joining new base key from RPC:', data.key)
+                console.error('[INFO] Joining new base key from RPC:', data.key)
                 await joinNewBase(data.key)
                 break
             }
             case RPC_REQUEST_SYNC: {
-                console.error('command RPC_REQUEST_SYNC - frontend requesting current list')
+                console.error('[INFO] Command RPC_REQUEST_SYNC - frontend requesting current list')
                 syncListToFrontend()
                 break
             }
         }
     } catch (err) {
-        console.error('Error handling RPC request:', err)
+        console.error('[ERROR] Error handling RPC request:', err)
     }
 })
 setRpc(rpcGenerated)
 
 // Initialize Autobase for the initial baseKey (from argv or new)
 await initAutobase(baseKey).then(() => {
-    console.error('Autobase ready 123')
+    console.error('[INFO] Autobase ready 123')
 }).catch((err) => {
-    console.error('initAutobase failed at startup:', err)
+    console.error('[ERROR] initAutobase failed at startup:', err)
+    throw err
 })
 
 // Backend ready
-console.error('Backend ready')
+
 
 // Cleanup on teardown
 Bare.on('teardown', async () => {
-    console.error('Backend shutting down...')
-    try {
-        await swarm.destroy()
-    } catch (e) {
-        console.error('Error destroying replication swarm:', e)
+    console.error('[INFO] Backend shutting down...')
+    if (swarm) {
+        swarm.removeAllListeners('connection')
+        try {
+            await swarm.destroy()
+        } catch (e) {
+            console.error('[ERROR] Error destroying replication swarm:', e)
+        }
+    }
+    if (autobase) {
+        try {
+            await autobase.close()
+        } catch (e) {
+            console.error('[ERROR] Error closing autobase:', e)
+        }
     }
     if (chatSwarm) {
         try {
             await chatSwarm.destroy()
         } catch (e) {
-            console.error('Error destroying chat swarm:', e)
+            console.error('[ERROR] Error destroying chat swarm:', e)
         }
     }
     if (discovery) {
         try {
             await discovery.destroy()
         } catch (e) {
-            console.error('Error destroying discovery:', e)
+            console.error('[ERROR] Error destroying discovery:', e)
+        }
+    }
+    if(store){
+        try {
+            await store.flush()
+            await store.close()
+        } catch (e) {
+            console.error('[ERROR] Error closing store:', e)
         }
     }
     try {
-        await store.flush()
-        await store.close()
+        if (lockFd) fs.closeSync(lockFd)
+        fs.rmSync(LOCK_PATH, { force: true })
     } catch (e) {
-        console.error('Error closing store:', e)
+        console.error('[ERROR] Error releasing lock:', e)
     }
-    console.error('Backend shutdown complete')
+    console.error('[INFO] Backend shutdown complete')
 })
 
 export function open (store) {
@@ -164,12 +207,12 @@ export function open (store) {
         name: 'test',
         valueEncoding: 'json'
     })
-    console.error('opening store...', view)
+    console.error('[INFO] Opening store...', view)
     return view
 }
 
 export async function apply (nodes, view, host) {
-    console.error('apply started')
+    console.error('[INFO] Apply started')
     for (const { value } of nodes) {
         if (!value) continue
 
@@ -178,19 +221,28 @@ export async function apply (nodes, view, host) {
             try {
                 const writerKey = Buffer.from(value.key, 'hex')
                 await host.addWriter(writerKey, { indexer: false })
-                console.error('Added writer from add-writer op:', value.key)
+                console.error('[INFO] Added writer from add-writer op:', value.key)
+
+                // If we just became writable (our key was added), save the base key
+                if (autobase && autobase.local) {
+                    const ourKeyHex = autobase.local.key.toString('hex')
+                    if (value.key === ourKeyHex && autobase.writable) {
+                        saveAutobaseKey(autobase.key, keyFilePath)
+                        console.error('[INFO] We became writable! Saved autobase key for persistence.')
+                    }
+                }
             } catch (err) {
-                console.error('Failed to add writer from add-writer op:', err)
+                console.error('[ERROR] Failed to add writer from add-writer op:', err)
             }
             continue
         }
 
         if (value.type === 'add') {
             if (!validateItem(value.value)) {
-                console.error('Invalid item schema in add operation:', value.value)
+                console.error('[WARNING] Invalid item schema in add operation:', value.value)
                 continue
             }
-            console.error('Applying add operation for item:', value.value)
+            console.error('[INFO] Applying add operation for item:', value.value)
             // Persist item to view
             await view.append(value.value)
             // Update in-memory list
@@ -202,10 +254,10 @@ export async function apply (nodes, view, host) {
 
         if (value.type === 'delete') {
             if (!validateItem(value.value)) {
-                console.error('Invalid item schema in delete operation:', value.value)
+                console.error('[WARNING] Invalid item schema in delete operation:', value.value)
                 continue
             }
-            console.error('Applying delete operation for item:', value.value)
+            console.error('[INFO] Applying delete operation for item:', value.value)
             // Update in-memory list
             setCurrentList(currentList.filter(i => i.text !== value.value.text))
             const deleteReq = rpc.request(RPC_DELETE_FROM_BACKEND)
@@ -215,10 +267,10 @@ export async function apply (nodes, view, host) {
 
         if (value.type === 'update') {
             if (!validateItem(value.value)) {
-                console.error('Invalid item schema in update operation:', value.value)
+                console.error('[WARNING] Invalid item schema in update operation:', value.value)
                 continue
             }
-            console.error('Applying update operation for item:', value.value)
+            console.error('[INFO] Applying update operation for item:', value.value)
             // Update in-memory list
             setCurrentList(currentList.map(i =>
                 i.text === value.value.text ? value.value : i
@@ -230,10 +282,10 @@ export async function apply (nodes, view, host) {
 
         if (value.type === 'list') {
             if (!Array.isArray(value.value)) {
-                console.error('Invalid list operation payload, expected array:', value.value)
+                console.error('[WARNING] Invalid list operation payload, expected array:', value.value)
                 continue
             }
-            console.error('Applying list operation for items:', value.value)
+            console.error('[INFO] Applying list operation for items:', value.value)
             const updateReq = rpc.request(SYNC_LIST)
             updateReq.send(JSON.stringify(value.value))
             continue
@@ -243,4 +295,3 @@ export async function apply (nodes, view, host) {
         await view.append(value)
     }
 }
-

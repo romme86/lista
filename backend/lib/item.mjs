@@ -16,23 +16,23 @@ function enqueueWrite (fn) {
 
 export async function addItem (text, listId) {
     if (!autobase) {
-        console.error('addItem called before Autobase is initialized')
+        console.error('[WARNING] addItem called before Autobase is initialized')
         return false
     }
 
     if (!autobase.writable) {
-        console.error('addItem called but autobase is not writable yet - waiting to be added as writer')
+        console.error('[WARNING] addItem called but autobase is not writable yet - waiting to be added as writer')
         // Notify frontend about not being writable
         try {
             const req = rpc.request(RPC_MESSAGE)
             req.send(JSON.stringify({ type: 'not-writable', message: 'Waiting to be added as a writer by the host...' }))
         } catch (e) {
-            console.error('Failed to send not-writable message:', e)
+            console.error('[ERROR] Failed to send not-writable message:', e)
         }
         return false
     }
 
-    console.error('command RPC_ADD addItem text', text)
+    console.error('[INFO] Command RPC_ADD addItem text', text)
 
     const item = {
         id: generateId(),                    // extra metadata, frontend can ignore
@@ -52,7 +52,7 @@ export async function addItem (text, listId) {
     return enqueueWrite(async () => {
         if (!autobase) return false
         if (autobase.closing) {
-            console.error('Mutation requested while Autobase is closing; ignoring.')
+            console.error('[WARNING] Mutation requested while Autobase is closing; ignoring.')
             return false
         }
         // Get length before append to verify it increases
@@ -63,10 +63,10 @@ export async function addItem (text, listId) {
         // Flush to disk and verify persistence
         // const persisted = await persistAndVerify(lengthBefore + 1, 'ADD')
         // if (!persisted) {
-        //     console.error('WARNING: Add operation may not have been persisted to disk!')
+        //     console.error('[WARNING] Add operation may not have been persisted to disk!')
         // }
 
-        console.error('Added item:', text)
+        console.error('[INFO] Added item:', text)
         return true
     })
 }
@@ -74,22 +74,22 @@ export async function addItem (text, listId) {
 // Update item operation: AUTONOMOUS, NO BACKEND MEMORY
 export async function updateItem (item) {
     if (!autobase) {
-        console.error('updateItem called before Autobase is initialized')
+        console.error('[WARNING] updateItem called before Autobase is initialized')
         return false
     }
 
     if (!autobase.writable) {
-        console.error('updateItem called but autobase is not writable yet')
+        console.error('[WARNING] updateItem called but autobase is not writable yet')
         try {
             const req = rpc.request(RPC_MESSAGE)
             req.send(JSON.stringify({ type: 'not-writable', message: 'Waiting to be added as a writer by the host...' }))
         } catch (e) {
-            console.error('Failed to send not-writable message:', e)
+            console.error('[ERROR] Failed to send not-writable message:', e)
         }
         return false
     }
 
-    console.error('command RPC_UPDATE updateItem item', item)
+    console.error('[INFO] Command RPC_UPDATE updateItem item', item)
 
     const op = {
         type: 'update',
@@ -99,7 +99,7 @@ export async function updateItem (item) {
     return enqueueWrite(async () => {
         if (!autobase) return false
         if (autobase.closing) {
-            console.error('Mutation requested while Autobase is closing; ignoring.')
+            console.error('[WARNING] Mutation requested while Autobase is closing; ignoring.')
             return false
         }
         const lengthBefore = autobase.local.length
@@ -108,10 +108,10 @@ export async function updateItem (item) {
 
         // const persisted = await persistAndVerify(lengthBefore + 1, 'UPDATE')
         // if (!persisted) {
-        //     console.error('WARNING: Update operation may not have been persisted to disk!')
+        //     console.error('[WARNING] Update operation may not have been persisted to disk!')
         // }
 
-        console.error('Updated item:', item.text)
+        console.error('[INFO] Updated item:', item.text)
         return true
     })
 }
@@ -119,22 +119,22 @@ export async function updateItem (item) {
 // Delete item operation: AUTONOMOUS, NO BACKEND MEMORY
 export async function deleteItem (item) {
     if (!autobase) {
-        console.error('deleteItem called before Autobase is initialized')
+        console.error('[WARNING] deleteItem called before Autobase is initialized')
         return false
     }
 
     if (!autobase.writable) {
-        console.error('deleteItem called but autobase is not writable yet')
+        console.error('[WARNING] deleteItem called but autobase is not writable yet')
         try {
             const req = rpc.request(RPC_MESSAGE)
             req.send(JSON.stringify({ type: 'not-writable', message: 'Waiting to be added as a writer by the host...' }))
         } catch (e) {
-            console.error('Failed to send not-writable message:', e)
+            console.error('[ERROR] Failed to send not-writable message:', e)
         }
         return false
     }
 
-    console.error('command RPC_DELETE deleteItem item', item)
+    console.error('[INFO] Command RPC_DELETE deleteItem item', item)
 
     const op = {
         type: 'delete',
@@ -144,7 +144,7 @@ export async function deleteItem (item) {
     return enqueueWrite(async () => {
         if (!autobase) return false
         if (autobase.closing) {
-            console.error('Mutation requested while Autobase is closing; ignoring.')
+            console.error('[WARNING] Mutation requested while Autobase is closing; ignoring.')
             return false
         }
         const lengthBefore = autobase.local.length
@@ -153,10 +153,10 @@ export async function deleteItem (item) {
 
         // const persisted = await persistAndVerify(lengthBefore + 1, 'DELETE')
         // if (!persisted) {
-        //     console.error('WARNING: Delete operation may not have been persisted to disk!')
+        //     console.error('[WARNING] Delete operation may not have been persisted to disk!')
         // }
 
-        console.error('Deleted item:', item.text)
+        console.error('[INFO] Deleted item:', item.text)
         return true
     })
 }
@@ -176,9 +176,9 @@ export function syncListToFrontend (currentList) {
     try {
         const req = rpc.request(SYNC_LIST)
         req.send(JSON.stringify(currentList))
-        console.error('Synced list to frontend:', currentList.length, 'items')
+        console.error('[INFO] Synced list to frontend:', currentList.length, 'items')
     } catch (e) {
-        console.error('Failed to sync list to frontend:', e)
+        console.error('[ERROR] Failed to sync list to frontend:', e)
     }
 }
 
@@ -186,7 +186,7 @@ export function syncListToFrontend (currentList) {
 // Returns true if flush succeeded and length is correct, false otherwise
 async function persistAndVerify (expectedLength, operationType) {
     if (!autobase || !autobase.local || !store) {
-        console.error(`persistAndVerify (${operationType}): autobase, local core, or store not available`)
+        console.error(`[ERROR] persistAndVerify (${operationType}): autobase, local core, or store not available`)
         return false
     }
 
@@ -201,14 +201,14 @@ async function persistAndVerify (expectedLength, operationType) {
         const keyHex = autobase.local.key.toString('hex').slice(0, 16)
 
         if (actualLength >= expectedLength) {
-            console.error(`persistAndVerify (${operationType}): SUCCESS - flushed to disk, core ${keyHex}... length=${actualLength}`)
+            console.error(`[INFO] persistAndVerify (${operationType}): SUCCESS - flushed to disk, core ${keyHex}... length=${actualLength}`)
             return true
         } else {
-            console.error(`persistAndVerify (${operationType}): LENGTH MISMATCH - core ${keyHex}... length=${actualLength}, expected >= ${expectedLength}`)
+            console.error(`[WARNING] persistAndVerify (${operationType}): LENGTH MISMATCH - core ${keyHex}... length=${actualLength}, expected >= ${expectedLength}`)
             return false
         }
     } catch (e) {
-        console.error(`persistAndVerify (${operationType}): FLUSH FAILED -`, e.message)
+        console.error(`[ERROR] persistAndVerify (${operationType}): FLUSH FAILED -`, e.message)
         return false
     }
 }
@@ -216,7 +216,7 @@ async function persistAndVerify (expectedLength, operationType) {
 export async function rebuildListFromPersistedOps() {
     await autobase.update()
     if (!autobase || !autobase.view) {
-        console.error('rebuildListFromPersistedOps: autobase or view not available')
+        console.error('[WARNING] rebuildListFromPersistedOps: autobase or view not available')
         return []
     }
 
@@ -224,28 +224,28 @@ export async function rebuildListFromPersistedOps() {
     const view = autobase.view
     const length = view.length
 
-    console.error(`rebuildListFromPersistedOps: reading ${length} entries from merged view...`)
+    console.error(`[INFO] rebuildListFromPersistedOps: reading ${length} entries from merged view...`)
 
     for (let i = 0; i < length; i++) {
         try {
             const item = await view.get(i)
             if (!item) {
-                console.error(`  entry ${i}: null/undefined`)
+                console.error(`[WARNING] entry ${i}: null/undefined`)
                 continue
             }
 
             if (item.text !== undefined && validateItem(item)) {
                 rebuiltList.push(item)
-                console.error(`  entry ${i}: "${item.text}"`)
+                console.error(`[INFO] entry ${i}: "${item.text}"`)
             } else {
-                console.error(`  entry ${i}: unknown format`)
+                console.error(`[WARNING] entry ${i}: unknown format`)
             }
         } catch (e) {
-            console.error(`rebuildListFromPersistedOps: error reading entry ${i}:`, e.message)
+            console.error(`[ERROR] rebuildListFromPersistedOps: error reading entry ${i}:`, e.message)
         }
     }
 
-    console.error(`rebuildListFromPersistedOps: rebuilt list with ${rebuiltList.length} items`)
+    console.error(`[INFO] rebuildListFromPersistedOps: rebuilt list with ${rebuiltList.length} items`)
     return rebuiltList
 }
 
